@@ -20,8 +20,8 @@ namespace RFID_DOOR_APP
         /************ Variables ***********************
         *
         *
-        */
-        SQL sql = new SQL();
+        **********************************************/
+        SQL sql = new SQL(); 
 
         private void Form1_Load(object sender, EventArgs e)
         {
