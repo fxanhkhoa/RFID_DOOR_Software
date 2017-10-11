@@ -105,6 +105,7 @@
             this.Controls.Add(this.Login_BTN);
             this.Name = "FormLogin";
             this.Text = "FormLogin";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).EndInit();
             this.ResumeLayout(false);
