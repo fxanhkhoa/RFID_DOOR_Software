@@ -20,6 +20,7 @@ namespace RFID_DOOR_APP
         private void FormLogin_Load(object sender, EventArgs e)
         {
             Password_Field.PasswordChar = '*';
+            //Login_BTN.Image = Image.FromFile("../pics/door.png");
         }
     }
 }

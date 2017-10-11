@@ -25,6 +25,15 @@ namespace RFID_DOOR_APP
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            FormLogin myFormLogin = new FormLogin();
+            myFormLogin.TopLevel = false;
+            myFormLogin.AutoScroll = true;
+
+            User_Control.Controls.Add(myFormLogin);
+            myFormLogin.Show();
+
+            Control_BTN.BackColor = Color.Gray;
+            Header.BackColor = Color.Gray;
             try
             {
                 sql.Connect();

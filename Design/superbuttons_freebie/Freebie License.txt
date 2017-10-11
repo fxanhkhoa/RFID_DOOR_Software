@@ -1,0 +1,18 @@
+/**
+ * Super Buttons
+ *
+ * URL: http://sixrevisions.com/freebies/ui/free-psd-ui-kit-superbuttons/
+ *
+ * This downloadable freebie source file package includes 1 PSD
+ * of assorted buttons with a bonus editable e-book graphic template.
+ *
+ * You MAY use the items in this package for commercial
+ * purposes.
+ *
+ * You MAY NOT redistribute or sell this package.
+ *
+ * Six Revisions (designinstruct.com)
+ *
+ * Author     Josh Katherman (www.themesengine.com)
+ * Copyright  Josh Katherman
+ */
