@@ -16,5 +16,10 @@ namespace RFID_DOOR_APP
         {
             InitializeComponent();
         }
+
+        private void FormReport_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

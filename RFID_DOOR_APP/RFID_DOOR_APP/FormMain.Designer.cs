@@ -172,6 +172,7 @@
             this.Controls.Add(this.User_Control);
             this.Controls.Add(this.Control_BTN);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RFID_DOOR";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Control_BTN.ResumeLayout(false);

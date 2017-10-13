@@ -98,6 +98,15 @@ namespace RFID_DOOR_APP
             pictureBox2.Image = Image.FromFile("../pics/report_button_clicked.png");
             Pic_Normal_All(1);
             report_btn_status = 1;
+
+            FormReport MyformReport = new FormReport();
+            MyformReport.TopLevel = false;
+            MyformReport.AutoScroll = true;
+
+            MyformReport.FormClosed += FormReport_Formclosed;
+
+            User_Control.Controls.Add(MyformReport);
+            MyformReport.Show();
         }
 
         private void pictureBox3_MouseHover(object sender, EventArgs e)
@@ -194,6 +203,16 @@ namespace RFID_DOOR_APP
                     pictureBox4.Image = Image.FromFile("../pics/Time_button_normal.png");
                     break;
             };
+        }
+
+        private void form_close_all(int i)
+        {
+
+        }
+
+        private void FormReport_Formclosed(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
         }
     }
 }
