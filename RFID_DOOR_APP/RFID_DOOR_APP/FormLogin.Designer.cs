@@ -76,6 +76,7 @@
             this.Mail_Picture.Size = new System.Drawing.Size(45, 47);
             this.Mail_Picture.TabIndex = 3;
             this.Mail_Picture.TabStop = false;
+            this.Mail_Picture.Click += new System.EventHandler(this.Mail_Picture_Click);
             // 
             // Key_Picture
             // 
@@ -85,6 +86,7 @@
             this.Key_Picture.Size = new System.Drawing.Size(45, 47);
             this.Key_Picture.TabIndex = 3;
             this.Key_Picture.TabStop = false;
+            this.Key_Picture.Click += new System.EventHandler(this.Key_Picture_Click);
             // 
             // Login_BTN
             // 
@@ -99,6 +101,7 @@
             this.Login_BTN.TabIndex = 0;
             this.Login_BTN.Text = "LOGIN >";
             this.Login_BTN.UseVisualStyleBackColor = false;
+            this.Login_BTN.Click += new System.EventHandler(this.Login_BTN_Click);
             // 
             // FormLogin
             // 
@@ -115,6 +118,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormLogin";
             this.Text = "FormLogin";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
             this.Load += new System.EventHandler(this.FormLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).EndInit();
