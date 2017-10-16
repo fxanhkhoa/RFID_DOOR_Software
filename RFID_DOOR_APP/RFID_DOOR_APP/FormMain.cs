@@ -27,10 +27,13 @@ namespace RFID_DOOR_APP
             *
             *
             *********************************/
+            this.WindowState = FormWindowState.Maximized;
+
             Title.Visible = true;
             Control_BTN.Visible = true;
+            Panel_Header.Visible = true;
             Control_BTN.BackColor = Color.FromArgb(255, 255, 192);
-            //User_Control.BackColor = Color.FromArgb(129, 221, 22); // 129, 221, 22 :green
+
         }
 
         /************ Variables ***********************
@@ -39,7 +42,8 @@ namespace RFID_DOOR_APP
         **********************************************/
         SQL _DB = new SQL();
         int report_btn_status, employee_btn_status, time_btn_status, connect_btn_status = 0;
-               
+        FormReport MyformReport = new FormReport();
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -56,6 +60,7 @@ namespace RFID_DOOR_APP
 
             Control_BTN.Visible = false;
             Title.Visible = false;
+            Panel_Header.Visible = false;
             try
             {
                 _DB.Connect();
@@ -96,10 +101,11 @@ namespace RFID_DOOR_APP
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             pictureBox2.Image = Image.FromFile("../pics/report_button_clicked.png");
+            picture_header.Image = Properties.Resources.header_REPORT_A;
             Pic_Normal_All(1);
             report_btn_status = 1;
 
-            FormReport MyformReport = new FormReport();
+            
             MyformReport.TopLevel = false;
             MyformReport.AutoScroll = true;
 
@@ -107,6 +113,9 @@ namespace RFID_DOOR_APP
 
             User_Control.Controls.Add(MyformReport);
             MyformReport.Show();
+
+            MyformReport.reload_style();
+            
         }
 
         private void pictureBox3_MouseHover(object sender, EventArgs e)
@@ -166,6 +175,13 @@ namespace RFID_DOOR_APP
                 pictureBox5.Image = Image.FromFile("../pics/connection_button_normal.png");
         }
 
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            User_Control.Size = new Size(Convert.ToInt16(this.Size.Width), Convert.ToInt16(this.Size.Height));
+            MyformReport.reload_style();
+            
+        }
+
         private void Pic_Normal_All(int a)
         {
             switch (a)
@@ -207,7 +223,17 @@ namespace RFID_DOOR_APP
 
         private void form_close_all(int i)
         {
-
+            switch (i)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            };
         }
 
         private void FormReport_Formclosed(object sender, EventArgs e)

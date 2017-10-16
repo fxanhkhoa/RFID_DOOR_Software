@@ -14,10 +14,11 @@ create table NHANVIEN
 
 create table SUDUNG
 (
-	IDNV varchar(10) primary key,
+	IDNV varchar(10) ,
 	IDDOOR varchar(10),
 	TIME_USE time,
 	DATE_USE date,
+	Primary Key (IDNV,IDDOOR),
 	foreign key (IDDOOR) references DOOR(IDDOOR)
 )
 
@@ -25,4 +26,10 @@ create table USR
 (
 	ID varchar(10) primary key,
 	PASS varchar(20)
+)
+
+create table REPORT
+(
+	TimeDo smalldatetime,
+	Task varchar(200)
 )

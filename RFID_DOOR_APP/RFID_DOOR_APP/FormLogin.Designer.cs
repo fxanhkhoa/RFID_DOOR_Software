@@ -67,6 +67,7 @@
             this.Password_Field.Size = new System.Drawing.Size(195, 26);
             this.Password_Field.TabIndex = 2;
             this.Password_Field.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Password_Field.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Password_Field_KeyPress);
             // 
             // Mail_Picture
             // 
@@ -117,9 +118,11 @@
             this.Controls.Add(this.Login_BTN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
             this.Load += new System.EventHandler(this.FormLogin_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormLogin_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).EndInit();
             this.ResumeLayout(false);

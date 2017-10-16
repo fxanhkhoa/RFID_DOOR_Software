@@ -66,6 +66,22 @@ namespace RFID_DOOR_APP
             {
                 //FormMain.ActiveForm.Refresh();
                 MessageBox.Show(Username_Field.Text+" Login successful");
+                DateTime localDate = DateTime.Now;
+
+                if (_DB.conn.State != ConnectionState.Open)
+                    _DB.Open();
+
+
+
+                sql = @"insert into REPORT values('" + localDate.ToString() + "','Login as " + Username_Field.Text + "')";
+                //MessageBox.Show(sql);
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+
+                if (_DB.conn.State != ConnectionState.Closed)
+                    _DB.Close();
                 this.Close();
             }
         }
@@ -73,6 +89,19 @@ namespace RFID_DOOR_APP
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void FormLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void Password_Field_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Login_BTN.PerformClick();
+            }
         }
     }
 }
