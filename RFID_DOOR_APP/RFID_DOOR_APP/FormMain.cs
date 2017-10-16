@@ -43,6 +43,7 @@ namespace RFID_DOOR_APP
         SQL _DB = new SQL();
         int report_btn_status, employee_btn_status, time_btn_status, connect_btn_status = 0;
         FormReport MyformReport = new FormReport();
+        FormEmployee MyFormEmployee = new FormEmployee();
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,6 +70,12 @@ namespace RFID_DOOR_APP
             {
                 MessageBox.Show(ex.Message);
             }
+
+            MyformReport.Show();
+            MyformReport.Visible = false;
+
+            MyFormEmployee.Show();
+            MyFormEmployee.Visible = false;
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)
@@ -103,6 +110,7 @@ namespace RFID_DOOR_APP
             pictureBox2.Image = Image.FromFile("../pics/report_button_clicked.png");
             picture_header.Image = Properties.Resources.header_REPORT_A;
             Pic_Normal_All(1);
+            form_close_all(1);
             report_btn_status = 1;
 
             
@@ -112,7 +120,8 @@ namespace RFID_DOOR_APP
             MyformReport.FormClosed += FormReport_Formclosed;
 
             User_Control.Controls.Add(MyformReport);
-            MyformReport.Show();
+
+            MyformReport.Visible = true;
 
             MyformReport.reload_style();
             
@@ -133,8 +142,21 @@ namespace RFID_DOOR_APP
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             pictureBox3.Image = Image.FromFile("../pics/employee_button_clicked.png");
+            picture_header.Image = Properties.Resources.header_EMPLOYEE;
             employee_btn_status = 1;
             Pic_Normal_All(2);
+            form_close_all(2);
+
+            MyFormEmployee.TopLevel = false;
+            MyFormEmployee.AutoScroll = true;
+
+            MyFormEmployee.FormClosed += FormEmployee_Formclosed;
+
+            User_Control.Controls.Add(MyFormEmployee);
+
+            MyFormEmployee.Visible = true;
+
+            MyFormEmployee.reload_style();
         }
 
         private void pictureBox4_MouseHover(object sender, EventArgs e)
@@ -226,8 +248,10 @@ namespace RFID_DOOR_APP
             switch (i)
             {
                 case 1:
+                    MyFormEmployee.Visible = false;
                     break;
                 case 2:
+                    MyformReport.Visible = false;
                     break;
                 case 3:
                     break;
@@ -239,6 +263,11 @@ namespace RFID_DOOR_APP
         private void FormReport_Formclosed(object sender, EventArgs e)
         {
             pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
+        }
+
+        private void FormEmployee_Formclosed(object sender, EventArgs e)
+        {
+
         }
     }
 }

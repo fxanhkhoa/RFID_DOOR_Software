@@ -63,6 +63,26 @@ namespace RFID_DOOR_APP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ADD_BTN {
+            get {
+                object obj = ResourceManager.GetObject("ADD_BTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ADD_BTN_HOVER {
+            get {
+                object obj = ResourceManager.GetObject("ADD_BTN_HOVER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap connection_button_clicked {
             get {
                 object obj = ResourceManager.GetObject("connection_button_clicked", resourceCulture);
@@ -86,6 +106,26 @@ namespace RFID_DOOR_APP.Properties {
         internal static System.Drawing.Bitmap connection_button_normal {
             get {
                 object obj = ResourceManager.GetObject("connection_button_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DELETE_BTN {
+            get {
+                object obj = ResourceManager.GetObject("DELETE_BTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DELETE_BTN_HOVER {
+            get {
+                object obj = ResourceManager.GetObject("DELETE_BTN_HOVER", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +166,36 @@ namespace RFID_DOOR_APP.Properties {
         internal static System.Drawing.Bitmap employee_button_normal {
             get {
                 object obj = ResourceManager.GetObject("employee_button_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FIX_BTN {
+            get {
+                object obj = ResourceManager.GetObject("FIX_BTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FIX_BTN_HOVER {
+            get {
+                object obj = ResourceManager.GetObject("FIX_BTN_HOVER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap header_EMPLOYEE {
+            get {
+                object obj = ResourceManager.GetObject("header_EMPLOYEE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +266,26 @@ namespace RFID_DOOR_APP.Properties {
         internal static System.Drawing.Bitmap Time_button_normal {
             get {
                 object obj = ResourceManager.GetObject("Time_button_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VIEW_BTN {
+            get {
+                object obj = ResourceManager.GetObject("VIEW_BTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VIEW_BTN_HOVER {
+            get {
+                object obj = ResourceManager.GetObject("VIEW_BTN_HOVER", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

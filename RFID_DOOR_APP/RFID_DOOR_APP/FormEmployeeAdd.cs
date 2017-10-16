@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace RFID_DOOR_APP
 {
-    public partial class Employee : Form
+    public partial class FormEmployeeAdd : Form
     {
-        public Employee()
+        public FormEmployeeAdd()
         {
             InitializeComponent();
         }
-        /************ Variables ***********************
-        *
-        *
-        **********************************************/
-        SQL _DB = new SQL();
     }
 }
