@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.Control_BTN = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.User_Control = new System.Windows.Forms.Panel();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.picture_header = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Control_BTN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -252,6 +254,7 @@
         private System.Windows.Forms.ProgressBar Connection_status;
         private System.Windows.Forms.Panel Panel_Header;
         private System.Windows.Forms.PictureBox picture_header;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

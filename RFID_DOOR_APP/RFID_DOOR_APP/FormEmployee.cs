@@ -64,7 +64,8 @@ namespace RFID_DOOR_APP
 
         private void Add_Btn_Click(object sender, EventArgs e)
         {
-
+            FormEmployeeAdd myform = new FormEmployeeAdd();
+            myform.Show();
         }
 
         private void Delete_Btn_Click(object sender, EventArgs e)

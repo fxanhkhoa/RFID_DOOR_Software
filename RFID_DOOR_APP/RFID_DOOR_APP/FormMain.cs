@@ -12,6 +12,17 @@ namespace RFID_DOOR_APP
 {
     public partial class FormMain : Form
     {
+      /************ Variables ***********************
+      *
+      *
+      **********************************************/
+        SQL _DB = new SQL();
+        int report_btn_status, employee_btn_status, time_btn_status, connect_btn_status = 0;
+        FormReport MyformReport = new FormReport();
+        FormEmployee MyFormEmployee = new FormEmployee();
+        FormConnection MyFormConnection = new FormConnection();
+        Global _global = new Global();
+
         public FormMain()
         {
             InitializeComponent();
@@ -19,8 +30,8 @@ namespace RFID_DOOR_APP
             *
             *
             **********************************************/
-        }
-
+        }     
+      
         void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             /*********************************
@@ -33,19 +44,7 @@ namespace RFID_DOOR_APP
             Control_BTN.Visible = true;
             Panel_Header.Visible = true;
             Control_BTN.BackColor = Color.FromArgb(255, 255, 192);
-
         }
-
-        /************ Variables ***********************
-        *
-        *
-        **********************************************/
-        SQL _DB = new SQL();
-        int report_btn_status, employee_btn_status, time_btn_status, connect_btn_status = 0;
-        FormReport MyformReport = new FormReport();
-        FormEmployee MyFormEmployee = new FormEmployee();
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -183,6 +182,10 @@ namespace RFID_DOOR_APP
             Pic_Normal_All(4);
                 pictureBox5.Image = Image.FromFile("../pics/connection_button_clicked.png");
             connect_btn_status = 1;
+            MyFormConnection.Show();
+
+            MyFormConnection.FormClosed += MyFormConnection_Closed;
+            
         }
 
         private void pictureBox5_MouseHover(object sender, EventArgs e)
@@ -268,6 +271,14 @@ namespace RFID_DOOR_APP
         private void FormEmployee_Formclosed(object sender, EventArgs e)
         {
 
+        }
+
+        private void MyFormConnection_Closed(object sender, EventArgs e)
+        {
+           MyFormConnection = new FormConnection();
+            if (Global.Status == 1)
+                Connection_status.Value = 100;
+            pictureBox5.Image = Properties.Resources.connection_button_normal;
         }
     }
 }
