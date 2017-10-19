@@ -22,28 +22,33 @@ namespace RFID_DOOR_APP
         {
             String[] ports = SerialPort.GetPortNames();
             PORT.Items.AddRange(ports);
-            this.timer1.Start();
+            PORT.SelectedIndex = 0;
+            BAUD_RATE.SelectedIndex = 1;
+            Parity.SelectedIndex = 0;
+            DATABITS.SelectedIndex = 0;
+            STOPBITS.SelectedIndex = 0;
+            //this.timer1.Start();
         }
 
         private void Connect_Btn_Click(object sender, EventArgs e)
         {
             Global.Status = 0;
-            Global.COM = PORT.SelectedItem.ToString();
             Global.Sp.PortName = PORT.SelectedItem.ToString();
-            Global.BAUD_RATE = Int32.Parse(BAUD_RATE.SelectedItem.ToString());
             Global.Sp.BaudRate = Int32.Parse(BAUD_RATE.SelectedItem.ToString());
             if (Parity.SelectedItem.ToString() == "NONE")
                 Global.Sp.Parity = System.IO.Ports.Parity.None;
                 
 
-            Global.DATABIT = Convert.ToInt16(DATABITS.SelectedItem.ToString());
+            Global.Sp.DataBits = Convert.ToInt16(DATABITS.SelectedItem.ToString());
             if (STOPBITS.SelectedItem.ToString() == "1")
-                Global.STOPBITS = StopBits.One;
+                Global.Sp.StopBits = StopBits.One;
 
             try
             {
                 Global.Sp.Open();
                 Global.Status = 1;
+                MessageBox.Show("Connect Successfully !!!");
+                this.Close();
             }
             catch (Exception ex)
             {

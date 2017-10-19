@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.Control_BTN = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.connectStatus_text = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.Connection_status = new System.Windows.Forms.ProgressBar();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -43,7 +42,6 @@
             this.User_Control = new System.Windows.Forms.Panel();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.picture_header = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Control_BTN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -58,7 +56,7 @@
             // Control_BTN
             // 
             this.Control_BTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Control_BTN.Controls.Add(this.label2);
+            this.Control_BTN.Controls.Add(this.connectStatus_text);
             this.Control_BTN.Controls.Add(this.pictureBox5);
             this.Control_BTN.Controls.Add(this.Connection_status);
             this.Control_BTN.Controls.Add(this.pictureBox4);
@@ -71,17 +69,17 @@
             this.Control_BTN.Size = new System.Drawing.Size(135, 529);
             this.Control_BTN.TabIndex = 0;
             // 
-            // label2
+            // connectStatus_text
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(0, 493);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Connection";
+            this.connectStatus_text.AutoSize = true;
+            this.connectStatus_text.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.connectStatus_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectStatus_text.ForeColor = System.Drawing.Color.Maroon;
+            this.connectStatus_text.Location = new System.Drawing.Point(0, 493);
+            this.connectStatus_text.Name = "connectStatus_text";
+            this.connectStatus_text.Size = new System.Drawing.Size(71, 13);
+            this.connectStatus_text.TabIndex = 1;
+            this.connectStatus_text.Text = "Connection";
             // 
             // pictureBox5
             // 
@@ -250,11 +248,10 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label connectStatus_text;
         private System.Windows.Forms.ProgressBar Connection_status;
         private System.Windows.Forms.Panel Panel_Header;
         private System.Windows.Forms.PictureBox picture_header;
-        private System.Windows.Forms.Timer timer1;
     }
 }
 

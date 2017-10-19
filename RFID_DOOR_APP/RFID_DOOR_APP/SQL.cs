@@ -34,7 +34,7 @@ namespace RFID_DOOR_APP
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         public void Close()
@@ -45,7 +45,7 @@ namespace RFID_DOOR_APP
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         public void Excute(string sql)
@@ -63,7 +63,7 @@ namespace RFID_DOOR_APP
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
     }

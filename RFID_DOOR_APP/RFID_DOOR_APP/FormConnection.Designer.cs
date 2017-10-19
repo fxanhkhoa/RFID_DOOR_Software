@@ -51,10 +51,12 @@
             this.PORT.Name = "PORT";
             this.PORT.Size = new System.Drawing.Size(121, 21);
             this.PORT.TabIndex = 0;
+            this.PORT.Tag = "";
             // 
             // BAUD_RATE
             // 
             this.BAUD_RATE.AutoCompleteCustomSource.AddRange(new string[] {
+            "9600",
             "115200"});
             this.BAUD_RATE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BAUD_RATE.FormattingEnabled = true;
@@ -65,6 +67,7 @@
             this.BAUD_RATE.Name = "BAUD_RATE";
             this.BAUD_RATE.Size = new System.Drawing.Size(121, 21);
             this.BAUD_RATE.TabIndex = 0;
+            this.BAUD_RATE.Tag = "";
             // 
             // Parity
             // 

@@ -277,7 +277,11 @@ namespace RFID_DOOR_APP
         {
            MyFormConnection = new FormConnection();
             if (Global.Status == 1)
+            {
                 Connection_status.Value = 100;
+                connectStatus_text.Text = "Connecting";
+                connectStatus_text.ForeColor = Color.Green;
+            }
             pictureBox5.Image = Properties.Resources.connection_button_normal;
         }
     }
