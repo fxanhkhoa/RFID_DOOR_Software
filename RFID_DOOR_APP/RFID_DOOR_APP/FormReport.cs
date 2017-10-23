@@ -25,6 +25,7 @@ namespace RFID_DOOR_APP
 
         private void FormReport_Load(object sender, EventArgs e)
         {
+            //FormReport.DockPaddingEdges 
             _DB.Connect();
 
             string sql;
@@ -35,6 +36,22 @@ namespace RFID_DOOR_APP
             report_data.DataSource = _DB.ds.Tables[0];
             this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.report_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string sql;
+            sql = "select TimeDo as Time,Task  from REPORT";
+            _DB.Excute(sql);
+            report_data.DataSource = _DB.ds.Tables[0];
+            this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.report_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            reload_style();
+        }
+
+        private void reload()
+        {
 
         }
 
@@ -42,7 +59,7 @@ namespace RFID_DOOR_APP
         {
             //this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             //this.report_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
           
             for (int i = 0; i < report_data.Rows.Count; i++)
             {

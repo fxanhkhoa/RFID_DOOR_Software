@@ -22,6 +22,11 @@ namespace RFID_DOOR_APP
         FormEmployee MyFormEmployee = new FormEmployee();
         FormConnection MyFormConnection = new FormConnection();
         Global _global = new Global();
+        string s;
+
+        const int
+            NONE = 0,
+            DOOR_OPENED = 1;      
 
         public FormMain()
         {
@@ -43,6 +48,7 @@ namespace RFID_DOOR_APP
             Title.Visible = true;
             Control_BTN.Visible = true;
             Panel_Header.Visible = true;
+            picture_header.Visible = true;
             Control_BTN.BackColor = Color.FromArgb(255, 255, 192);
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -61,6 +67,7 @@ namespace RFID_DOOR_APP
             Control_BTN.Visible = false;
             Title.Visible = false;
             Panel_Header.Visible = false;
+            picture_header.Visible = false;
             try
             {
                 _DB.Connect();
@@ -75,6 +82,33 @@ namespace RFID_DOOR_APP
 
             MyFormEmployee.Show();
             MyFormEmployee.Visible = false;
+
+            Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
+        }
+
+        private void SP_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            char temp;
+            temp = (Char) Global.Sp.ReadChar();
+            s += temp;
+            if (temp == '*')
+            {
+                int mode = AT_Check(s);
+                if (mode == DOOR_OPENED)
+                {
+                    char door_num = s[12];
+                    DateTime LocalDate = DateTime.Now;
+                    string sql = @"insert into REPORT(TimeDo,Task) values('"+LocalDate.ToString()+"','DOOR"+ door_num +"OPENED')";
+                    _DB.Excute(sql);
+                }
+            }
+        }
+
+        private int AT_Check(string s)
+        {
+            if (s.IndexOf("OK+DOOROPEN") >= 0)
+                return DOOR_OPENED;
+            return 0;
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)
@@ -111,14 +145,16 @@ namespace RFID_DOOR_APP
             Pic_Normal_All(1);
             form_close_all(1);
             report_btn_status = 1;
-
             
             MyformReport.TopLevel = false;
-            MyformReport.AutoScroll = true;
+            
 
             MyformReport.FormClosed += FormReport_Formclosed;
 
             User_Control.Controls.Add(MyformReport);
+            MyformReport.AutoScroll = true;
+            MyformReport.TopMost = true;
+            MyformReport.Dock = DockStyle.Fill;
 
             MyformReport.Visible = true;
 
@@ -152,6 +188,7 @@ namespace RFID_DOOR_APP
             MyFormEmployee.FormClosed += FormEmployee_Formclosed;
 
             User_Control.Controls.Add(MyFormEmployee);
+            MyFormEmployee.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
 
             MyFormEmployee.Visible = true;
 

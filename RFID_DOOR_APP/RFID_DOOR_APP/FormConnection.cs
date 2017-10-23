@@ -22,11 +22,11 @@ namespace RFID_DOOR_APP
         {
             String[] ports = SerialPort.GetPortNames();
             PORT.Items.AddRange(ports);
-            PORT.SelectedIndex = 0;
+            //PORT.SelectedIndex = 0;
             BAUD_RATE.SelectedIndex = 1;
             Parity.SelectedIndex = 0;
-            DATABITS.SelectedIndex = 0;
-            STOPBITS.SelectedIndex = 0;
+            DATABITS.SelectedIndex = 2;
+            STOPBITS.SelectedIndex = 1;
             //this.timer1.Start();
         }
 
@@ -42,6 +42,8 @@ namespace RFID_DOOR_APP
             Global.Sp.DataBits = Convert.ToInt16(DATABITS.SelectedItem.ToString());
             if (STOPBITS.SelectedItem.ToString() == "1")
                 Global.Sp.StopBits = StopBits.One;
+
+            Global.Sp.Handshake = Handshake.None;
 
             try
             {

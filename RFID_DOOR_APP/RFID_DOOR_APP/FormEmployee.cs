@@ -12,6 +12,8 @@ namespace RFID_DOOR_APP
 {
     public partial class FormEmployee : Form
     {
+        FormEmployeeAdd myform = new FormEmployeeAdd();
+        FormDelete myformdel = new FormDelete();
         public FormEmployee()
         {
             InitializeComponent();
@@ -64,13 +66,18 @@ namespace RFID_DOOR_APP
 
         private void Add_Btn_Click(object sender, EventArgs e)
         {
-            FormEmployeeAdd myform = new FormEmployeeAdd();
+            myform.FormClosed += ADD_Closed;
+
             myform.Show();
         }
 
         private void Delete_Btn_Click(object sender, EventArgs e)
         {
+            
 
+            myformdel.FormClosed += DELETE_Closed;
+
+            myformdel.Show();
         }
 
         private void fix_btn_Click(object sender, EventArgs e)
@@ -119,6 +126,26 @@ namespace RFID_DOOR_APP
 
                 }
             }
+        }
+        private void ADD_Closed(object sender, FormClosedEventArgs e)
+        {
+            reload();
+            myform = new FormEmployeeAdd();
+        }
+
+        private void DELETE_Closed(object sender, FormClosedEventArgs e)
+        {
+            reload();
+            myformdel = new FormDelete();
+        }
+
+        private void reload()
+        {
+            string sql;
+            sql = "select TEN,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+
+            _DB.Excute(sql);
+            employee_data.DataSource = _DB.ds.Tables[0];
         }
     }
 }

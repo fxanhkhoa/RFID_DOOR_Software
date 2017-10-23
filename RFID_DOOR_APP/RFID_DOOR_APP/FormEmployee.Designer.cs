@@ -112,6 +112,7 @@
             // employee_data
             // 
             this.employee_data.BackgroundColor = System.Drawing.Color.White;
+            this.employee_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.employee_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.employee_data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employee_data.Location = new System.Drawing.Point(0, 0);
@@ -133,12 +134,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(553, 345);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(1231, 716);
             this.Name = "FormEmployee";
             this.Text = "Employee";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
