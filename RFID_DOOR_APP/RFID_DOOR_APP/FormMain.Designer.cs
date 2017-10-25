@@ -42,6 +42,7 @@
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.picture_header = new System.Windows.Forms.PictureBox();
             this.User_Control = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.Control_BTN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -56,6 +57,7 @@
             // Control_BTN
             // 
             this.Control_BTN.BackColor = System.Drawing.Color.White;
+            this.Control_BTN.Controls.Add(this.label2);
             this.Control_BTN.Controls.Add(this.connectStatus_text);
             this.Control_BTN.Controls.Add(this.pictureBox5);
             this.Control_BTN.Controls.Add(this.Connection_status);
@@ -151,6 +153,11 @@
             resources.ApplyResources(this.User_Control, "User_Control");
             this.User_Control.Name = "User_Control";
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -192,6 +199,7 @@
         private System.Windows.Forms.Panel Panel_Header;
         private System.Windows.Forms.PictureBox picture_header;
         private System.Windows.Forms.Panel User_Control;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -63,7 +63,7 @@ namespace RFID_DOOR_APP
             }
             else
             {
-                Global.Sp.Write("OK+ID+3E2C4F5G*");
+                Global.Sp.Write("");
             }
         }
 
@@ -106,21 +106,12 @@ namespace RFID_DOOR_APP
         {
             //char temp;
             //temp = (char)Global.Sp.ReadChar();
-            //s += temp;
-            ////Invoke(new Action(new Action(() => RFID.Text = s)));
-            //if (s[s.Length-1] == '*')
-            //{
-            //    if (s.IndexOf("OK+ID") >= 0)
-            //    {
-            //        String ID = s.Substring(6, 8);
-            //        Invoke(new Action(new Action(() => RFID.Text = ID)));
-            //        //RFID.Text = ID;
-            //    }
-            //    else
-            //    {
-            //        s = "";
-            //    }
-            //}
+            s = Global.Sp.ReadExisting();
+            //Invoke(new Action(new Action(() => RFID.Text = s)));
+            if (s.IndexOf("*") >= 0)
+            {
+                Invoke(new Action(new Action(() => RFID.Text = s)));
+            }
         }
 
         private void Time_Use_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,6 +122,7 @@ namespace RFID_DOOR_APP
         private void DATE_USE_Click(object sender, EventArgs e)
         {
             DATE_USE.ForeColor = Color.Black;
+            DATE_USE.Text = "";
         }
 
         private void Send_Click(object sender, EventArgs e)
@@ -143,7 +135,8 @@ namespace RFID_DOOR_APP
             {
                 for (int j = 0; j <= i; j++)
                 {
-                    Global.Sp.Write("AT+IDADD+" +ID_SEND[j] + TIME_SEND[j] + DOOR_SEND[j] + "*");
+                    Global.Sp.Write("AT+IDADD+" + ID_SEND[j] + TIME_SEND[j] + DOOR_SEND[j] + "*");
+                    MessageBox.Show("AT+IDADD+" + ID_SEND[j] + TIME_SEND[j] + DOOR_SEND[j] + "*");
                 }
             }
         }

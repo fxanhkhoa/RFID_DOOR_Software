@@ -48,13 +48,14 @@ namespace RFID_DOOR_APP
             char temp;
             //temp = (char)Global.Sp.ReadChar();
             //s += (char)temp;
-            s = Global.Sp.ReadExisting();
+            //s = Global.Sp.ReadExisting();
+            s = Global.data_read;
             //Invoke(new Action(new Action(() => RFID.Text = s)));
             if (s.IndexOf("*") >= 0)
             {
-                if (s.IndexOf("K+IDREAD") >= 0)
+                if (s.IndexOf("OK+IDREAD") >= 0)
                 {
-                    String ID = s.Substring(9, 8);
+                    String ID = s.Substring(10, 8);
                     Invoke(new Action(new Action(() => RFID.Text = ID)));
                     Invoke(new Action(new Action(() => Read_RFID.Text = "Read RFID")));
                 }
@@ -67,6 +68,7 @@ namespace RFID_DOOR_APP
 
         private void Read_RFID_Click(object sender, EventArgs e)
         {
+            Global.OK = 0;
             Global.Sp.Write("AT+IDREAD*");
             Global.Sp.DiscardInBuffer();
             Read_RFID.Text = "Reading...";

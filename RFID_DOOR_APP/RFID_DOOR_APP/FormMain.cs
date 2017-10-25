@@ -12,21 +12,24 @@ namespace RFID_DOOR_APP
 {
     public partial class FormMain : Form
     {
-      /************ Variables ***********************
-      *
-      *
-      **********************************************/
+        /************ Variables ***********************
+        *
+        *
+        **********************************************/
         SQL _DB = new SQL();
         int report_btn_status, employee_btn_status, time_btn_status, connect_btn_status = 0;
         FormReport MyformReport = new FormReport();
         FormEmployee MyFormEmployee = new FormEmployee();
         FormConnection MyFormConnection = new FormConnection();
+        FormEmployeeAddEM MyFormAddEM = new FormEmployeeAddEM();
         Global _global = new Global();
         string s;
 
         const int
             NONE = 0,
-            DOOR_OPENED = 1;      
+            DOOR_OPENED = 1,
+            ID_CHECK = 2,
+            ID_READ = 3;
 
         public FormMain()
         {
@@ -35,8 +38,8 @@ namespace RFID_DOOR_APP
             *
             *
             **********************************************/
-        }     
-      
+        }
+
         void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             /*********************************
@@ -71,6 +74,8 @@ namespace RFID_DOOR_APP
             try
             {
                 _DB.Connect();
+                if (_DB.conn.State != ConnectionState.Open)
+                    _DB.Open();
             }
             catch (Exception ex)
             {
@@ -88,19 +93,59 @@ namespace RFID_DOOR_APP
 
         private void SP_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            char temp;
-            temp = (Char) Global.Sp.ReadChar();
-            s += temp;
-            if (temp == '*')
+            //char temp;
+            //temp = (Char) Global.Sp.ReadChar();
+            s = Global.Sp.ReadExisting();
+            Invoke(new Action(new Action(() => label2.Text = s)));
+            Global.data_read = s;
+            if (s.IndexOf("*") >= 0)
             {
                 int mode = AT_Check(s);
                 if (mode == DOOR_OPENED)
                 {
                     char door_num = s[12];
                     DateTime LocalDate = DateTime.Now;
-                    string sql = @"insert into REPORT(TimeDo,Task) values('"+LocalDate.ToString()+"','DOOR"+ door_num +"OPENED')";
+                    string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
                     _DB.Excute(sql);
                 }
+                else if (mode == ID_CHECK)
+                {
+                    //MessageBox.Show("IN");
+                    ID_CHECK_OPEN();
+                }
+                else if (mode == ID_READ)
+                {
+                    Global.OK = 1;
+                }
+            }
+        }
+
+        private void ID_CHECK_OPEN()
+        {
+            string ID = s.Substring(10, 8);
+            string DOOR = s.Substring(18, 1);
+            DateTime LocalDateTime = DateTime.Now;
+            string sql;
+
+            sql = "select B.TEN,C.VITRI from SUDUNG A,NHANVIEN B,DOOR C where C.IDDOOR = A.IDDOOR and A.IDNV = B.IDNV and B.RFID ='"+ ID + "' and A.IDDOOR ='" + DOOR +"'";
+          
+            _DB.Excute(sql);
+
+            //MessageBox.Show(_DB.kq.Rows.Count.ToString());
+
+            if (_DB.kq.Rows.Count > 0)
+            {
+                //MessageBox.Show("GOTIT " + DOOR);
+                sql = @"insert into REPORT values('" + LocalDateTime.ToString() + "','" + _DB.kq.Rows[0][0].ToString() + " Opened DOOR " + _DB.kq.Rows[0][1].ToString() + "')";
+                //MessageBox.Show(sql);
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+                if (DOOR == "1") Global.Sp.Write("AT+OPEN1*");        
+                else if (DOOR == "2") Global.Sp.Write("AT+OPEN2*");
+                else if (DOOR == "3") Global.Sp.Write("AT+OPEN3*");
+                else if (DOOR == "4") Global.Sp.Write("AT+OPEN4*");
             }
         }
 
@@ -108,6 +153,10 @@ namespace RFID_DOOR_APP
         {
             if (s.IndexOf("OK+DOOROPEN") >= 0)
                 return DOOR_OPENED;
+            else if (s.IndexOf("AT+IDCHECK") >= 0)
+                return ID_CHECK;
+            else if (s.IndexOf("OK+IDREAD") >= 0)
+                return ID_READ;
             return 0;
         }
 

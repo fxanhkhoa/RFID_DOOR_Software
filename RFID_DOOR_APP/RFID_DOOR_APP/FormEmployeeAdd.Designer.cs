@@ -47,6 +47,7 @@
             this.Name = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ID_List = new System.Windows.Forms.ComboBox();
+            this.Noti = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Add
@@ -304,12 +305,21 @@
             this.ID_List.TabIndex = 8;
             this.ID_List.SelectedIndexChanged += new System.EventHandler(this.ID_List_SelectedIndexChanged);
             // 
+            // Noti
+            // 
+            this.Noti.Location = new System.Drawing.Point(474, 66);
+            this.Noti.Name = "Noti";
+            this.Noti.Size = new System.Drawing.Size(283, 253);
+            this.Noti.TabIndex = 9;
+            this.Noti.Text = "";
+            // 
             // FormEmployeeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(528, 433);
+            this.ClientSize = new System.Drawing.Size(791, 433);
+            this.Controls.Add(this.Noti);
             this.Controls.Add(this.ID_List);
             this.Controls.Add(this.Add_Door);
             this.Controls.Add(this.Add_Employ);
@@ -357,5 +367,6 @@
         private System.Windows.Forms.Label Name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ID_List;
+        private System.Windows.Forms.RichTextBox Noti;
     }
 }

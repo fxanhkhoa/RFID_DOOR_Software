@@ -16,6 +16,20 @@ namespace RFID_DOOR_APP
         private static StopBits _STOPBITS;
         private static SerialPort _sp = new SerialPort();
         private static int _Status;
+        private static string _data_read;
+        private static int _OK;
+
+        public static int OK
+        {
+            get { return _OK; }
+            set { _OK = value; }
+        }
+
+        public static string data_read
+        {
+            get { return _data_read; }
+            set { _data_read = value; }
+        }
 
         public static int Status
         {
