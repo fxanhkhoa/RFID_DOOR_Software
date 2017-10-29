@@ -73,5 +73,13 @@ namespace RFID_DOOR_APP
             Global.Sp.DiscardInBuffer();
             Read_RFID.Text = "Reading...";
         }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            ID.Text = "";
+            Ten.Text = "";
+            Unit.Text = "";
+            RFID.Text = "";
+        }
     }
 }

@@ -238,6 +238,7 @@
             this.Send.TabIndex = 6;
             this.Send.Text = "Send to Board";
             this.Send.UseVisualStyleBackColor = true;
+            this.Send.Visible = false;
             this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
             // Add_Employ
