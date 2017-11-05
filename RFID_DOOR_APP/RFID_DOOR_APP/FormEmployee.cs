@@ -98,7 +98,7 @@ namespace RFID_DOOR_APP
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
 
-            sql = "select TEN,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+            sql = "select TEN,RFID,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
 
             _DB.Excute(sql);
             employee_data.DataSource = _DB.ds.Tables[0];

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace RFID_DOOR_APP
 {
@@ -14,7 +15,7 @@ namespace RFID_DOOR_APP
     {
         string s;
         string[] ID_SEND = new string[20], DOOR_SEND = new string[20], TIME_SEND = new string[20];
-        int i;
+        int i, Current_Quantity;
         SQL _DB = new SQL();
         FormEmployeeAddEM myform_1 = new FormEmployeeAddEM();
         FormAddDoor myform_2 = new FormAddDoor();
@@ -45,8 +46,8 @@ namespace RFID_DOOR_APP
             ID_SEND[i] = RFID.Text;
             DOOR_SEND[i] = Door.SelectedValue.ToString();
             TIME_SEND[i] = Time_Use_From.SelectedItem.ToString() + "-" + Time_Use_To.SelectedItem.ToString();
-            MessageBox.Show(TIME_SEND[0] + " " + DOOR_SEND[0] + " " + ID_SEND[i]);
-            i++;
+            //MessageBox.Show(TIME_SEND[0] + " " + DOOR_SEND[0] + " " + ID_SEND[i]);
+            //i++;
             MessageBox.Show("Successful!");
         }
 
@@ -71,7 +72,7 @@ namespace RFID_DOOR_APP
         {
             string sql;
             i = 0;
-            //Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
+            Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
             Time_Use_From.SelectedIndex = 0;
             Time_Use_To.SelectedIndex = 0;
             try
@@ -79,22 +80,27 @@ namespace RFID_DOOR_APP
                 _DB.Connect();
                 if (_DB.conn.State != ConnectionState.Open)
                     _DB.Open();
-                    sql = "select * from DOOR";
-                    _DB.Excute(sql);
-                    Door.DisplayMember = "VITRI";
-                    Door.ValueMember = "IDDOOR";
-                    Door.DataSource = _DB.kq;
-                    Door.SelectedIndex = 0;
-                    //MessageBox.Show(Door.SelectedValue.ToString());
+                sql = "select * from DOOR";
+                _DB.Excute(sql);
+                Door.DisplayMember = "VITRI";
+                Door.ValueMember = "IDDOOR";
+                Door.DataSource = _DB.kq;
+                Door.SelectedIndex = 0;
+                //MessageBox.Show(Door.SelectedValue.ToString());
 
-                    sql = "select * from NHANVIEN";
-                    _DB.Excute(sql);
-                    ID_List.DisplayMember = "IDNV";
-                    ID_List.ValueMember = "IDNV";
-                    ID_List.DataSource = _DB.kq;
+                sql = "select * from NHANVIEN";
+                _DB.Excute(sql);
+                ID_List.DisplayMember = "IDNV";
+                ID_List.ValueMember = "IDNV";
+                ID_List.DataSource = _DB.kq;
 
-                    ID_List.SelectedIndex = 0;
-                
+                ID_List.SelectedIndex = 0;
+
+                sql = "select NHANVIEN.RFID,DOOR.IDDOOR,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+                _DB.Excute(sql);
+
+                Current_Quantity = _DB.kq.Rows.Count;
+                //MessageBox.Show(Current_Quantity.ToString());
             }
             catch (Exception ex)
             {
@@ -106,11 +112,11 @@ namespace RFID_DOOR_APP
         {
             //char temp;
             //temp = (char)Global.Sp.ReadChar();
-            s = Global.Sp.ReadExisting();
-            //Invoke(new Action(new Action(() => RFID.Text = s)));
+            s = Global.data_read;
+            Invoke(new Action(new Action(() => Noti.Text += s)));
             if (s.IndexOf("*") >= 0)
             {
-                Invoke(new Action(new Action(() => RFID.Text = s)));
+                //Invoke(new Action(new Action(() => RFID.Text = s)));
             }
         }
 
@@ -133,10 +139,20 @@ namespace RFID_DOOR_APP
             }
             else
             {
-                for (int j = 0; j <= i; j++)
+                string sql = "select NHANVIEN.RFID,TIME_USE,DOOR.IDDOOR,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+                _DB.Excute(sql);
+                //MessageBox.Show( _DB.kq.Rows.Count.ToString());
+                if (Current_Quantity == _DB.kq.Rows.Count)
                 {
-                    Global.Sp.Write("AT+IDADD+" + ID_SEND[j] + TIME_SEND[j] + DOOR_SEND[j] + "*");
-                    MessageBox.Show("AT+IDADD+" + ID_SEND[j] + TIME_SEND[j] + DOOR_SEND[j] + "*");
+                    MessageBox.Show("Nothing to send!!!");
+                    return;
+                }
+                for (int i = 0; i < _DB.kq.Rows.Count - Current_Quantity; i++ )
+                {
+                    //string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
+                    string temp = ID_SEND[i] + TIME_SEND[i] + DOOR_SEND[i];
+                    Global.Sp.Write("AT+IDADD+" + temp + "*");
+                    Thread.Sleep(300);
                 }
             }
         }
@@ -176,6 +192,24 @@ namespace RFID_DOOR_APP
         {
             myform_1 = new FormEmployeeAddEM();
             reload();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Global.Sp.Write("AT+CLEARALL*");
+            Thread.Sleep(100);
+            
+            string sql;
+            sql = "select NHANVIEN.RFID,TIME_USE,DOOR.IDDOOR,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+
+            _DB.Excute(sql);
+            for (int i = 0; i < _DB.kq.Rows.Count; i++)
+            {
+                string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
+                Global.Sp.Write("AT+IDADD+" + temp + "*");
+                Thread.Sleep(300);
+                //MessageBox.Show(temp);
+            }
         }
 
         private void myform_2_Closed(object sender, FormClosedEventArgs e)

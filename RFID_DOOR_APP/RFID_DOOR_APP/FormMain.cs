@@ -29,7 +29,8 @@ namespace RFID_DOOR_APP
             NONE = 0,
             DOOR_OPENED = 1,
             ID_CHECK = 2,
-            ID_READ = 3;
+            ID_READ = 3,
+            OK_OPENED = 4;
 
         public FormMain()
         {
@@ -117,6 +118,32 @@ namespace RFID_DOOR_APP
                 {
                     Global.OK = 1;
                 }
+                else if (mode == OK_OPENED)
+                {
+                    REPORT_OPEN(s);
+                }
+            }
+        }
+
+        private void REPORT_OPEN(string s)
+        {
+            string ID = s.Substring(8, 8);
+            string DOOR = s.Substring(17, 1);
+            DateTime LocalDateTime = DateTime.Now;
+            string sql;
+            sql = "select B.TEN,C.VITRI from SUDUNG A,NHANVIEN B,DOOR C where C.IDDOOR = A.IDDOOR and A.IDNV = B.IDNV and B.RFID ='" + ID + "' and A.IDDOOR ='" + DOOR + "'";
+            _DB.Excute(sql);
+
+            if (_DB.kq.Rows.Count > 0)
+            {
+                //MessageBox.Show("GOTIT " + DOOR);
+                sql = @"insert into REPORT values('" + LocalDateTime.ToString() + "','" + _DB.kq.Rows[0][0].ToString() + " Opened DOOR " + _DB.kq.Rows[0][1].ToString() + "')";
+                //MessageBox.Show(sql);
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+                
             }
         }
 
@@ -157,6 +184,8 @@ namespace RFID_DOOR_APP
                 return ID_CHECK;
             else if (s.IndexOf("OK+IDREAD") >= 0)
                 return ID_READ;
+            else if (s.IndexOf("OK+OPEN") >= 0)
+                return OK_OPENED;
             return 0;
         }
 

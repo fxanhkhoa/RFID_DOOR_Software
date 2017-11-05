@@ -14,7 +14,7 @@ namespace RFID_DOOR_APP
     {
         SQL _DB = new SQL();
         string[] ID_SEND = new string[20];
-        int count;
+        int count = 0;
         public FormDelete()
         {
             InitializeComponent();
@@ -52,10 +52,11 @@ namespace RFID_DOOR_APP
             try
             {
                 //MessageBox.Show(Usage_data_grid.SelectedRows[0].Cells[0].Value.ToString());
+                ID_SEND[count] = Usage_data_grid.SelectedRows[0].Cells[0].Value.ToString();
                 sql = "delete from SUDUNG where IDNV = '" + Usage_data_grid.SelectedRows[0].Cells[0].Value.ToString() + "'";
                 _DB.Excute(sql);
                 
-                MessageBox.Show("Deleted!");
+                MessageBox.Show("Deleted!"); 
                 reload();
             }
             catch
@@ -106,6 +107,11 @@ namespace RFID_DOOR_APP
             }
             else
             {
+                if (count == 0)
+                {
+                    MessageBox.Show("Nothing to send!!!");
+                    return;
+                }
                 for (int i = 0; i < count; i++)
                 {
                     Global.Sp.Write("AT+IDDEL+" + ID_SEND[i] + "*");

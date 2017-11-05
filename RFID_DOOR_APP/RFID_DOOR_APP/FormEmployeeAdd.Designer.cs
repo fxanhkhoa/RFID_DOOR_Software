@@ -48,11 +48,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ID_List = new System.Windows.Forms.ComboBox();
             this.Noti = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(95, 235);
+            this.Add.Location = new System.Drawing.Point(110, 275);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 23);
             this.Add.TabIndex = 3;
@@ -62,7 +64,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(176, 235);
+            this.Reset.Location = new System.Drawing.Point(191, 275);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(75, 23);
             this.Reset.TabIndex = 3;
@@ -99,7 +101,7 @@
             "22:00",
             "23:00",
             "23:59"});
-            this.Time_Use_From.Location = new System.Drawing.Point(95, 162);
+            this.Time_Use_From.Location = new System.Drawing.Point(110, 202);
             this.Time_Use_From.Name = "Time_Use_From";
             this.Time_Use_From.Size = new System.Drawing.Size(86, 21);
             this.Time_Use_From.TabIndex = 4;
@@ -108,7 +110,7 @@
             // Time
             // 
             this.Time.AutoSize = true;
-            this.Time.Location = new System.Drawing.Point(187, 165);
+            this.Time.Location = new System.Drawing.Point(202, 205);
             this.Time.Name = "Time";
             this.Time.Size = new System.Drawing.Size(10, 13);
             this.Time.TabIndex = 5;
@@ -117,7 +119,7 @@
             // DATE_USE
             // 
             this.DATE_USE.ForeColor = System.Drawing.Color.DarkGray;
-            this.DATE_USE.Location = new System.Drawing.Point(95, 189);
+            this.DATE_USE.Location = new System.Drawing.Point(110, 229);
             this.DATE_USE.Name = "DATE_USE";
             this.DATE_USE.Size = new System.Drawing.Size(225, 20);
             this.DATE_USE.TabIndex = 0;
@@ -127,7 +129,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 165);
+            this.label5.Location = new System.Drawing.Point(25, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 1;
@@ -136,7 +138,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 192);
+            this.label6.Location = new System.Drawing.Point(25, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 1;
@@ -145,7 +147,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(326, 192);
+            this.label7.Location = new System.Drawing.Point(341, 232);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
             this.label7.TabIndex = 5;
@@ -180,7 +182,7 @@
             "22:00",
             "23:00",
             "23:59"});
-            this.Time_Use_To.Location = new System.Drawing.Point(203, 162);
+            this.Time_Use_To.Location = new System.Drawing.Point(218, 202);
             this.Time_Use_To.Name = "Time_Use_To";
             this.Time_Use_To.Size = new System.Drawing.Size(86, 21);
             this.Time_Use_To.TabIndex = 4;
@@ -215,7 +217,7 @@
             "22:00",
             "23:00",
             "24:00"});
-            this.Door.Location = new System.Drawing.Point(95, 135);
+            this.Door.Location = new System.Drawing.Point(110, 175);
             this.Door.Name = "Door";
             this.Door.Size = new System.Drawing.Size(86, 21);
             this.Door.TabIndex = 4;
@@ -224,7 +226,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 138);
+            this.label8.Location = new System.Drawing.Point(27, 178);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 1;
@@ -232,18 +234,17 @@
             // 
             // Send
             // 
-            this.Send.Location = new System.Drawing.Point(257, 235);
+            this.Send.Location = new System.Drawing.Point(272, 275);
             this.Send.Name = "Send";
             this.Send.Size = new System.Drawing.Size(111, 23);
             this.Send.TabIndex = 6;
             this.Send.Text = "Send to Board";
             this.Send.UseVisualStyleBackColor = true;
-            this.Send.Visible = false;
             this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
             // Add_Employ
             // 
-            this.Add_Employ.Location = new System.Drawing.Point(95, 297);
+            this.Add_Employ.Location = new System.Drawing.Point(110, 337);
             this.Add_Employ.Name = "Add_Employ";
             this.Add_Employ.Size = new System.Drawing.Size(75, 23);
             this.Add_Employ.TabIndex = 7;
@@ -253,7 +254,7 @@
             // 
             // Add_Door
             // 
-            this.Add_Door.Location = new System.Drawing.Point(205, 297);
+            this.Add_Door.Location = new System.Drawing.Point(220, 337);
             this.Add_Door.Name = "Add_Door";
             this.Add_Door.Size = new System.Drawing.Size(75, 23);
             this.Add_Door.TabIndex = 7;
@@ -264,7 +265,7 @@
             // RFID
             // 
             this.RFID.AutoSize = true;
-            this.RFID.Location = new System.Drawing.Point(95, 109);
+            this.RFID.Location = new System.Drawing.Point(110, 149);
             this.RFID.Name = "RFID";
             this.RFID.Size = new System.Drawing.Size(32, 13);
             this.RFID.TabIndex = 1;
@@ -273,7 +274,7 @@
             // Unit
             // 
             this.Unit.AutoSize = true;
-            this.Unit.Location = new System.Drawing.Point(95, 87);
+            this.Unit.Location = new System.Drawing.Point(110, 127);
             this.Unit.Name = "Unit";
             this.Unit.Size = new System.Drawing.Size(26, 13);
             this.Unit.TabIndex = 1;
@@ -282,7 +283,7 @@
             // Name
             // 
             this.Name.AutoSize = true;
-            this.Name.Location = new System.Drawing.Point(95, 64);
+            this.Name.Location = new System.Drawing.Point(110, 104);
             this.Name.Name = "Name";
             this.Name.Size = new System.Drawing.Size(35, 13);
             this.Name.TabIndex = 1;
@@ -291,7 +292,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 29);
+            this.label1.Location = new System.Drawing.Point(27, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 13);
             this.label1.TabIndex = 1;
@@ -300,7 +301,7 @@
             // ID_List
             // 
             this.ID_List.FormattingEnabled = true;
-            this.ID_List.Location = new System.Drawing.Point(95, 26);
+            this.ID_List.Location = new System.Drawing.Point(110, 66);
             this.ID_List.Name = "ID_List";
             this.ID_List.Size = new System.Drawing.Size(121, 21);
             this.ID_List.TabIndex = 8;
@@ -314,12 +315,35 @@
             this.Noti.TabIndex = 9;
             this.Noti.Text = "";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(474, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Send All Again";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("LED BOARD REVERSED", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(80, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(240, 33);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "ADD USAGE";
+            // 
             // FormEmployeeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(791, 433);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Noti);
             this.Controls.Add(this.ID_List);
             this.Controls.Add(this.Add_Door);
@@ -369,5 +393,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ID_List;
         private System.Windows.Forms.RichTextBox Noti;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
     }
 }
