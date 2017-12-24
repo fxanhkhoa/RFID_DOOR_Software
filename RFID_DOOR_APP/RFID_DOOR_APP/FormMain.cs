@@ -128,10 +128,11 @@ namespace RFID_DOOR_APP
         private void REPORT_OPEN(string s)
         {
             string ID = s.Substring(8, 8);
-            string DOOR = s.Substring(17, 1);
+            string DOOR = s.Substring(16, 1);
             DateTime LocalDateTime = DateTime.Now;
             string sql;
             sql = "select B.TEN,C.VITRI from SUDUNG A,NHANVIEN B,DOOR C where C.IDDOOR = A.IDDOOR and A.IDNV = B.IDNV and B.RFID ='" + ID + "' and A.IDDOOR ='" + DOOR + "'";
+            //MessageBox.Show(sql);
             _DB.Excute(sql);
 
             if (_DB.kq.Rows.Count > 0)
@@ -309,6 +310,50 @@ namespace RFID_DOOR_APP
                 pictureBox5.Image = Image.FromFile("../pics/connection_button_Hover.png");
         }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            byte[] data = new byte[1024];
+            int length = Global.server.Receive(data);
+            while (length == 0) length = Global.server.Receive(data);
+            Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+            Invoke(new Action(new Action(() => label2.Text = Global.data_read)));
+            s = Global.data_read;
+            if (s.IndexOf("*") >= 0)
+            {
+                int mode = AT_Check(s);
+                if (mode == DOOR_OPENED)
+                {
+                    char door_num = s[12];
+                    DateTime LocalDate = DateTime.Now;
+                    string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
+                    _DB.Excute(sql);
+                }
+                else if (mode == ID_CHECK)
+                {
+                    //MessageBox.Show("IN");
+                    ID_CHECK_OPEN();
+                }
+                else if (mode == ID_READ)
+                {
+                    Global.OK = 1;
+                }
+                else if (mode == OK_OPENED)
+                {
+                    REPORT_OPEN(s);
+                }
+            }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+        }
+
         private void pictureBox5_MouseLeave(object sender, EventArgs e)
         {
             if (connect_btn_status == 0)
@@ -391,13 +436,27 @@ namespace RFID_DOOR_APP
         private void MyFormConnection_Closed(object sender, EventArgs e)
         {
            MyFormConnection = new FormConnection();
-            if (Global.Status == 1)
+            if (Global.connection_use == 1)
             {
-                Connection_status.Value = 100;
-                connectStatus_text.Text = "Connecting";
-                connectStatus_text.ForeColor = Color.Green;
+                if (Global.Status == 1)
+                {
+                    Connection_status.Value = 100;
+                    connectStatus_text.Text = "Connecting";
+                    connectStatus_text.ForeColor = Color.Green;
+                }
             }
-            pictureBox5.Image = Properties.Resources.connection_button_normal;
+            else
+            {
+                if (Global.Status == 1)
+                {
+                    Connection_status.Value = 100;
+                    connectStatus_text.Text = "Connecting";
+                    connectStatus_text.ForeColor = Color.Green;
+                }
+                backgroundWorker1.RunWorkerAsync(); // Start receiving data in background
+                //backgroundWorker2.WorkerSupportsCancellation = true; // Ability to cancel this thread
+            }
+                pictureBox5.Image = Properties.Resources.connection_button_normal;
         }
     }
 }

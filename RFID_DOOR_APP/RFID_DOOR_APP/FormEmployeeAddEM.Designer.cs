@@ -40,6 +40,7 @@
             this.Add = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.Clear = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // Read_RFID
@@ -47,7 +48,7 @@
             this.Read_RFID.Location = new System.Drawing.Point(377, 146);
             this.Read_RFID.Name = "Read_RFID";
             this.Read_RFID.Size = new System.Drawing.Size(75, 23);
-            this.Read_RFID.TabIndex = 11;
+            this.Read_RFID.TabIndex = 5;
             this.Read_RFID.Text = "Read RFID";
             this.Read_RFID.UseVisualStyleBackColor = true;
             this.Read_RFID.Click += new System.EventHandler(this.Read_RFID_Click);
@@ -93,35 +94,35 @@
             this.RFID.Location = new System.Drawing.Point(126, 148);
             this.RFID.Name = "RFID";
             this.RFID.Size = new System.Drawing.Size(225, 20);
-            this.RFID.TabIndex = 3;
+            this.RFID.TabIndex = 4;
             // 
             // Unit
             // 
             this.Unit.Location = new System.Drawing.Point(126, 122);
             this.Unit.Name = "Unit";
             this.Unit.Size = new System.Drawing.Size(225, 20);
-            this.Unit.TabIndex = 4;
+            this.Unit.TabIndex = 3;
             // 
             // Ten
             // 
             this.Ten.Location = new System.Drawing.Point(126, 96);
             this.Ten.Name = "Ten";
             this.Ten.Size = new System.Drawing.Size(225, 20);
-            this.Ten.TabIndex = 5;
+            this.Ten.TabIndex = 2;
             // 
             // ID
             // 
             this.ID.Location = new System.Drawing.Point(126, 70);
             this.ID.Name = "ID";
             this.ID.Size = new System.Drawing.Size(225, 20);
-            this.ID.TabIndex = 6;
+            this.ID.TabIndex = 1;
             // 
             // Add
             // 
             this.Add.Location = new System.Drawing.Point(126, 205);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 23);
-            this.Add.TabIndex = 12;
+            this.Add.TabIndex = 6;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
@@ -142,10 +143,14 @@
             this.Clear.Location = new System.Drawing.Point(222, 205);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(75, 23);
-            this.Clear.TabIndex = 14;
+            this.Clear.TabIndex = 7;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // FormEmployeeAddEM
             // 
@@ -186,5 +191,6 @@
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Clear;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -25,6 +25,23 @@ namespace RFID_DOOR_APP
             InitializeComponent();
         }
 
+        public void Eth_read()
+        {
+            try
+            {
+                byte[] data = new byte[1024];
+                int length = Global.server.Receive(data);
+                Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                s = Global.data_read;
+                //Invoke(new Action(new Action(() => RFID.Text = s)));
+                Invoke(new Action(new Action(() => Noti.Text += s)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Add_Click(object sender, EventArgs e)
         {
             string sql;
@@ -70,6 +87,11 @@ namespace RFID_DOOR_APP
 
         private void FormEmployeeAdd_Load(object sender, EventArgs e)
         {
+            if (Global.connection_use == 0)
+            {
+                backgroundWorker1.RunWorkerAsync();
+                backgroundWorker1.WorkerSupportsCancellation = true;
+            }
             string sql;
             i = 0;
             Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
@@ -133,12 +155,19 @@ namespace RFID_DOOR_APP
 
         private void Send_Click(object sender, EventArgs e)
         {
-            if (!Global.Sp.IsOpen)
+            //backgroundWorker1.RunWorkerAsync();
+            if (Global.connection_use == 1)
             {
-                MessageBox.Show("Check Connection ...");
+                if (!Global.Sp.IsOpen)
+                {
+                    MessageBox.Show("Check Connection ...");
+                }
             }
             else
             {
+                
+            }
+            
                 string sql = "select NHANVIEN.RFID,TIME_USE,DOOR.IDDOOR,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
                 _DB.Excute(sql);
                 //MessageBox.Show( _DB.kq.Rows.Count.ToString());
@@ -147,14 +176,28 @@ namespace RFID_DOOR_APP
                     MessageBox.Show("Nothing to send!!!");
                     return;
                 }
-                for (int i = 0; i < _DB.kq.Rows.Count - Current_Quantity; i++ )
+                for (int i = 0; i < _DB.kq.Rows.Count - Current_Quantity; i++)
                 {
                     //string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
-                    string temp = ID_SEND[i] + TIME_SEND[i] + DOOR_SEND[i];
-                    Global.Sp.Write("AT+IDADD+" + temp + "*");
-                    Thread.Sleep(300);
+                    if (Global.connection_use == 1)
+                    {
+                        string temp = ID_SEND[i] + TIME_SEND[i] + DOOR_SEND[i];
+                        Global.Sp.Write("AT+IDADD+" + temp + "*");
+                        Thread.Sleep(200);
+                    }
+                    else
+                    {
+                        string temp = ID_SEND[i] + TIME_SEND[i] + DOOR_SEND[i];
+                        //Global.STW.Write("AT+IDADD+" + temp + "*");
+                        Global.server.Send(Encoding.ASCII.GetBytes("AT+IDADD+" + temp + "*"));
+                        byte[] data = new byte[1024];
+                        int length = Global.server.Receive(data);
+                        while (length == 0) length = Global.server.Receive(data);
+                        Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                        Noti.Text += Global.data_read;
+                    }
                 }
-            }
+            
         }
 
         private void ID_List_SelectedIndexChanged(object sender, EventArgs e)
@@ -180,6 +223,7 @@ namespace RFID_DOOR_APP
         {
             myform_1.Show();
             myform_1.FormClosed += myform_1_Closed;
+            
         }
 
         private void Add_Door_Click(object sender, EventArgs e)
@@ -192,12 +236,53 @@ namespace RFID_DOOR_APP
         {
             myform_1 = new FormEmployeeAddEM();
             reload();
+            
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (Global.connection_use == 0)
+            {
+                byte[] data = new byte[1024];
+                int length = Global.server.Receive(data);
+                Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                s = Global.data_read;
+                //Invoke(new Action(new Action(() => RFID.Text = s)));
+                //Invoke(new Action(new Action(() => Noti.Text += s)));
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void FormEmployeeAdd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Global.connection_use == 0)
+            backgroundWorker1.CancelAsync();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Global.Sp.Write("AT+CLEARALL*");
-            Thread.Sleep(100);
+            //this.backgroundWorker1.RunWorkerAsync();
+            if (Global.connection_use == 1)
+            {
+                Global.Sp.Write("AT+CLEARALL*");
+                Thread.Sleep(300);
+            }
+            else
+            {
+                //MessageBox.Show("AT+CLEARALL");
+                //Global.STW.Write("AT+CLEARALL*");
+                Global.server.Send(Encoding.ASCII.GetBytes("AT+CLEARALL*"));
+                Thread.Sleep(200);
+                //byte[] data = new byte[1024];
+                //int length = Global.server.Receive(data);
+                //while (length == 0) length = Global.server.Receive(data);
+                //Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                //Noti.Text += Global.data_read;
+            }
             
             string sql;
             sql = "select NHANVIEN.RFID,TIME_USE,DOOR.IDDOOR,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
@@ -205,10 +290,27 @@ namespace RFID_DOOR_APP
             _DB.Excute(sql);
             for (int i = 0; i < _DB.kq.Rows.Count; i++)
             {
-                string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
-                Global.Sp.Write("AT+IDADD+" + temp + "*");
-                Thread.Sleep(300);
-                //MessageBox.Show(temp);
+                if (Global.connection_use == 1)
+                {
+                    string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
+                    Global.Sp.Write("AT+IDADD+" + temp + "*");
+                    Thread.Sleep(1000);
+                    //MessageBox.Show(temp);
+                }
+                else
+                {
+                    //MessageBox.Show(i.ToString());
+                    string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
+                    //Global.STW.Write("AT+IDADD+" + temp + "*");
+                    Global.server.Send(Encoding.ASCII.GetBytes("AT+IDADD+" + temp + "*"));
+                    byte[] data = new byte[1024];
+                    int length = Global.server.Receive(data);
+                    while (length == 0) length = Global.server.Receive(data);
+                    Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                    Noti.Text += Global.data_read;
+                    //Thread.Sleep(1000);
+                    //MessageBox.Show(temp);
+                }
             }
         }
 

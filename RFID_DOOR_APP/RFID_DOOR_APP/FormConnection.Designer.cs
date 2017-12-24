@@ -41,6 +41,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Connect_Btn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Server = new System.Windows.Forms.TextBox();
+            this.Eth_PORT = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Ethernet = new System.Windows.Forms.Button();
+            this.OWN_IP = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // PORT
@@ -170,11 +179,88 @@
             this.Connect_Btn.UseVisualStyleBackColor = true;
             this.Connect_Btn.Click += new System.EventHandler(this.Connect_Btn_Click);
             // 
+            // Server
+            // 
+            this.Server.Location = new System.Drawing.Point(460, 77);
+            this.Server.Name = "Server";
+            this.Server.Size = new System.Drawing.Size(188, 20);
+            this.Server.TabIndex = 4;
+            // 
+            // Eth_PORT
+            // 
+            this.Eth_PORT.Location = new System.Drawing.Point(460, 113);
+            this.Eth_PORT.Name = "Eth_PORT";
+            this.Eth_PORT.Size = new System.Drawing.Size(188, 20);
+            this.Eth_PORT.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label6.Location = new System.Drawing.Point(373, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "OWN_IP";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label7.Location = new System.Drawing.Point(373, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "BOARD IP";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label8.Location = new System.Drawing.Point(373, 116);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "PORT";
+            // 
+            // Ethernet
+            // 
+            this.Ethernet.Location = new System.Drawing.Point(460, 239);
+            this.Ethernet.Name = "Ethernet";
+            this.Ethernet.Size = new System.Drawing.Size(75, 23);
+            this.Ethernet.TabIndex = 7;
+            this.Ethernet.Text = "Connect";
+            this.Ethernet.UseVisualStyleBackColor = true;
+            this.Ethernet.Click += new System.EventHandler(this.Ethernet_Click);
+            // 
+            // OWN_IP
+            // 
+            this.OWN_IP.FormattingEnabled = true;
+            this.OWN_IP.Location = new System.Drawing.Point(460, 40);
+            this.OWN_IP.Name = "OWN_IP";
+            this.OWN_IP.Size = new System.Drawing.Size(188, 21);
+            this.OWN_IP.TabIndex = 8;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            // 
             // FormConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 433);
+            this.ClientSize = new System.Drawing.Size(698, 433);
+            this.Controls.Add(this.OWN_IP);
+            this.Controls.Add(this.Ethernet);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Eth_PORT);
+            this.Controls.Add(this.Server);
             this.Controls.Add(this.Connect_Btn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -209,5 +295,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Connect_Btn;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox Server;
+        private System.Windows.Forms.TextBox Eth_PORT;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Ethernet;
+        private System.Windows.Forms.ComboBox OWN_IP;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.Control_BTN = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.connectStatus_text = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.Connection_status = new System.Windows.Forms.ProgressBar();
@@ -42,7 +43,8 @@
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.picture_header = new System.Windows.Forms.PictureBox();
             this.User_Control = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.Control_BTN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -67,6 +69,11 @@
             this.Control_BTN.Controls.Add(this.Title);
             resources.ApplyResources(this.Control_BTN, "Control_BTN");
             this.Control_BTN.Name = "Control_BTN";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // connectStatus_text
             // 
@@ -153,10 +160,14 @@
             resources.ApplyResources(this.User_Control, "User_Control");
             this.User_Control.Name = "User_Control";
             // 
-            // label2
+            // backgroundWorker1
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             // 
             // FormMain
             // 
@@ -200,6 +211,8 @@
         private System.Windows.Forms.PictureBox picture_header;
         private System.Windows.Forms.Panel User_Control;
         private System.Windows.Forms.Label label2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }
 

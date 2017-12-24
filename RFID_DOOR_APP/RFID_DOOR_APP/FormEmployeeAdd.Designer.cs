@@ -50,6 +50,7 @@
             this.Noti = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // Add
@@ -336,6 +337,11 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "ADD USAGE";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // FormEmployeeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,8 +370,9 @@
             this.Controls.Add(this.Name);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DATE_USE);
-            
-            this.Text = "FormEmployeeAdd";
+   
+            this.Text = "Employees Add";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEmployeeAdd_FormClosing);
             this.Load += new System.EventHandler(this.FormEmployeeAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -395,5 +402,6 @@
         private System.Windows.Forms.RichTextBox Noti;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

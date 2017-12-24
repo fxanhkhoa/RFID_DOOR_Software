@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
 
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
+
 namespace RFID_DOOR_APP
 {
     class Global
@@ -18,6 +22,58 @@ namespace RFID_DOOR_APP
         private static int _Status;
         private static string _data_read;
         private static int _OK;
+        private static TcpClient _client;
+        private static StreamReader _STR;
+        private static StreamWriter _STW;
+        private static string _receive;
+        private static string _text_to_send;
+        private static int _connection_use;
+        private static Socket _server;
+        private static IPEndPoint _IP_End;
+
+        public static IPEndPoint IP_End
+        {
+            get { return _IP_End; }
+            set { _IP_End = value; }
+        }
+
+        public static Socket server
+        {
+            get { return _server; }
+            set { _server = value; }
+        }
+
+        public static int connection_use
+        {
+            get { return _connection_use; }
+            set { _connection_use = value; }
+        }
+
+        public static TcpClient client
+        {
+            get { return _client; }
+            set { _client = value; }
+        }
+        public static StreamReader STR
+        {
+            get { return _STR; }
+            set { _STR = value; }
+        }
+        public static StreamWriter STW
+        {
+            get { return _STW; }
+            set { _STW = value; }
+        }
+        public static string receive
+        {
+            get { return _receive; }
+            set { _receive = value; }
+        }
+        public static string text_to_send
+        {
+            get { return _text_to_send; }
+            set { _text_to_send = value; }
+        }
 
         public static int OK
         {

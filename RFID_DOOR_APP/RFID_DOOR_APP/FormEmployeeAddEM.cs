@@ -69,9 +69,28 @@ namespace RFID_DOOR_APP
         private void Read_RFID_Click(object sender, EventArgs e)
         {
             Global.OK = 0;
-            Global.Sp.Write("AT+IDREAD*");
-            Global.Sp.DiscardInBuffer();
-            Read_RFID.Text = "Reading...";
+            if (Global.connection_use == 1)
+            {
+                Global.Sp.Write("AT+IDREAD*");
+                Global.Sp.DiscardInBuffer();
+                Read_RFID.Text = "Reading...";
+            }
+            else
+            {
+                Global.STW.Write("AT+IDREAD*");
+                backgroundWorker1.RunWorkerAsync();
+                Read_RFID.Text = "Reading...";
+                //byte[] data = new byte[1024];
+                //int length = Global.server.Receive(data);
+                //while (length == 0) length = Global.server.Receive(data);
+                //Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                //if (s.IndexOf("OK+IDREAD") >= 0)
+                //{
+                //    String ID = s.Substring(10, 8);
+                //    RFID.Text = ID;
+                //    Read_RFID.Text = "Read RFID";
+                //}
+            }
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -80,6 +99,45 @@ namespace RFID_DOOR_APP
             Ten.Text = "";
             Unit.Text = "";
             RFID.Text = "";
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            while ((Global.data_read == null)) ;
+            while ((Global.data_read.IndexOf("OK+IDREAD") < 0)) ;
+                if (Global.data_read.IndexOf("OK+IDREAD") >= 0)
+                {
+                    String ID = Global.data_read.Substring(10, 8);
+                    Invoke(new Action(new Action(() => RFID.Text = ID)));
+                    Invoke(new Action(new Action(() => Read_RFID.Text = "Read RFID")));
+                }
+            
+            //try
+            //{
+            //    byte[] data = new byte[1024];
+            //    int length = Global.server.Receive(data);
+            //    Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+            //    s = Global.data_read;
+            //    //Invoke(new Action(new Action(() => RFID.Text = s)));
+            //    if (s.IndexOf("*") >= 0)
+            //    {
+            //        if (s.IndexOf("OK+IDREAD") >= 0)
+            //        {
+            //            String ID = s.Substring(10, 8);
+            //            Invoke(new Action(new Action(() => RFID.Text = ID)));
+            //            Invoke(new Action(new Action(() => Read_RFID.Text = "Read RFID")));
+            //        }
+            //        else
+            //        {
+            //            s = "";
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
 }
