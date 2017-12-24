@@ -87,14 +87,18 @@ namespace RFID_DOOR_APP
 
         private void FormEmployeeAdd_Load(object sender, EventArgs e)
         {
-            if (Global.connection_use == 0)
-            {
-                backgroundWorker1.RunWorkerAsync();
-                backgroundWorker1.WorkerSupportsCancellation = true;
-            }
             string sql;
             i = 0;
-            Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
+            if (Global.Status == 1)
+            {
+                if ((Global.connection_use == 0))
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                    backgroundWorker1.WorkerSupportsCancellation = true;
+                }
+
+                Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
+            }
             Time_Use_From.SelectedIndex = 0;
             Time_Use_To.SelectedIndex = 0;
             try
@@ -259,8 +263,11 @@ namespace RFID_DOOR_APP
 
         private void FormEmployeeAdd_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Global.connection_use == 0)
-            backgroundWorker1.CancelAsync();
+            if (Global.Status == 1)
+            {
+                if (Global.connection_use == 0)
+                    backgroundWorker1.CancelAsync();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

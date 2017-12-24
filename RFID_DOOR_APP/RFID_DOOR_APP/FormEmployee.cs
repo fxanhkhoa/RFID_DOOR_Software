@@ -12,8 +12,8 @@ namespace RFID_DOOR_APP
 {
     public partial class FormEmployee : Form
     {
-        FormEmployeeAdd myform = new FormEmployeeAdd();
-        FormDelete myformdel = new FormDelete();
+        FormEmployeeAdd MyFormEmployeeAdd = new FormEmployeeAdd();
+        FormDelete MyFormDelete = new FormDelete();
         public FormEmployee()
         {
             InitializeComponent();
@@ -66,18 +66,21 @@ namespace RFID_DOOR_APP
 
         private void Add_Btn_Click(object sender, EventArgs e)
         {
-            myform.FormClosed += ADD_Closed;
+            MyFormEmployeeAdd.FormClosed += ADD_Closed;
 
-            myform.Show();
+            MyFormEmployeeAdd = new FormEmployeeAdd();
+
+            MyFormDelete.Hide();
+            MyFormEmployeeAdd.Show();
         }
 
         private void Delete_Btn_Click(object sender, EventArgs e)
         {
-            
+            MyFormDelete.FormClosed += DELETE_Closed;
 
-            myformdel.FormClosed += DELETE_Closed;
-
-            myformdel.Show();
+            MyFormDelete = new FormDelete();
+            MyFormEmployeeAdd.Hide();
+            MyFormDelete.Show();
         }
 
         private void fix_btn_Click(object sender, EventArgs e)
@@ -93,19 +96,35 @@ namespace RFID_DOOR_APP
         private void FormEmployee_Load(object sender, EventArgs e)
         {
             string sql;
+
+            MyFormEmployeeAdd.TopLevel = false;
+            MyFormEmployeeAdd.AutoScroll = true;
+            MyFormDelete.TopLevel = false;
+            MyFormDelete.AutoScroll = true;
+
+            employee_data.Controls.Add(MyFormEmployeeAdd);
+            employee_data.Controls.Add(MyFormDelete);
+
             _DB.Connect();
 
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
 
-            sql = "select TEN,RFID,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+            try
+            {
+                sql = "select TEN,RFID,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
 
-            _DB.Excute(sql);
-            employee_data.DataSource = _DB.ds.Tables[0];
-            employee_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            employee_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            employee_data.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            employee_data.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                _DB.Excute(sql);
+                employee_data.DataSource = _DB.ds.Tables[0];
+                employee_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                employee_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                employee_data.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                employee_data.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void reload_style()
@@ -130,13 +149,13 @@ namespace RFID_DOOR_APP
         private void ADD_Closed(object sender, FormClosedEventArgs e)
         {
             reload();
-            myform = new FormEmployeeAdd();
+           
         }
 
         private void DELETE_Closed(object sender, FormClosedEventArgs e)
         {
             reload();
-            myformdel = new FormDelete();
+            
         }
 
         private void reload()

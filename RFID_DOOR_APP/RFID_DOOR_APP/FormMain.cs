@@ -22,6 +22,7 @@ namespace RFID_DOOR_APP
         FormEmployee MyFormEmployee = new FormEmployee();
         FormConnection MyFormConnection = new FormConnection();
         FormEmployeeAddEM MyFormAddEM = new FormEmployeeAddEM();
+
         Global _global = new Global();
         string s;
 
@@ -62,10 +63,30 @@ namespace RFID_DOOR_APP
             FormLogin myFormLogin = new FormLogin();
             myFormLogin.TopLevel = false;
             myFormLogin.AutoScroll = true;
+            MyFormConnection.TopLevel = false;
+            MyFormConnection.AutoScroll = true;
+            MyformReport.TopLevel = false;
+            MyformReport.AutoScroll = true;
+            MyFormEmployee.TopLevel = false;
+            MyFormEmployee.AutoScroll = true;
+                        
+            
+            MyFormEmployee.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+
+
+            MyformReport.TopMost = true;
+            MyformReport.Dock = DockStyle.Fill;
 
             myFormLogin.FormClosed += FormLogin_FormClosed;
+            MyformReport.FormClosed += FormReport_Formclosed;
+            MyFormEmployee.FormClosed += FormEmployee_Formclosed;
+
 
             User_Control.Controls.Add(myFormLogin);
+            User_Control.Controls.Add(MyFormConnection);
+            User_Control.Controls.Add(MyformReport);
+            User_Control.Controls.Add(MyFormEmployee);
+
             myFormLogin.Show();
 
             Control_BTN.Visible = false;
@@ -84,10 +105,10 @@ namespace RFID_DOOR_APP
             }
 
             MyformReport.Show();
-            MyformReport.Visible = false;
+            MyformReport.Hide();
 
             MyFormEmployee.Show();
-            MyFormEmployee.Visible = false;
+            MyFormEmployee.Hide();
 
             Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
         }
@@ -224,18 +245,10 @@ namespace RFID_DOOR_APP
             Pic_Normal_All(1);
             form_close_all(1);
             report_btn_status = 1;
-            
-            MyformReport.TopLevel = false;
-            
 
-            MyformReport.FormClosed += FormReport_Formclosed;
+           
 
-            User_Control.Controls.Add(MyformReport);
-            MyformReport.AutoScroll = true;
-            MyformReport.TopMost = true;
-            MyformReport.Dock = DockStyle.Fill;
-
-            MyformReport.Visible = true;
+            MyformReport.Show();
 
             MyformReport.reload_style();
             
@@ -261,15 +274,8 @@ namespace RFID_DOOR_APP
             Pic_Normal_All(2);
             form_close_all(2);
 
-            MyFormEmployee.TopLevel = false;
-            MyFormEmployee.AutoScroll = true;
-
-            MyFormEmployee.FormClosed += FormEmployee_Formclosed;
-
-            User_Control.Controls.Add(MyFormEmployee);
-            MyFormEmployee.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-
-            MyFormEmployee.Visible = true;
+            
+            MyFormEmployee.Show();
 
             MyFormEmployee.reload_style();
         }
