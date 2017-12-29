@@ -14,6 +14,8 @@ namespace RFID_DOOR_APP
     {
         FormEmployeeAdd MyFormEmployeeAdd = new FormEmployeeAdd();
         FormDelete MyFormDelete = new FormDelete();
+        FormViewEmployee MyFormViewEmployee = new FormViewEmployee();
+        FormEmployeeAddEM MyFormEmployeeAddEM = new FormEmployeeAddEM();
         public FormEmployee()
         {
             InitializeComponent();
@@ -68,9 +70,10 @@ namespace RFID_DOOR_APP
         {
             MyFormEmployeeAdd.FormClosed += ADD_Closed;
 
-            MyFormEmployeeAdd = new FormEmployeeAdd();
+            //MyFormEmployeeAdd = new FormEmployeeAdd();
 
             MyFormDelete.Hide();
+            MyFormViewEmployee.Hide();
             MyFormEmployeeAdd.Show();
         }
 
@@ -79,7 +82,15 @@ namespace RFID_DOOR_APP
             MyFormDelete.FormClosed += DELETE_Closed;
 
             MyFormDelete = new FormDelete();
+
+            MyFormDelete.TopLevel = false;
+            MyFormDelete.AutoScroll = true;
+            MyFormDelete.MaximizeBox = true;
+
+            panel2.Controls.Add(MyFormDelete);
+
             MyFormEmployeeAdd.Hide();
+            MyFormViewEmployee.Hide();
             MyFormDelete.Show();
         }
 
@@ -90,7 +101,13 @@ namespace RFID_DOOR_APP
 
         private void view_btn_Click(object sender, EventArgs e)
         {
+            MyFormEmployeeAdd.Hide();
+            MyFormDelete.Hide();
 
+            //MyFormViewEmployee = new FormViewEmployee();
+            MyFormViewEmployee.Show();
+
+            MyFormViewEmployee.reload_style();
         }
 
         private void FormEmployee_Load(object sender, EventArgs e)
@@ -101,55 +118,45 @@ namespace RFID_DOOR_APP
             MyFormEmployeeAdd.AutoScroll = true;
             MyFormDelete.TopLevel = false;
             MyFormDelete.AutoScroll = true;
+            MyFormViewEmployee.TopLevel = false;
+            MyFormViewEmployee.AutoScroll = true;
 
-            employee_data.Controls.Add(MyFormEmployeeAdd);
-            employee_data.Controls.Add(MyFormDelete);
+            panel2.Controls.Add(MyFormEmployeeAdd);
+            panel2.Controls.Add(MyFormDelete);
+            panel2.Controls.Add(MyFormViewEmployee);
 
             _DB.Connect();
 
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
-
-            try
-            {
-                sql = "select TEN,RFID,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
-
-                _DB.Excute(sql);
-                employee_data.DataSource = _DB.ds.Tables[0];
-                employee_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                employee_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                employee_data.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                employee_data.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-            catch (Exception ex)
-            {
-
-            }
         }
 
-        public void reload_style()
-        {
-            //this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //this.report_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.WindowState = FormWindowState.Maximized;
-
-            for (int i = 0; i < employee_data.Rows.Count; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    //MessageBox.Show(i.ToString());
-                    this.employee_data.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(210, 249, 209);
-                }
-                else
-                {
-
-                }
-            }
-        }
+        
         private void ADD_Closed(object sender, FormClosedEventArgs e)
         {
-            reload();
-           
+            //reload();
+            MyFormEmployeeAddEM = new FormEmployeeAddEM();
+
+            MyFormEmployeeAddEM.TopLevel = false;
+            MyFormEmployeeAddEM.AutoScroll = true;
+
+            panel2.Controls.Add(MyFormEmployeeAddEM);
+
+            MyFormEmployeeAddEM.FormClosed += MyFormEmployeeAddEM_Closed;
+
+            MyFormEmployeeAddEM.Show();
+        }
+
+        private void MyFormEmployeeAddEM_Closed(object sender, FormClosedEventArgs e)
+        {
+            MyFormEmployeeAdd = new FormEmployeeAdd();
+
+            MyFormEmployeeAdd.TopLevel = false;
+            MyFormEmployeeAdd.AutoScroll = true;
+
+            panel2.Controls.Add(MyFormEmployeeAdd);
+
+            MyFormEmployeeAdd.Show();
         }
 
         private void DELETE_Closed(object sender, FormClosedEventArgs e)
@@ -160,11 +167,7 @@ namespace RFID_DOOR_APP
 
         private void reload()
         {
-            string sql;
-            sql = "select TEN,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
 
-            _DB.Excute(sql);
-            employee_data.DataSource = _DB.ds.Tables[0];
         }
     }
 }

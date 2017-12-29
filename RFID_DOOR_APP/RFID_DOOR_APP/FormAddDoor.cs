@@ -23,6 +23,10 @@ namespace RFID_DOOR_APP
             string sql;
             sql = "insert into DOOR values(N'" + ID.Text + "',N'" + location.Text + "','DONG')";
             _DB.Excute(sql);
+           
+            DateTime LocalDate = DateTime.Now;
+            sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added " + ID.Text + ", " + location.Text + "')";
+            _DB.Excute(sql);
             MessageBox.Show("Successful!");
         }
 

@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(354, 23);
+            this.label2.Location = new System.Drawing.Point(546, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 1;
@@ -59,7 +59,7 @@
             // Employee_list
             // 
             this.Employee_list.FormattingEnabled = true;
-            this.Employee_list.Location = new System.Drawing.Point(357, 60);
+            this.Employee_list.Location = new System.Drawing.Point(549, 60);
             this.Employee_list.Name = "Employee_list";
             this.Employee_list.Size = new System.Drawing.Size(121, 21);
             this.Employee_list.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // Employee_Delete
             // 
-            this.Employee_Delete.Location = new System.Drawing.Point(357, 101);
+            this.Employee_Delete.Location = new System.Drawing.Point(549, 101);
             this.Employee_Delete.Name = "Employee_Delete";
             this.Employee_Delete.Size = new System.Drawing.Size(75, 23);
             this.Employee_Delete.TabIndex = 3;
@@ -90,7 +90,7 @@
             this.Usage_data_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Usage_data_grid.Location = new System.Drawing.Point(25, 46);
             this.Usage_data_grid.Name = "Usage_data_grid";
-            this.Usage_data_grid.Size = new System.Drawing.Size(262, 236);
+            this.Usage_data_grid.Size = new System.Drawing.Size(435, 236);
             this.Usage_data_grid.TabIndex = 4;
             // 
             // SEND
@@ -107,8 +107,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(553, 345);
+            this.ClientSize = new System.Drawing.Size(743, 537);
             this.Controls.Add(this.SEND);
             this.Controls.Add(this.Usage_data_grid);
             this.Controls.Add(this.Employee_Delete);
@@ -116,10 +118,12 @@
             this.Controls.Add(this.Employee_list);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1231, 716);
             this.Name = "FormDelete";
+            this.RightToLeftLayout = true;
             this.Text = "FormDelete";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormDelete_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Usage_data_grid)).EndInit();
             this.ResumeLayout(false);

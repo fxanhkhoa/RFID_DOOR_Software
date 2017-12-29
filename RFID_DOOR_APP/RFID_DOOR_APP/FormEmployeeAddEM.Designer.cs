@@ -41,6 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Clear = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.Close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Read_RFID
@@ -152,11 +153,25 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // Close
+            // 
+            this.Close.BackColor = System.Drawing.Color.Red;
+            this.Close.ForeColor = System.Drawing.Color.White;
+            this.Close.Location = new System.Drawing.Point(507, 3);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(19, 19);
+            this.Close.TabIndex = 14;
+            this.Close.Text = "X";
+            this.Close.UseVisualStyleBackColor = false;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
+            // 
             // FormEmployeeAddEM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(528, 433);
+            this.Controls.Add(this.Close);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Add);
@@ -169,6 +184,7 @@
             this.Controls.Add(this.Unit);
             this.Controls.Add(this.Ten);
             this.Controls.Add(this.ID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployeeAddEM";
             this.Text = "FormEmployeeAddEM";
             this.Load += new System.EventHandler(this.FormEmployeeAddEM_Load);
@@ -192,5 +208,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Clear;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button Close;
     }
 }

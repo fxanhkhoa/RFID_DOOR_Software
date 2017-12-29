@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace RFID_DOOR_APP
 {
@@ -24,6 +25,11 @@ namespace RFID_DOOR_APP
             string sql;
             /* Table NHANVIEN */
             sql = "insert into NHANVIEN(IDNV,TEN,DONVI,RFID) values('"+ID.Text+"','"+Ten.Text+"','"+Unit.Text+"','"+RFID.Text+"')";
+            _DB.Excute(sql);
+            
+
+            DateTime LocalDate = DateTime.Now;
+            sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','added " + ID.Text + ", " + Ten.Text + ", " + Unit.Text + ", " + RFID.Text + "')";
             _DB.Excute(sql);
             MessageBox.Show("Successful!");
         }
@@ -80,16 +86,18 @@ namespace RFID_DOOR_APP
                 Global.STW.Write("AT+IDREAD*");
                 backgroundWorker1.RunWorkerAsync();
                 Read_RFID.Text = "Reading...";
-                //byte[] data = new byte[1024];
-                //int length = Global.server.Receive(data);
-                //while (length == 0) length = Global.server.Receive(data);
-                //Global.data_read = Encoding.ASCII.GetString(data, 0, length);
-                //if (s.IndexOf("OK+IDREAD") >= 0)
-                //{
-                //    String ID = s.Substring(10, 8);
-                //    RFID.Text = ID;
-                //    Read_RFID.Text = "Read RFID";
-                //}
+                Thread.Sleep(1000);
+                s = Global.data_read;
+                Invoke(new Action(new Action(() => RFID.Text = s)));
+                if (s.IndexOf("*") >= 0)
+                {
+                    if (s.IndexOf("OK+IDREAD") >= 0)
+                    {
+                        String ID = s.Substring(10, 8);
+                        Invoke(new Action(new Action(() => RFID.Text = ID)));
+                        Invoke(new Action(new Action(() => Read_RFID.Text = "Read RFID")));
+                    }
+                }
             }
         }
 
@@ -104,14 +112,14 @@ namespace RFID_DOOR_APP
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             
-            while ((Global.data_read == null)) ;
-            while ((Global.data_read.IndexOf("OK+IDREAD") < 0)) ;
-                if (Global.data_read.IndexOf("OK+IDREAD") >= 0)
-                {
-                    String ID = Global.data_read.Substring(10, 8);
-                    Invoke(new Action(new Action(() => RFID.Text = ID)));
-                    Invoke(new Action(new Action(() => Read_RFID.Text = "Read RFID")));
-                }
+            //while ((Global.data_read == null)) ;
+            //while ((Global.data_read.IndexOf("OK+IDREAD") < 0)) ;
+            //    if (Global.data_read.IndexOf("OK+IDREAD") >= 0)
+            //    {
+            //        String ID = Global.data_read.Substring(10, 8);
+            //        Invoke(new Action(new Action(() => RFID.Text = ID)));
+            //        Invoke(new Action(new Action(() => Read_RFID.Text = "Read RFID")));
+            //    }
             
             //try
             //{
@@ -138,6 +146,11 @@ namespace RFID_DOOR_APP
             //{
             //    MessageBox.Show(ex.Message);
             //}
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

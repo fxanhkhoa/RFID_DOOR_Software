@@ -39,7 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Connect_Btn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Server = new System.Windows.Forms.TextBox();
             this.Eth_PORT = new System.Windows.Forms.TextBox();
@@ -50,10 +49,13 @@
             this.OWN_IP = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.btn_CLose = new System.Windows.Forms.Button();
+            this.Connect_Btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PORT
             // 
+            this.PORT.BackColor = System.Drawing.Color.White;
             this.PORT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PORT.FormattingEnabled = true;
             this.PORT.Location = new System.Drawing.Point(103, 40);
@@ -67,6 +69,7 @@
             this.BAUD_RATE.AutoCompleteCustomSource.AddRange(new string[] {
             "9600",
             "115200"});
+            this.BAUD_RATE.BackColor = System.Drawing.Color.White;
             this.BAUD_RATE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BAUD_RATE.FormattingEnabled = true;
             this.BAUD_RATE.Items.AddRange(new object[] {
@@ -82,6 +85,7 @@
             // 
             this.Parity.AutoCompleteCustomSource.AddRange(new string[] {
             "NONE"});
+            this.Parity.BackColor = System.Drawing.Color.White;
             this.Parity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Parity.FormattingEnabled = true;
             this.Parity.Items.AddRange(new object[] {
@@ -97,6 +101,7 @@
             // 
             this.DATABITS.AutoCompleteCustomSource.AddRange(new string[] {
             "8"});
+            this.DATABITS.BackColor = System.Drawing.Color.White;
             this.DATABITS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DATABITS.FormattingEnabled = true;
             this.DATABITS.Items.AddRange(new object[] {
@@ -112,6 +117,7 @@
             // 
             this.STOPBITS.AutoCompleteCustomSource.AddRange(new string[] {
             "1"});
+            this.STOPBITS.BackColor = System.Drawing.Color.White;
             this.STOPBITS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.STOPBITS.FormattingEnabled = true;
             this.STOPBITS.Items.AddRange(new object[] {
@@ -168,17 +174,6 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "STOPBITS";
             // 
-            // Connect_Btn
-            // 
-            this.Connect_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Connect_Btn.Location = new System.Drawing.Point(103, 239);
-            this.Connect_Btn.Name = "Connect_Btn";
-            this.Connect_Btn.Size = new System.Drawing.Size(75, 23);
-            this.Connect_Btn.TabIndex = 2;
-            this.Connect_Btn.Text = "Connect";
-            this.Connect_Btn.UseVisualStyleBackColor = true;
-            this.Connect_Btn.Click += new System.EventHandler(this.Connect_Btn_Click);
-            // 
             // Server
             // 
             this.Server.Location = new System.Drawing.Point(460, 77);
@@ -225,12 +220,13 @@
             // 
             // Ethernet
             // 
+            this.Ethernet.BackColor = System.Drawing.Color.White;
             this.Ethernet.Location = new System.Drawing.Point(460, 239);
             this.Ethernet.Name = "Ethernet";
             this.Ethernet.Size = new System.Drawing.Size(75, 23);
             this.Ethernet.TabIndex = 7;
             this.Ethernet.Text = "Connect";
-            this.Ethernet.UseVisualStyleBackColor = true;
+            this.Ethernet.UseVisualStyleBackColor = false;
             this.Ethernet.Click += new System.EventHandler(this.Ethernet_Click);
             // 
             // OWN_IP
@@ -249,19 +245,43 @@
             // 
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             // 
+            // btn_CLose
+            // 
+            this.btn_CLose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn_CLose.Location = new System.Drawing.Point(198, 302);
+            this.btn_CLose.Name = "btn_CLose";
+            this.btn_CLose.Size = new System.Drawing.Size(275, 23);
+            this.btn_CLose.TabIndex = 9;
+            this.btn_CLose.Text = "Close";
+            this.btn_CLose.UseVisualStyleBackColor = false;
+            this.btn_CLose.Click += new System.EventHandler(this.btn_CLose_Click);
+            // 
+            // Connect_Btn
+            // 
+            this.Connect_Btn.BackColor = System.Drawing.Color.White;
+            this.Connect_Btn.Location = new System.Drawing.Point(103, 239);
+            this.Connect_Btn.Name = "Connect_Btn";
+            this.Connect_Btn.Size = new System.Drawing.Size(75, 23);
+            this.Connect_Btn.TabIndex = 7;
+            this.Connect_Btn.Text = "Connect";
+            this.Connect_Btn.UseVisualStyleBackColor = false;
+            this.Connect_Btn.Click += new System.EventHandler(this.Ethernet_Click);
+            // 
             // FormConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(698, 433);
+            this.Controls.Add(this.btn_CLose);
             this.Controls.Add(this.OWN_IP);
+            this.Controls.Add(this.Connect_Btn);
             this.Controls.Add(this.Ethernet);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Eth_PORT);
             this.Controls.Add(this.Server);
-            this.Controls.Add(this.Connect_Btn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -272,6 +292,7 @@
             this.Controls.Add(this.Parity);
             this.Controls.Add(this.BAUD_RATE);
             this.Controls.Add(this.PORT);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormConnection";
             this.Text = "FormConnection";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConnection_FormClosed);
@@ -293,7 +314,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Connect_Btn;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox Server;
         private System.Windows.Forms.TextBox Eth_PORT;
@@ -304,5 +324,7 @@
         private System.Windows.Forms.ComboBox OWN_IP;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.Button btn_CLose;
+        private System.Windows.Forms.Button Connect_Btn;
     }
 }

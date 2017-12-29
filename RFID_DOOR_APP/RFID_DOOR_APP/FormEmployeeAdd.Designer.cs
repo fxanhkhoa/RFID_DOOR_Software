@@ -370,7 +370,8 @@
             this.Controls.Add(this.Name);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DATE_USE);
-   
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            
             this.Text = "Employees Add";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEmployeeAdd_FormClosing);
             this.Load += new System.EventHandler(this.FormEmployeeAdd_Load);

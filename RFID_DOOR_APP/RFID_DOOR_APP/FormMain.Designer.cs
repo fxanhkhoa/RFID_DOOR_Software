@@ -69,6 +69,7 @@
             this.Control_BTN.Controls.Add(this.Title);
             resources.ApplyResources(this.Control_BTN, "Control_BTN");
             this.Control_BTN.Name = "Control_BTN";
+            this.Control_BTN.Resize += new System.EventHandler(this.Control_BTN_Resize);
             // 
             // label2
             // 
@@ -179,6 +180,7 @@
             this.Controls.Add(this.Control_BTN);
             this.Name = "FormMain";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.Control_BTN.ResumeLayout(false);
             this.Control_BTN.PerformLayout();

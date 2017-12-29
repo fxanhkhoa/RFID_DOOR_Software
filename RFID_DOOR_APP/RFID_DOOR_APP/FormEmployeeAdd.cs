@@ -65,6 +65,11 @@ namespace RFID_DOOR_APP
             TIME_SEND[i] = Time_Use_From.SelectedItem.ToString() + "-" + Time_Use_To.SelectedItem.ToString();
             //MessageBox.Show(TIME_SEND[0] + " " + DOOR_SEND[0] + " " + ID_SEND[i]);
             //i++;
+            
+            DateTime LocalDate = DateTime.Now;
+            sql = @"insert into REPORT(Tim/eDo,Task) values('" + LocalDate.ToString() + "','" + "added " + ID_SEND[i] + ", " + DOOR_SEND[i] + ", " + TIME_SEND[i] + "')";
+            _DB.Excute(sql);
+
             MessageBox.Show("Successful!");
         }
 
@@ -225,9 +230,9 @@ namespace RFID_DOOR_APP
 
         private void Add_Employ_Click(object sender, EventArgs e)
         {
-            myform_1.Show();
-            myform_1.FormClosed += myform_1_Closed;
-            
+            //myform_1.Show();
+            //myform_1.FormClosed += myform_1_Closed;
+            this.Close();
         }
 
         private void Add_Door_Click(object sender, EventArgs e)
@@ -306,17 +311,17 @@ namespace RFID_DOOR_APP
                 }
                 else
                 {
-                    //MessageBox.Show(i.ToString());
-                    string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
-                    //Global.STW.Write("AT+IDADD+" + temp + "*");
-                    Global.server.Send(Encoding.ASCII.GetBytes("AT+IDADD+" + temp + "*"));
-                    byte[] data = new byte[1024];
-                    int length = Global.server.Receive(data);
-                    while (length == 0) length = Global.server.Receive(data);
-                    Global.data_read = Encoding.ASCII.GetString(data, 0, length);
-                    Noti.Text += Global.data_read;
-                    //Thread.Sleep(1000);
-                    //MessageBox.Show(temp);
+                    ////MessageBox.Show(i.ToString());
+                    //string temp = _DB.kq.Rows[i][0].ToString() + _DB.kq.Rows[i][1].ToString() + _DB.kq.Rows[i][2].ToString() + _DB.kq.Rows[i][3].ToString();
+                    ////Global.STW.Write("AT+IDADD+" + temp + "*");
+                    //Global.server.Send(Encoding.ASCII.GetBytes("AT+IDADD+" + temp + "*"));
+                    //byte[] data = new byte[1024];
+                    //int length = Global.server.Receive(data);
+                    //while (length == 0) length = Global.server.Receive(data);
+                    //Global.data_read = Encoding.ASCII.GetString(data, 0, length);
+                    //Noti.Text += Global.data_read;
+                    ////Thread.Sleep(1000);
+                    ////MessageBox.Show(temp);
                 }
             }
         }

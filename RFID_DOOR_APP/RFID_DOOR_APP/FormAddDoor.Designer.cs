@@ -100,6 +100,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.location);
             this.Controls.Add(this.ID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAddDoor";
             this.Text = "FormAddDoor";
             this.Load += new System.EventHandler(this.FormAddDoor_Load);
