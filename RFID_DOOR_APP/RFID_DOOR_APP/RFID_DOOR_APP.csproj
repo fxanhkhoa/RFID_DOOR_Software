@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data_Board.cs" />
+    <Compile Include="DOOR_CHECK.cs" />
     <Compile Include="FormAddDoor.cs">
       <SubType>Form</SubType>
     </Compile>

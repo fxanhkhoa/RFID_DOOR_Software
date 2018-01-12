@@ -28,6 +28,7 @@ namespace RFID_DOOR_APP
         string s;
 
         Data_Board _data_connection;
+        DOOR_CHECK _door_check = new DOOR_CHECK();
 
         const int
             NONE = 0,
@@ -123,27 +124,28 @@ namespace RFID_DOOR_APP
             Global.data_read = s;
             if (s.IndexOf("*") >= 0)
             {
-                int mode = AT_Check(s);
-                if (mode == DOOR_OPENED)
-                {
-                    char door_num = s[12];
-                    DateTime LocalDate = DateTime.Now;
-                    string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
-                    _DB.Excute(sql);
-                }
-                else if (mode == ID_CHECK)
-                {
-                    //MessageBox.Show("IN");
-                    ID_CHECK_OPEN();
-                }
-                else if (mode == ID_READ)
-                {
-                    Global.OK = 1;
-                }
-                else if (mode == OK_OPENED)
-                {
-                    REPORT_OPEN(s);
-                }
+                int mode = _door_check.AT_Check(s);
+                _door_check.Mode_Process(mode, s);
+                //if (mode == DOOR_OPENED)
+                //{
+                //    char door_num = s[12];
+                //    DateTime LocalDate = DateTime.Now;
+                //    string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
+                //    _DB.Excute(sql);
+                //}
+                //else if (mode == ID_CHECK)
+                //{
+                //    //MessageBox.Show("IN");
+                //    ID_CHECK_OPEN();
+                //}
+                //else if (mode == ID_READ)
+                //{
+                //    Global.OK = 1;
+                //}
+                //else if (mode == OK_OPENED)
+                //{
+                //    REPORT_OPEN(s);
+                //}
             }
         }
 
@@ -361,32 +363,31 @@ namespace RFID_DOOR_APP
                 {
                     data = _data_connection.get();
                     Invoke(new Action(new Action(() => label2.Text = data)));
-                    
                 }
                 if (data.IndexOf("*") >= 0)
                 {
-                    int mode = AT_Check(s);
-                    if (mode == DOOR_OPENED)
-                    {
-                        
-                        char door_num = s[12];
-                        DateTime LocalDate = DateTime.Now;
-                        string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
-                        _DB.Excute(sql);
-                    }
-                    else if (mode == ID_CHECK)
-                    {
-                        //MessageBox.Show("IN");
-                        ID_CHECK_OPEN();
-                    }
-                    else if (mode == ID_READ)
-                    {
-                        Global.OK = 1;
-                    }
-                    else if (mode == OK_OPENED)
-                    {
-                        REPORT_OPEN(s);
-                    }
+                    int mode = _door_check.AT_Check(s);
+                    _door_check.Mode_Process(mode, s);
+                    //if (mode == DOOR_OPENED)
+                    //{
+                    //    char door_num = s[12];
+                    //    DateTime LocalDate = DateTime.Now;
+                    //    string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
+                    //    _DB.Excute(sql);
+                    //}
+                    //else if (mode == ID_CHECK)
+                    //{
+                    //    //MessageBox.Show("IN");
+                    //    ID_CHECK_OPEN();
+                    //}
+                    //else if (mode == ID_READ)
+                    //{
+                    //    Global.OK = 1;
+                    //}
+                    //else if (mode == OK_OPENED)
+                    //{
+                    //    REPORT_OPEN(s);
+                    //}
                 }
             }
         }
