@@ -27,6 +27,8 @@ namespace RFID_DOOR_APP
         Global _global = new Global();
         string s;
 
+        Data_Board _data_connection;
+
         const int
             NONE = 0,
             DOOR_OPENED = 1,
@@ -323,7 +325,7 @@ namespace RFID_DOOR_APP
             MyFormConnection.Show();
 
             MyFormConnection.FormClosed += MyFormConnection_Closed;
-            
+            MyFormConnection.FormClosing += MyFormConnection_Closing;
         }
 
         private void pictureBox5_MouseHover(object sender, EventArgs e)
@@ -344,20 +346,29 @@ namespace RFID_DOOR_APP
 
             while (true)
             {
-                data = null;
-                NetworkStream stream = Global.client.GetStream();
-                int i;
-                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0 )
+                //data = null;
+                //NetworkStream stream = Global.client.GetStream();
+                //int i;
+                //while ((i = stream.Read(bytes, 0, bytes.Length)) != 0 )
+                //{
+                //    data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+                //    Global.data_read = data;
+                //    Invoke(new Action(new Action(() => label2.Text = Global.data_read)));
+                //}
+                //int k = _data_connection.isreceived();
+                
+                while (_data_connection.isreceived() == 0) ; // received
                 {
-                    data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                    Global.data_read = data;
-                    Invoke(new Action(new Action(() => label2.Text = Global.data_read)));
+                    data = _data_connection.get();
+                    Invoke(new Action(new Action(() => label2.Text = data)));
+                    
                 }
                 if (data.IndexOf("*") >= 0)
                 {
                     int mode = AT_Check(s);
                     if (mode == DOOR_OPENED)
                     {
+                        
                         char door_num = s[12];
                         DateTime LocalDate = DateTime.Now;
                         string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
@@ -479,7 +490,12 @@ namespace RFID_DOOR_APP
 
         private void FormEmployee_Formclosed(object sender, EventArgs e)
         {
+            
+        }
 
+        private void MyFormConnection_Closing(object sender, EventArgs e)
+        {
+            _data_connection = new Data_Board();
         }
 
         private void MyFormConnection_Closed(object sender, EventArgs e)
@@ -506,6 +522,7 @@ namespace RFID_DOOR_APP
                 //backgroundWorker2.WorkerSupportsCancellation = true; // Ability to cancel this thread
             }
                 pictureBox5.Image = Properties.Resources.connection_button_normal;
+            
         }
     }
 }

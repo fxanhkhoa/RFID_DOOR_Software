@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
+    <Compile Include="Data_Board.cs" />
     <Compile Include="FormAddDoor.cs">
       <SubType>Form</SubType>
     </Compile>

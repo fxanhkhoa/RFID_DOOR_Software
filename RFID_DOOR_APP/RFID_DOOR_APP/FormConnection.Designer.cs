@@ -295,6 +295,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormConnection";
             this.Text = "FormConnection";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormConnection_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConnection_FormClosed);
             this.Load += new System.EventHandler(this.FormConnection_Load);
             this.ResumeLayout(false);
