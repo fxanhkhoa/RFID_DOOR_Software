@@ -98,5 +98,10 @@ namespace RFID_DOOR_APP
             if (new_data == 1) return 1;
             return 0;
         }
+
+        public void Clear_Received()
+        {
+            new_data = 0;
+        }
     }
 }

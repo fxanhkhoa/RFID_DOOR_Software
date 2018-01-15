@@ -360,14 +360,14 @@ namespace RFID_DOOR_APP
                 //int k = _data_connection.isreceived();
                 
                 while (_data_connection.isreceived() == 0) ; // received
-                {
-                    data = _data_connection.get();
-                    Invoke(new Action(new Action(() => label2.Text = data)));
-                }
+                _data_connection.Clear_Received();   
+                data = _data_connection.get();
+                Invoke(new Action(new Action(() => label2.Text = data)));
+                
                 if (data.IndexOf("*") >= 0)
                 {
-                    int mode = _door_check.AT_Check(s);
-                    _door_check.Mode_Process(mode, s);
+                    int mode = _door_check.AT_Check(Global.data_read);
+                    _door_check.Mode_Process(mode, Global.data_read);
                     //if (mode == DOOR_OPENED)
                     //{
                     //    char door_num = s[12];

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RFID_DOOR_APP
 {
@@ -16,7 +17,7 @@ namespace RFID_DOOR_APP
             ID_READ = 3,
             OK_OPENED = 4;
 
-        DOOR_CHECK()
+        public DOOR_CHECK()
         {
             _DB.Connect();
             if (_DB.conn.State != System.Data.ConnectionState.Open)
@@ -117,10 +118,10 @@ namespace RFID_DOOR_APP
                 sql = @"insert into REPORT values('" + LocalDateTime.ToString() + "','" + _DB.kq.Rows[0][0].ToString() + " Opened DOOR " + _DB.kq.Rows[0][1].ToString() + "')";
                 //MessageBox.Show(sql);
                 _DB.Excute(sql);
-
+                
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
                 _DB.Excute(sql);
-
+                
             }
         }
     }
