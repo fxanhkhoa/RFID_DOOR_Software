@@ -61,8 +61,11 @@ namespace RFID_DOOR_APP
             }
             sql = "select COUNT(*) from USR where ID = '"+Username_Field.Text+"' and PASS ='"+Password_Field.Text+"'";
             _DB.Excute(sql);
-            
-            if (Convert.ToInt32(_DB.kq.Rows[0][0]) > 0)
+            if ((Username_Field.Text == "" ) || (Password_Field.Text == ""))
+            {
+                MessageBox.Show("Username or Password is empty!");
+            }
+            else if (Convert.ToInt32(_DB.kq.Rows[0][0]) > 0)
             {
                 //FormMain.ActiveForm.Refresh();
                 MessageBox.Show(Username_Field.Text+" Login successful");
@@ -83,6 +86,10 @@ namespace RFID_DOOR_APP
                 if (_DB.conn.State != ConnectionState.Closed)
                     _DB.Close();
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Wrong Username or Password!");
             }
         }
 
