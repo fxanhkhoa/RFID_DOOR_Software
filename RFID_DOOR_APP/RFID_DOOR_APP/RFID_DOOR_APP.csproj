@@ -108,6 +108,12 @@
     <Compile Include="FormViewEmployee.Designer.cs">
       <DependentUpon>FormViewEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Time_Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Time_Template.Designer.cs">
+      <DependentUpon>Form_Time_Template.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormViewEmployee.resx">
       <DependentUpon>FormViewEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Time_Template.resx">
+      <DependentUpon>Form_Time_Template.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -236,6 +245,183 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\simple-green-background.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DATE_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DATE_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DATE_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DOOR_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DOOR_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DOOR_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TEMPHUMI_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TEMPHUMI_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TEMPHUMI_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIME_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIME_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TIME_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CONTROLLER_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CONTROLLER_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CONTROLLER_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONTROLLER_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONTROLLER_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONTROLLER_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DATE_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DATE_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DATE_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\TEMPHUMI_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\TEMPHUMI_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\TEMPHUMI_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CONTROLLER_BUTTON_CLICKED1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CONTROLLER_BUTTON_HOVER1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CONTROLLER_BUTTON_NORMAL1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DATE_BUTTON_CLICKED1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\ADD_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\ADD_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\ADD_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONNECT_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONNECT_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONNECT_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONTROL_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONTROL_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\CONTROL_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DELETE_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DELETE_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DELETE_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DOOR_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DOOR_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\DOOR_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\door_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\EDIT_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\EDIT_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\EDIT_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\Report_Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\STATUS_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\STATUS_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\STATUS_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\VIEW_BUTTON_CLICKED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\VIEW_BUTTON_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\VIEW_BUTTON_NORMAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\garbage_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\pics\698913-icon-81-document-add-128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

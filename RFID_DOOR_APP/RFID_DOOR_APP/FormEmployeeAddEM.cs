@@ -51,7 +51,7 @@ namespace RFID_DOOR_APP
 
         private void SP_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            char temp;
+            //char temp;
             //temp = (char)Global.Sp.ReadChar();
             //s += (char)temp;
             //s = Global.Sp.ReadExisting();

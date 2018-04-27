@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.Control_BTN = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.connectStatus_text = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.connectStatus_text = new System.Windows.Forms.Label();
             this.Connection_status = new System.Windows.Forms.ProgressBar();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -47,6 +48,7 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.Control_BTN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -60,8 +62,9 @@
             // 
             this.Control_BTN.BackColor = System.Drawing.Color.White;
             this.Control_BTN.Controls.Add(this.label2);
-            this.Control_BTN.Controls.Add(this.connectStatus_text);
             this.Control_BTN.Controls.Add(this.pictureBox5);
+            this.Control_BTN.Controls.Add(this.pictureBox6);
+            this.Control_BTN.Controls.Add(this.connectStatus_text);
             this.Control_BTN.Controls.Add(this.Connection_status);
             this.Control_BTN.Controls.Add(this.pictureBox4);
             this.Control_BTN.Controls.Add(this.pictureBox3);
@@ -76,20 +79,31 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // connectStatus_text
-            // 
-            resources.ApplyResources(this.connectStatus_text, "connectStatus_text");
-            this.connectStatus_text.ForeColor = System.Drawing.Color.Maroon;
-            this.connectStatus_text.Name = "connectStatus_text";
-            // 
             // pictureBox5
             // 
+            this.pictureBox5.Image = global::RFID_DOOR_APP.Properties.Resources.CONNECT_BUTTON_NORMAL;
             resources.ApplyResources(this.pictureBox5, "pictureBox5");
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             this.pictureBox5.MouseLeave += new System.EventHandler(this.pictureBox5_MouseLeave);
             this.pictureBox5.MouseHover += new System.EventHandler(this.pictureBox5_MouseHover);
+            // 
+            // pictureBox6
+            // 
+            resources.ApplyResources(this.pictureBox6, "pictureBox6");
+            this.pictureBox6.Image = global::RFID_DOOR_APP.Properties.Resources.STATUS_BUTTON_NORMAL;
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.pictureBox6.MouseLeave += new System.EventHandler(this.pictureBox6_MouseLeave);
+            this.pictureBox6.MouseHover += new System.EventHandler(this.pictureBox6_MouseHover);
+            // 
+            // connectStatus_text
+            // 
+            resources.ApplyResources(this.connectStatus_text, "connectStatus_text");
+            this.connectStatus_text.ForeColor = System.Drawing.Color.Maroon;
+            this.connectStatus_text.Name = "connectStatus_text";
             // 
             // Connection_status
             // 
@@ -98,6 +112,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Image = global::RFID_DOOR_APP.Properties.Resources.CONTROL_BUTTON_NORMAL;
             resources.ApplyResources(this.pictureBox4, "pictureBox4");
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.TabStop = false;
@@ -107,6 +122,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::RFID_DOOR_APP.Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
             resources.ApplyResources(this.pictureBox3, "pictureBox3");
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.TabStop = false;
@@ -116,6 +132,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::RFID_DOOR_APP.Properties.Resources.REPORT_BUTTON_NORMAL;
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
@@ -185,6 +202,7 @@
             this.Control_BTN.ResumeLayout(false);
             this.Control_BTN.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -215,6 +233,7 @@
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
 

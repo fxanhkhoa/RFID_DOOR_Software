@@ -18,7 +18,7 @@ namespace RFID_DOOR_APP
         *
         **********************************************/
         SQL _DB = new SQL();
-        int report_btn_status, employee_btn_status, time_btn_status, connect_btn_status = 0;
+        int report_btn_status, employee_btn_status, control_btn_status, status_btn_status, connect_btn_status = 0;
         FormReport MyformReport = new FormReport();
         FormEmployee MyFormEmployee = new FormEmployee();
         FormConnection MyFormConnection = new FormConnection();
@@ -217,13 +217,13 @@ namespace RFID_DOOR_APP
         private void pictureBox2_MouseHover(object sender, EventArgs e)
         {
             if (report_btn_status == 0)
-            pictureBox2.Image = Image.FromFile("../pics/report_button_Hover.png");
+            pictureBox2.Image = Properties.Resources.REPORT_BUTTON_HOVER;
         }
 
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
         {
             if (report_btn_status == 0)
-            pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
+            pictureBox2.Image = Properties.Resources.REPORT_BUTTON_NORMAL;
         }
 
         private void Close_btn_Click(object sender, EventArgs e)
@@ -243,7 +243,7 @@ namespace RFID_DOOR_APP
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            pictureBox2.Image = Image.FromFile("../pics/report_button_clicked.png");
+            pictureBox2.Image = Properties.Resources.REPORT_BUTTON_CLICKED;
             picture_header.Image = Properties.Resources.header_REPORT_A;
             Pic_Normal_All(1);
             form_close_all(1);
@@ -264,18 +264,18 @@ namespace RFID_DOOR_APP
         private void pictureBox3_MouseHover(object sender, EventArgs e)
         {
             if (employee_btn_status == 0)
-                pictureBox3.Image = Image.FromFile("../pics/employee_button_Hover.png");
+                pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_HOVER;
         }
 
         private void pictureBox3_MouseLeave(object sender, EventArgs e)
         {
             if (employee_btn_status == 0)
-                pictureBox3.Image = Image.FromFile("../pics/employee_button_normal.png");
+                pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            pictureBox3.Image = Image.FromFile("../pics/employee_button_clicked.png");
+            pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_CLICKED;
             picture_header.Image = Properties.Resources.header_EMPLOYEE;
             employee_btn_status = 1;
             Pic_Normal_All(2);
@@ -293,29 +293,29 @@ namespace RFID_DOOR_APP
 
         private void pictureBox4_MouseHover(object sender, EventArgs e)
         {
-            if (time_btn_status == 0)
-                pictureBox4.Image = Image.FromFile("../pics/Time_button_Hover.png");
+            if (control_btn_status == 0)
+                pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_HOVER;
         }
 
         private void pictureBox4_MouseLeave(object sender, EventArgs e)
         {
-            if (time_btn_status == 0)
-                pictureBox4.Image = Image.FromFile("../pics/Time_button_normal.png");
+            if (control_btn_status == 0)
+                pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_NORMAL;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             Pic_Normal_All(3);
-                pictureBox4.Image = Image.FromFile("../pics/Time_button_clicked.png");
-            time_btn_status = 1;
+                pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_CLICKED;
+            control_btn_status = 1;
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            Pic_Normal_All(4);
-                pictureBox5.Image = Image.FromFile("../pics/connection_button_clicked.png");
+            Pic_Normal_All(5);
+            pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_CLICKED;
             connect_btn_status = 1;
-            form_close_all(4);
+            form_close_all(5);
 
             MyFormConnection = new FormConnection();
 
@@ -333,7 +333,7 @@ namespace RFID_DOOR_APP
         private void pictureBox5_MouseHover(object sender, EventArgs e)
         {
             if (connect_btn_status == 0)
-                pictureBox5.Image = Image.FromFile("../pics/connection_button_Hover.png");
+                pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_HOVER;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -415,7 +415,41 @@ namespace RFID_DOOR_APP
         private void pictureBox5_MouseLeave(object sender, EventArgs e)
         {
             if (connect_btn_status == 0)
-                pictureBox5.Image = Image.FromFile("../pics/connection_button_normal.png");
+                pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_NORMAL;
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            Pic_Normal_All(4);
+            pictureBox5.Image = Properties.Resources.STATUS_BUTTON_CLICKED;
+            status_btn_status = 1;
+            form_close_all(4);
+
+            /*
+            MyFormConnection = new FormConnection();
+
+            MyFormConnection.TopLevel = false;
+            MyFormConnection.AutoScroll = true;
+
+            User_Control.Controls.Add(MyFormConnection);
+
+            MyFormConnection.Show();
+
+            MyFormConnection.FormClosed += MyFormConnection_Closed;
+            MyFormConnection.FormClosing += MyFormConnection_Closing;
+            */
+        }
+
+        private void pictureBox6_MouseLeave(object sender, EventArgs e)
+        {
+            if (status_btn_status == 0)
+                pictureBox6.Image = Properties.Resources.STATUS_BUTTON_NORMAL;
+        }
+
+        private void pictureBox6_MouseHover(object sender, EventArgs e)
+        {
+            if (status_btn_status == 0)
+                pictureBox6.Image = Properties.Resources.STATUS_BUTTON_HOVER;
         }
 
         private void FormMain_Resize(object sender, EventArgs e)
@@ -432,35 +466,53 @@ namespace RFID_DOOR_APP
             {
                 case 1:
                     employee_btn_status = 0;
-                    time_btn_status = 0;
+                    control_btn_status = 0;
                     connect_btn_status = 0;
-                    pictureBox3.Image = Image.FromFile("../pics/employee_button_normal.png");
-                    pictureBox4.Image = Image.FromFile("../pics/Time_button_normal.png");
-                    pictureBox5.Image = Image.FromFile("../pics/connection_button_normal.png");
+                    status_btn_status = 0;
+                    pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
+                    pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_NORMAL;
+                    pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_NORMAL;
+                    pictureBox6.Image = Properties.Resources.STATUS_BUTTON_NORMAL;
                     break;
                 case 2:
                     report_btn_status = 0;
-                    time_btn_status = 0;
+                    control_btn_status = 0;
                     connect_btn_status = 0;
-                    pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
-                    pictureBox4.Image = Image.FromFile("../pics/Time_button_normal.png");
-                    pictureBox5.Image = Image.FromFile("../pics/connection_button_normal.png");
+                    status_btn_status = 0;
+                    pictureBox2.Image = Properties.Resources.REPORT_BUTTON_NORMAL;
+                    pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_NORMAL;
+                    pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_NORMAL;
+                    pictureBox6.Image = Properties.Resources.STATUS_BUTTON_NORMAL;
                     break;
                 case 3:
                     report_btn_status = 0;
                     employee_btn_status = 0;
                     connect_btn_status = 0;
-                    pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
-                    pictureBox3.Image = Image.FromFile("../pics/employee_button_normal.png");
-                    pictureBox5.Image = Image.FromFile("../pics/connection_button_normal.png");
+                    status_btn_status = 0;
+                    pictureBox2.Image = Properties.Resources.REPORT_BUTTON_NORMAL;
+                    pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
+                    pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_NORMAL;
+                    pictureBox6.Image = Properties.Resources.STATUS_BUTTON_NORMAL;
                     break;
                 case 4:
                     report_btn_status = 0;
                     employee_btn_status = 0;
-                    time_btn_status = 0;
-                    pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
-                    pictureBox3.Image = Image.FromFile("../pics/employee_button_normal.png");
-                    pictureBox4.Image = Image.FromFile("../pics/Time_button_normal.png");
+                    connect_btn_status = 0;
+                    control_btn_status = 0;
+                    pictureBox2.Image = Properties.Resources.REPORT_BUTTON_NORMAL;
+                    pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
+                    pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_NORMAL;
+                    pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_NORMAL;
+                    break;
+                case 5:
+                    report_btn_status = 0;
+                    employee_btn_status = 0;
+                    control_btn_status = 0;
+                    status_btn_status = 0;
+                    pictureBox2.Image = Properties.Resources.REPORT_BUTTON_NORMAL;
+                    pictureBox3.Image = Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
+                    pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_NORMAL;
+                    pictureBox6.Image = Properties.Resources.STATUS_BUTTON_NORMAL;
                     break;
             };
         }
@@ -478,6 +530,8 @@ namespace RFID_DOOR_APP
                 case 3:
                     break;
                 case 4:
+                    break;
+                case 5:
                     MyFormEmployee.Hide();
                     MyformReport.Hide();
                     break;
@@ -486,7 +540,7 @@ namespace RFID_DOOR_APP
 
         private void FormReport_Formclosed(object sender, EventArgs e)
         {
-            pictureBox2.Image = Image.FromFile("../pics/report_button_normal.png");
+            pictureBox2.Image = Properties.Resources.REPORT_BUTTON_NORMAL;
         }
 
         private void FormEmployee_Formclosed(object sender, EventArgs e)
@@ -522,7 +576,7 @@ namespace RFID_DOOR_APP
                 backgroundWorker1.RunWorkerAsync(); // Start receiving data in background
                 //backgroundWorker2.WorkerSupportsCancellation = true; // Ability to cancel this thread
             }
-                pictureBox5.Image = Properties.Resources.connection_button_normal;
+                pictureBox5.Image = Properties.Resources.CONNECT_BUTTON_NORMAL;
             
         }
     }

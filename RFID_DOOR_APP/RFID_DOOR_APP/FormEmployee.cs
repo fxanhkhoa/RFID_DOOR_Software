@@ -16,6 +16,14 @@ namespace RFID_DOOR_APP
         FormDelete MyFormDelete = new FormDelete();
         FormViewEmployee MyFormViewEmployee = new FormViewEmployee();
         FormEmployeeAddEM MyFormEmployeeAddEM = new FormEmployeeAddEM();
+        Form_Time_Template MyFormTimeTemplate = new Form_Time_Template();
+        bool time_btn_status, door_btn_status, date_btn_status, view_btn_status, edit_btn_status;
+        const int
+            TIME = 1,
+            DOOR = 2,
+            DATE = 3,
+            VIEW = 4,
+            EDIT = 5;
         public FormEmployee()
         {
             InitializeComponent();
@@ -26,60 +34,76 @@ namespace RFID_DOOR_APP
         **********************************************/
         SQL _DB = new SQL();
 
-        private void Add_Btn_MouseHover(object sender, EventArgs e)
+        private void Time_Btn_MouseHover(object sender, EventArgs e)
         {
-            Add_Btn.Image = Properties.Resources.ADD_BTN_HOVER;
+            if (time_btn_status == false)
+                Time_Btn.Image = Properties.Resources.TIME_BUTTON_HOVER;
         }
 
-        private void fix_btn_MouseHover(object sender, EventArgs e)
+        private void Edit_btn_MouseHover(object sender, EventArgs e)
         {
-            fix_btn.Image = Properties.Resources.FIX_BTN_HOVER;
+            if (edit_btn_status == false)
+                Edit_btn.Image = Properties.Resources.EDIT_BUTTON_HOVER;
         }
 
-        private void Delete_Btn_MouseHover(object sender, EventArgs e)
+        private void Door_Btn_MouseHover(object sender, EventArgs e)
         {
-            Delete_Btn.Image = Properties.Resources.DELETE_BTN_HOVER;
+            if (door_btn_status == false)
+                Door_Btn.Image = Properties.Resources.DOOR_BUTTON_HOVER;
         }
 
         private void view_btn_MouseHover(object sender, EventArgs e)
         {
-            view_btn.Image = Properties.Resources.VIEW_BTN_HOVER;
+            if (view_btn_status == false)
+                view_btn.Image = Properties.Resources.VIEW_BUTTON_HOVER;
         }
 
-        private void Add_Btn_MouseLeave(object sender, EventArgs e)
+        private void Time_Btn_MouseLeave(object sender, EventArgs e)
         {
-            Add_Btn.Image = Properties.Resources.ADD_BTN;
+            if (time_btn_status == false)
+                Time_Btn.Image = Properties.Resources.TIME_BUTTON_NORMAL;
         }
 
-        private void fix_btn_MouseLeave(object sender, EventArgs e)
+        private void Edit_btn_MouseLeave(object sender, EventArgs e)
         {
-            fix_btn.Image = Properties.Resources.FIX_BTN;
+            if (edit_btn_status == false)
+                Edit_btn.Image = Properties.Resources.EDIT_BUTTON_NORMAL;
         }
 
-        private void Delete_Btn_MouseLeave(object sender, EventArgs e)
+        private void Door_Btn_MouseLeave(object sender, EventArgs e)
         {
-            Delete_Btn.Image = Properties.Resources.DELETE_BTN;
+            if (door_btn_status == false)
+                Door_Btn.Image = Properties.Resources.DOOR_BUTTON_NORMAL;
         }
 
         private void view_btn_MouseLeave(object sender, EventArgs e)
         {
-            view_btn.Image = Properties.Resources.VIEW_BTN;
+            if (view_btn_status == false)
+                view_btn.Image = Properties.Resources.VIEW_BUTTON_NORMAL;
         }
 
-        private void Add_Btn_Click(object sender, EventArgs e)
+        private void Time_Btn_Click(object sender, EventArgs e)
         {
             MyFormEmployeeAdd.FormClosed += ADD_Closed;
-
+            
+            SetNormal(TIME);
+            Time_Btn.Image = Properties.Resources.TIME_BUTTON_CLICKED;
+            time_btn_status = true;
             //MyFormEmployeeAdd = new FormEmployeeAdd();
 
+            MyFormTimeTemplate.Show();
             MyFormDelete.Hide();
             MyFormViewEmployee.Hide();
-            MyFormEmployeeAdd.Show();
+            MyFormEmployeeAdd.Hide();
         }
 
-        private void Delete_Btn_Click(object sender, EventArgs e)
+        private void Door_Btn_Click(object sender, EventArgs e)
         {
             MyFormDelete.FormClosed += DELETE_Closed;
+
+            SetNormal(DOOR);
+            Door_Btn.Image = Properties.Resources.DOOR_BUTTON_CLICKED;
+            door_btn_status = true;
 
             MyFormDelete = new FormDelete();
 
@@ -94,13 +118,19 @@ namespace RFID_DOOR_APP
             MyFormDelete.Show();
         }
 
-        private void fix_btn_Click(object sender, EventArgs e)
+        private void Edit_btn_Click(object sender, EventArgs e)
         {
-
+            SetNormal(EDIT);
+            edit_btn_status = true;
+            Edit_btn.Image = Properties.Resources.EDIT_BUTTON_CLICKED;
         }
 
         private void view_btn_Click(object sender, EventArgs e)
         {
+            SetNormal(VIEW);
+            view_btn_status = true;
+            view_btn.Image = Properties.Resources.VIEW_BUTTON_CLICKED;
+
             MyFormEmployeeAdd.Hide();
             MyFormDelete.Hide();
 
@@ -108,6 +138,63 @@ namespace RFID_DOOR_APP
             MyFormViewEmployee.Show();
 
             MyFormViewEmployee.reload_style();
+        }
+
+        private void Date_btn_Click(object sender, EventArgs e)
+        {
+            SetNormal(DATE);
+            Date_btn.Image = Properties.Resources.DATE_BUTTON_CLICKED;
+            date_btn_status = true;
+        }
+
+        private void Date_btn_MouseHover(object sender, EventArgs e)
+        {
+            if (date_btn_status == false)
+                Date_btn.Image = Properties.Resources.DATE_BUTTON_HOVER;
+        }
+
+        private void Date_btn_MouseLeave(object sender, EventArgs e)
+        {
+            if (date_btn_status == false)
+                Date_btn.Image = Properties.Resources.DATE_BUTTON_NORMAL;
+        }
+
+
+        void SetNormal(int i)
+        {
+            switch (i)
+            {
+                case TIME:
+                    Door_Btn.Image = Properties.Resources.DOOR_BUTTON_NORMAL;
+                    Date_btn.Image = Properties.Resources.DATE_BUTTON_NORMAL;
+                    view_btn.Image = Properties.Resources.VIEW_BUTTON_NORMAL;
+                    Edit_btn.Image = Properties.Resources.EDIT_BUTTON_NORMAL;
+                    break;
+                case DOOR:
+                    Time_Btn.Image = Properties.Resources.TIME_BUTTON_NORMAL;
+                    Date_btn.Image = Properties.Resources.DATE_BUTTON_NORMAL;
+                    view_btn.Image = Properties.Resources.VIEW_BUTTON_NORMAL;
+                    Edit_btn.Image = Properties.Resources.EDIT_BUTTON_NORMAL;
+                    break;
+                case DATE:
+                    Door_Btn.Image = Properties.Resources.DOOR_BUTTON_NORMAL;
+                    Time_Btn.Image = Properties.Resources.TIME_BUTTON_NORMAL;
+                    view_btn.Image = Properties.Resources.VIEW_BUTTON_NORMAL;
+                    Edit_btn.Image = Properties.Resources.EDIT_BUTTON_NORMAL;
+                    break;
+                case VIEW:
+                    Door_Btn.Image = Properties.Resources.DOOR_BUTTON_NORMAL;
+                    Time_Btn.Image = Properties.Resources.TIME_BUTTON_NORMAL;
+                    Edit_btn.Image = Properties.Resources.EDIT_BUTTON_NORMAL;
+                    Date_btn.Image = Properties.Resources.DATE_BUTTON_NORMAL;
+                    break;
+                case EDIT:
+                    Door_Btn.Image = Properties.Resources.DOOR_BUTTON_NORMAL;
+                    Time_Btn.Image = Properties.Resources.TIME_BUTTON_NORMAL;
+                    view_btn.Image = Properties.Resources.VIEW_BUTTON_NORMAL;
+                    Date_btn.Image = Properties.Resources.DATE_BUTTON_NORMAL;
+                    break;
+            };
         }
 
         private void FormEmployee_Load(object sender, EventArgs e)
@@ -120,10 +207,13 @@ namespace RFID_DOOR_APP
             MyFormDelete.AutoScroll = true;
             MyFormViewEmployee.TopLevel = false;
             MyFormViewEmployee.AutoScroll = true;
+            MyFormTimeTemplate.TopLevel = false;
+            MyFormTimeTemplate.AutoScroll = true;
 
             panel2.Controls.Add(MyFormEmployeeAdd);
             panel2.Controls.Add(MyFormDelete);
             panel2.Controls.Add(MyFormViewEmployee);
+            panel2.Controls.Add(MyFormTimeTemplate);
 
             _DB.Connect();
 
@@ -165,7 +255,13 @@ namespace RFID_DOOR_APP
             
         }
 
+
         private void reload()
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

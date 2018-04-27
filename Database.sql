@@ -33,3 +33,10 @@ create table REPORT
 	TimeDo smalldatetime,
 	Task varchar(200)
 )
+
+CREATE TABLE Time_Template
+(
+	[Id] varchar(30) NOT NULL PRIMARY KEY, 
+    [Start_Time] TIME NOT NULL, 
+    [End_Time] TIME NOT NULL
+)
