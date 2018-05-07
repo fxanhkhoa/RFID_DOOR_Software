@@ -14,9 +14,12 @@ namespace RFID_DOOR_APP
     {
         FormEmployeeAdd MyFormEmployeeAdd = new FormEmployeeAdd();
         FormDelete MyFormDelete = new FormDelete();
-        FormViewEmployee MyFormViewEmployee = new FormViewEmployee();
+        Form_View_Employee MyFormViewEmployee = new Form_View_Employee();
         FormEmployeeAddEM MyFormEmployeeAddEM = new FormEmployeeAddEM();
         Form_Time_Template MyFormTimeTemplate = new Form_Time_Template();
+        Form_Door_Template MyFormDoorTemplate = new Form_Door_Template();
+        Form_Date_Template MyFormDateTemplate = new Form_Date_Template();
+        Form_Edit_User MyFormEditUser = new Form_Edit_User();
         bool time_btn_status, door_btn_status, date_btn_status, view_btn_status, edit_btn_status;
         const int
             TIME = 1,
@@ -92,30 +95,33 @@ namespace RFID_DOOR_APP
             //MyFormEmployeeAdd = new FormEmployeeAdd();
 
             MyFormTimeTemplate.Show();
-            MyFormDelete.Hide();
+            MyFormDateTemplate.Hide();
+            MyFormDoorTemplate.Hide();
             MyFormViewEmployee.Hide();
-            MyFormEmployeeAdd.Hide();
+            MyFormEditUser.Hide();
         }
 
         private void Door_Btn_Click(object sender, EventArgs e)
         {
-            MyFormDelete.FormClosed += DELETE_Closed;
+            //MyFormDelete.FormClosed += DELETE_Closed;
 
             SetNormal(DOOR);
             Door_Btn.Image = Properties.Resources.DOOR_BUTTON_CLICKED;
             door_btn_status = true;
 
-            MyFormDelete = new FormDelete();
+            MyFormDoorTemplate = new Form_Door_Template();
 
-            MyFormDelete.TopLevel = false;
-            MyFormDelete.AutoScroll = true;
-            MyFormDelete.MaximizeBox = true;
+            MyFormDoorTemplate.TopLevel = false;
+            MyFormDoorTemplate.AutoScroll = true;
+            MyFormDoorTemplate.MaximizeBox = true;
 
-            panel2.Controls.Add(MyFormDelete);
+            panel2.Controls.Add(MyFormDoorTemplate);
 
-            MyFormEmployeeAdd.Hide();
+            MyFormTimeTemplate.Hide();
+            MyFormDateTemplate.Hide();
+            MyFormDoorTemplate.Show();
             MyFormViewEmployee.Hide();
-            MyFormDelete.Show();
+            MyFormEditUser.Hide();
         }
 
         private void Edit_btn_Click(object sender, EventArgs e)
@@ -123,6 +129,19 @@ namespace RFID_DOOR_APP
             SetNormal(EDIT);
             edit_btn_status = true;
             Edit_btn.Image = Properties.Resources.EDIT_BUTTON_CLICKED;
+
+            MyFormEditUser = new Form_Edit_User();
+
+            MyFormEditUser.TopLevel = false;
+            MyFormEditUser.AutoScroll = true;
+            MyFormEditUser.MaximizeBox = true;
+
+            panel2.Controls.Add(MyFormEditUser);
+            MyFormTimeTemplate.Hide();
+            MyFormDateTemplate.Hide();
+            MyFormDoorTemplate.Hide();
+            MyFormViewEmployee.Hide();
+            MyFormEditUser.Show();
         }
 
         private void view_btn_Click(object sender, EventArgs e)
@@ -145,6 +164,20 @@ namespace RFID_DOOR_APP
             SetNormal(DATE);
             Date_btn.Image = Properties.Resources.DATE_BUTTON_CLICKED;
             date_btn_status = true;
+
+            MyFormDateTemplate = new Form_Date_Template();
+
+            MyFormDateTemplate.TopLevel = false;
+            MyFormDateTemplate.AutoScroll = true;
+            MyFormDateTemplate.MaximizeBox = true;
+
+            panel2.Controls.Add(MyFormDateTemplate);
+
+            MyFormTimeTemplate.Hide();
+            MyFormDoorTemplate.Hide();
+            MyFormDateTemplate.Show();
+            MyFormViewEmployee.Hide();
+            MyFormEditUser.Hide();
         }
 
         private void Date_btn_MouseHover(object sender, EventArgs e)
@@ -209,11 +242,14 @@ namespace RFID_DOOR_APP
             MyFormViewEmployee.AutoScroll = true;
             MyFormTimeTemplate.TopLevel = false;
             MyFormTimeTemplate.AutoScroll = true;
+            MyFormDoorTemplate.TopLevel = false;
+            MyFormDoorTemplate.AutoScroll = true;
 
             panel2.Controls.Add(MyFormEmployeeAdd);
             panel2.Controls.Add(MyFormDelete);
             panel2.Controls.Add(MyFormViewEmployee);
             panel2.Controls.Add(MyFormTimeTemplate);
+            panel2.Controls.Add(MyFormDoorTemplate);
 
             _DB.Connect();
 

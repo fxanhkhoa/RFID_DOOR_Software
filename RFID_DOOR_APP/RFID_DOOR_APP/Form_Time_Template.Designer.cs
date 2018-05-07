@@ -73,9 +73,9 @@
             // list_template
             // 
             this.list_template.FormattingEnabled = true;
-            this.list_template.Location = new System.Drawing.Point(50, 178);
+            this.list_template.Location = new System.Drawing.Point(50, 217);
             this.list_template.Name = "list_template";
-            this.list_template.Size = new System.Drawing.Size(219, 160);
+            this.list_template.Size = new System.Drawing.Size(537, 160);
             this.list_template.TabIndex = 2;
             // 
             // label2
@@ -90,7 +90,7 @@
             // Add_Btn
             // 
             this.Add_Btn.Image = global::RFID_DOOR_APP.Properties.Resources.Add_Icon;
-            this.Add_Btn.Location = new System.Drawing.Point(209, 116);
+            this.Add_Btn.Location = new System.Drawing.Point(229, 116);
             this.Add_Btn.Name = "Add_Btn";
             this.Add_Btn.Size = new System.Drawing.Size(33, 34);
             this.Add_Btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -101,7 +101,7 @@
             // Delete_Btn
             // 
             this.Delete_Btn.Image = global::RFID_DOOR_APP.Properties.Resources.garbage_delete;
-            this.Delete_Btn.Location = new System.Drawing.Point(291, 178);
+            this.Delete_Btn.Location = new System.Drawing.Point(551, 176);
             this.Delete_Btn.Name = "Delete_Btn";
             this.Delete_Btn.Size = new System.Drawing.Size(36, 35);
             this.Delete_Btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

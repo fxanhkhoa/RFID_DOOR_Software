@@ -30,6 +30,13 @@ namespace RFID_DOOR_APP
         private static int _connection_use;
         private static Socket _server;
         private static IPEndPoint _IP_End;
+        private static string _Username;
+
+        public static string Username
+        {
+            get { return _Username; }
+            set { _Username = value; }
+        }
 
         public static IPEndPoint IP_End
         {

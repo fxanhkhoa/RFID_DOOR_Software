@@ -421,7 +421,7 @@ namespace RFID_DOOR_APP
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             Pic_Normal_All(4);
-            pictureBox5.Image = Properties.Resources.STATUS_BUTTON_CLICKED;
+            pictureBox6.Image = Properties.Resources.STATUS_BUTTON_CLICKED;
             status_btn_status = 1;
             form_close_all(4);
 

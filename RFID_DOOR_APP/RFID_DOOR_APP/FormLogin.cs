@@ -83,6 +83,9 @@ namespace RFID_DOOR_APP
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
                 _DB.Excute(sql);
 
+                //Set global Username
+                Global.Username = Username_Field.Text;
+
                 if (_DB.conn.State != ConnectionState.Closed)
                     _DB.Close();
                 this.Close();

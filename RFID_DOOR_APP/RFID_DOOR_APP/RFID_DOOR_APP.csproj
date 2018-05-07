@@ -102,17 +102,41 @@
     <Compile Include="FormReport.Designer.cs">
       <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormViewEmployee.cs">
+    <Compile Include="FormView_Employee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormViewEmployee.Designer.cs">
-      <DependentUpon>FormViewEmployee.cs</DependentUpon>
+    <Compile Include="FormView_Employee.Designer.cs">
+      <DependentUpon>FormView_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Date_Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Date_Template.Designer.cs">
+      <DependentUpon>Form_Date_Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Door_Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Door_Template.Designer.cs">
+      <DependentUpon>Form_Door_Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Edit_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Edit_User.Designer.cs">
+      <DependentUpon>Form_Edit_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Time_Template.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Time_Template.Designer.cs">
       <DependentUpon>Form_Time_Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_View_Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_View_Employee.Designer.cs">
+      <DependentUpon>Form_View_Employee.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
@@ -145,11 +169,23 @@
     <EmbeddedResource Include="FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormViewEmployee.resx">
-      <DependentUpon>FormViewEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="FormView_Employee.resx">
+      <DependentUpon>FormView_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Date_Template.resx">
+      <DependentUpon>Form_Date_Template.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Door_Template.resx">
+      <DependentUpon>Form_Door_Template.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Edit_User.resx">
+      <DependentUpon>Form_Edit_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Time_Template.resx">
       <DependentUpon>Form_Time_Template.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_View_Employee.resx">
+      <DependentUpon>Form_View_Employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
