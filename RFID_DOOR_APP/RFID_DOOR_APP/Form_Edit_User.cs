@@ -39,7 +39,7 @@ namespace RFID_DOOR_APP
                 _DB.Excute(sql);
                 reload();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -61,7 +61,7 @@ namespace RFID_DOOR_APP
                 string data = Employee_ID.Text + Employee_Name.Text + Employee_Unit.Text + Employee_RFID.Text;
 
                 DateTime LocalDate = DateTime.Now;
-                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added " + data + "')";
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added Employee " + data + "')";
                 _DB.Excute(sql);
 
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
@@ -84,11 +84,24 @@ namespace RFID_DOOR_APP
 
             try
             {
-                string IDNV = List_Usage_ID.SelectedItem.ToString();
-                string IDDOOR = List_Usage_Door.SelectedItem.ToString();
-                string IDTIME = List_Usage_Time.SelectedItem.ToString();
-                string IDDATE = List_Usage_Day.SelectedItem.ToString();
-                string sql = "insert into USAGE values(";
+                string IDNV = List_Usage_ID.SelectedValue.ToString();
+                string IDDOOR = List_Usage_Door.SelectedValue.ToString();
+                string IDTIME = List_Usage_Time.SelectedValue.ToString();
+                string IDDATE = List_Usage_Day.SelectedValue.ToString();
+                string sql = "insert into USAGE values('" + IDNV + "','" + IDDOOR + "','" + IDTIME + "','" + IDDATE + "')";
+
+                _DB.Excute(sql);
+
+                string data = IDNV + " " + IDDOOR + " " + IDTIME + " " + IDDATE;
+
+                DateTime LocalDate = DateTime.Now;
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added Usage " + data + "')";
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+
+                reload();
             }
             catch (Exception ex)
             {
@@ -103,6 +116,53 @@ namespace RFID_DOOR_APP
         {
             _DB.Connect();
             reload();
+            ShowList();
+        }
+
+        private void ShowList()
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                string sql = "select * from NHANVIEN";
+                _DB.Excute(sql);
+
+                List_Usage_ID.DisplayMember = "IDNV";
+                List_Usage_ID.ValueMember = "IDNV";
+                List_Usage_ID.DataSource = _DB.kq;
+                List_Usage_ID.SelectedIndex = 0;
+
+                sql = "select * from DOOR";
+                _DB.Excute(sql);
+
+                List_Usage_Door.DisplayMember = "IDDOOR";
+                List_Usage_Door.ValueMember = "IDDOOR";
+                List_Usage_Door.DataSource = _DB.kq;
+                List_Usage_Door.SelectedIndex = 0;
+
+                sql = "select * from Time_Template";
+                _DB.Excute(sql);
+
+                List_Usage_Time.DisplayMember = "Id";
+                List_Usage_Time.ValueMember = "Id";
+                List_Usage_Time.DataSource = _DB.kq;
+
+                sql = "select * from Date_Template";
+                _DB.Excute(sql);
+
+                List_Usage_Day.DisplayMember = "ID";
+                List_Usage_Day.ValueMember = "ID";
+                List_Usage_Day.DataSource = _DB.kq;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
         }
 
         private void reload()
@@ -115,6 +175,8 @@ namespace RFID_DOOR_APP
                 // Get all NHANVIEN
                 string sql = "select * from NHANVIEN";
                 _DB.Excute(sql);
+
+                List_Template.Items.Clear();
 
                 for (int i = 0; i < _DB.kq.Rows.Count; i++)
                 {
@@ -130,12 +192,16 @@ namespace RFID_DOOR_APP
                 sql = "select * from USAGE";
                 _DB.Excute(sql);
 
+                List_Usage.Items.Clear();
+
                 for (int i = 0; i < _DB.kq.Rows.Count; i++)
                 {
                     string data = _DB.kq.Rows[i][0].ToString() + " ";
                     data += _DB.kq.Rows[i][1].ToString() + " ";
                     data += _DB.kq.Rows[i][2].ToString() + " ";
                     data += _DB.kq.Rows[i][3].ToString() + " ";
+
+                    List_Usage.Items.Add(data);
                 }
             }
             catch (Exception ex)
@@ -154,7 +220,11 @@ namespace RFID_DOOR_APP
 
         private void Delete_Usage_Click(object sender, EventArgs e)
         {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
 
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
         }
     }
 }
