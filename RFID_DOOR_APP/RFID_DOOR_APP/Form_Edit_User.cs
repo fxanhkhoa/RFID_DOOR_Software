@@ -23,6 +23,27 @@ namespace RFID_DOOR_APP
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
 
+            try
+            {
+                string ID = List_Template.SelectedItem.ToString();
+                ID = ID.Substring(0, ID.IndexOf("."));
+                string sql = "delete from NHANVIEN where IDNV = '" + ID + "'";
+
+                _DB.Excute(sql);
+
+                DateTime LocalDate = DateTime.Now;
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' delete " + ID + "')";
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+                reload();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
             if (_DB.conn.State != ConnectionState.Closed)
                 _DB.Close();
         }
@@ -61,6 +82,19 @@ namespace RFID_DOOR_APP
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
 
+            try
+            {
+                string IDNV = List_Usage_ID.SelectedItem.ToString();
+                string IDDOOR = List_Usage_Door.SelectedItem.ToString();
+                string IDTIME = List_Usage_Time.SelectedItem.ToString();
+                string IDDATE = List_Usage_Day.SelectedItem.ToString();
+                string sql = "insert into USAGE values(";
+            }
+            catch (Exception ex)
+            {
+
+            }
+
             if (_DB.conn.State != ConnectionState.Closed)
                 _DB.Close();
         }
@@ -78,6 +112,7 @@ namespace RFID_DOOR_APP
 
             try
             {
+                // Get all NHANVIEN
                 string sql = "select * from NHANVIEN";
                 _DB.Excute(sql);
 
@@ -89,6 +124,18 @@ namespace RFID_DOOR_APP
                     data += _DB.kq.Rows[i][3].ToString();
 
                     List_Template.Items.Add(data);
+                }
+
+                //Get all USAGE
+                sql = "select * from USAGE";
+                _DB.Excute(sql);
+
+                for (int i = 0; i < _DB.kq.Rows.Count; i++)
+                {
+                    string data = _DB.kq.Rows[i][0].ToString() + " ";
+                    data += _DB.kq.Rows[i][1].ToString() + " ";
+                    data += _DB.kq.Rows[i][2].ToString() + " ";
+                    data += _DB.kq.Rows[i][3].ToString() + " ";
                 }
             }
             catch (Exception ex)
