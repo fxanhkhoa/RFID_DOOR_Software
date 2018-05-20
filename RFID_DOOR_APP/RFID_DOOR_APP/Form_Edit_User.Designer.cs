@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Employee_RFID = new System.Windows.Forms.TextBox();
             this.Employee_Unit = new System.Windows.Forms.TextBox();
             this.Employee_Name = new System.Windows.Forms.TextBox();
             this.Employee_ID = new System.Windows.Forms.TextBox();
@@ -61,6 +60,12 @@
             this.Add_Usage = new System.Windows.Forms.PictureBox();
             this.List_Usage = new System.Windows.Forms.ListBox();
             this.Delete_Usage = new System.Windows.Forms.PictureBox();
+            this.Employee_RFID_ComboBox = new System.Windows.Forms.ComboBox();
+            this.Employee_Mode_ComboBox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.Employee_Pin = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.Employee_Depart_List = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Add_Employee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete_Employee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Add_Usage)).BeginInit();
@@ -111,16 +116,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 163);
+            this.label3.Location = new System.Drawing.Point(25, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Unit";
+            this.label3.Text = "Depart.";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 137);
+            this.label2.Location = new System.Drawing.Point(170, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 23;
@@ -135,13 +140,6 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "ID ";
             // 
-            // Employee_RFID
-            // 
-            this.Employee_RFID.Location = new System.Drawing.Point(71, 184);
-            this.Employee_RFID.Name = "Employee_RFID";
-            this.Employee_RFID.Size = new System.Drawing.Size(225, 20);
-            this.Employee_RFID.TabIndex = 17;
-            // 
             // Employee_Unit
             // 
             this.Employee_Unit.Location = new System.Drawing.Point(71, 160);
@@ -151,16 +149,16 @@
             // 
             // Employee_Name
             // 
-            this.Employee_Name.Location = new System.Drawing.Point(71, 134);
+            this.Employee_Name.Location = new System.Drawing.Point(211, 108);
             this.Employee_Name.Name = "Employee_Name";
-            this.Employee_Name.Size = new System.Drawing.Size(225, 20);
+            this.Employee_Name.Size = new System.Drawing.Size(110, 20);
             this.Employee_Name.TabIndex = 15;
             // 
             // Employee_ID
             // 
             this.Employee_ID.Location = new System.Drawing.Point(71, 108);
             this.Employee_ID.Name = "Employee_ID";
-            this.Employee_ID.Size = new System.Drawing.Size(225, 20);
+            this.Employee_ID.Size = new System.Drawing.Size(93, 20);
             this.Employee_ID.TabIndex = 14;
             // 
             // label7
@@ -168,7 +166,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("LED BOARD REVERSED", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(456, 63);
+            this.label7.Location = new System.Drawing.Point(68, 354);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(154, 22);
             this.label7.TabIndex = 45;
@@ -177,7 +175,7 @@
             // List_Usage_ID
             // 
             this.List_Usage_ID.FormattingEnabled = true;
-            this.List_Usage_ID.Location = new System.Drawing.Point(475, 103);
+            this.List_Usage_ID.Location = new System.Drawing.Point(87, 394);
             this.List_Usage_ID.Name = "List_Usage_ID";
             this.List_Usage_ID.Size = new System.Drawing.Size(121, 21);
             this.List_Usage_ID.TabIndex = 44;
@@ -185,7 +183,7 @@
             // Time
             // 
             this.Time.AutoSize = true;
-            this.Time.Location = new System.Drawing.Point(737, 133);
+            this.Time.Location = new System.Drawing.Point(349, 424);
             this.Time.Name = "Time";
             this.Time.Size = new System.Drawing.Size(10, 13);
             this.Time.TabIndex = 39;
@@ -194,7 +192,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(608, 106);
+            this.label9.Location = new System.Drawing.Point(220, 397);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 32;
@@ -203,7 +201,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(608, 163);
+            this.label10.Location = new System.Drawing.Point(220, 454);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 13);
             this.label10.TabIndex = 31;
@@ -212,7 +210,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(608, 136);
+            this.label11.Location = new System.Drawing.Point(220, 427);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(30, 13);
             this.label11.TabIndex = 30;
@@ -221,7 +219,7 @@
             // Usage_RFID
             // 
             this.Usage_RFID.AutoSize = true;
-            this.Usage_RFID.Location = new System.Drawing.Point(501, 186);
+            this.Usage_RFID.Location = new System.Drawing.Point(113, 477);
             this.Usage_RFID.Name = "Usage_RFID";
             this.Usage_RFID.Size = new System.Drawing.Size(32, 13);
             this.Usage_RFID.TabIndex = 29;
@@ -230,7 +228,7 @@
             // Usage_Unit
             // 
             this.Usage_Unit.AutoSize = true;
-            this.Usage_Unit.Location = new System.Drawing.Point(501, 164);
+            this.Usage_Unit.Location = new System.Drawing.Point(113, 455);
             this.Usage_Unit.Name = "Usage_Unit";
             this.Usage_Unit.Size = new System.Drawing.Size(26, 13);
             this.Usage_Unit.TabIndex = 28;
@@ -239,7 +237,7 @@
             // Usage_Name
             // 
             this.Usage_Name.AutoSize = true;
-            this.Usage_Name.Location = new System.Drawing.Point(501, 141);
+            this.Usage_Name.Location = new System.Drawing.Point(113, 432);
             this.Usage_Name.Name = "Usage_Name";
             this.Usage_Name.Size = new System.Drawing.Size(35, 13);
             this.Usage_Name.TabIndex = 27;
@@ -248,7 +246,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(438, 106);
+            this.label14.Location = new System.Drawing.Point(50, 397);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(21, 13);
             this.label14.TabIndex = 33;
@@ -257,7 +255,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(438, 185);
+            this.label8.Location = new System.Drawing.Point(50, 476);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 48;
@@ -266,7 +264,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(438, 163);
+            this.label12.Location = new System.Drawing.Point(50, 454);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(26, 13);
             this.label12.TabIndex = 47;
@@ -275,7 +273,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(438, 140);
+            this.label13.Location = new System.Drawing.Point(50, 431);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 13);
             this.label13.TabIndex = 46;
@@ -284,7 +282,7 @@
             // List_Usage_Door
             // 
             this.List_Usage_Door.FormattingEnabled = true;
-            this.List_Usage_Door.Location = new System.Drawing.Point(645, 103);
+            this.List_Usage_Door.Location = new System.Drawing.Point(257, 394);
             this.List_Usage_Door.Name = "List_Usage_Door";
             this.List_Usage_Door.Size = new System.Drawing.Size(121, 21);
             this.List_Usage_Door.TabIndex = 49;
@@ -292,7 +290,7 @@
             // List_Usage_Time
             // 
             this.List_Usage_Time.FormattingEnabled = true;
-            this.List_Usage_Time.Location = new System.Drawing.Point(644, 133);
+            this.List_Usage_Time.Location = new System.Drawing.Point(256, 424);
             this.List_Usage_Time.Name = "List_Usage_Time";
             this.List_Usage_Time.Size = new System.Drawing.Size(121, 21);
             this.List_Usage_Time.TabIndex = 50;
@@ -300,7 +298,7 @@
             // List_Usage_Day
             // 
             this.List_Usage_Day.FormattingEnabled = true;
-            this.List_Usage_Day.Location = new System.Drawing.Point(644, 160);
+            this.List_Usage_Day.Location = new System.Drawing.Point(256, 451);
             this.List_Usage_Day.Name = "List_Usage_Day";
             this.List_Usage_Day.Size = new System.Drawing.Size(121, 21);
             this.List_Usage_Day.TabIndex = 51;
@@ -308,7 +306,7 @@
             // Add_Employee
             // 
             this.Add_Employee.Image = global::RFID_DOOR_APP.Properties.Resources.Add_Icon;
-            this.Add_Employee.Location = new System.Drawing.Point(302, 108);
+            this.Add_Employee.Location = new System.Drawing.Point(379, 309);
             this.Add_Employee.Name = "Add_Employee";
             this.Add_Employee.Size = new System.Drawing.Size(33, 34);
             this.Add_Employee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -319,7 +317,7 @@
             // Delete_Employee
             // 
             this.Delete_Employee.Image = global::RFID_DOOR_APP.Properties.Resources.garbage_delete;
-            this.Delete_Employee.Location = new System.Drawing.Point(302, 233);
+            this.Delete_Employee.Location = new System.Drawing.Point(678, 67);
             this.Delete_Employee.Name = "Delete_Employee";
             this.Delete_Employee.Size = new System.Drawing.Size(36, 35);
             this.Delete_Employee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -330,7 +328,7 @@
             // List_Template
             // 
             this.List_Template.FormattingEnabled = true;
-            this.List_Template.Location = new System.Drawing.Point(28, 233);
+            this.List_Template.Location = new System.Drawing.Point(394, 67);
             this.List_Template.Name = "List_Template";
             this.List_Template.Size = new System.Drawing.Size(268, 160);
             this.List_Template.TabIndex = 54;
@@ -338,7 +336,7 @@
             // Add_Usage
             // 
             this.Add_Usage.Image = global::RFID_DOOR_APP.Properties.Resources.Add_Icon;
-            this.Add_Usage.Location = new System.Drawing.Point(611, 186);
+            this.Add_Usage.Location = new System.Drawing.Point(52, 540);
             this.Add_Usage.Name = "Add_Usage";
             this.Add_Usage.Size = new System.Drawing.Size(33, 34);
             this.Add_Usage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -349,7 +347,7 @@
             // List_Usage
             // 
             this.List_Usage.FormattingEnabled = true;
-            this.List_Usage.Location = new System.Drawing.Point(441, 233);
+            this.List_Usage.Location = new System.Drawing.Point(394, 394);
             this.List_Usage.Name = "List_Usage";
             this.List_Usage.Size = new System.Drawing.Size(268, 160);
             this.List_Usage.TabIndex = 57;
@@ -357,7 +355,7 @@
             // Delete_Usage
             // 
             this.Delete_Usage.Image = global::RFID_DOOR_APP.Properties.Resources.garbage_delete;
-            this.Delete_Usage.Location = new System.Drawing.Point(715, 233);
+            this.Delete_Usage.Location = new System.Drawing.Point(678, 394);
             this.Delete_Usage.Name = "Delete_Usage";
             this.Delete_Usage.Size = new System.Drawing.Size(36, 35);
             this.Delete_Usage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -365,12 +363,73 @@
             this.Delete_Usage.TabStop = false;
             this.Delete_Usage.Click += new System.EventHandler(this.Delete_Usage_Click);
             // 
+            // Employee_RFID_ComboBox
+            // 
+            this.Employee_RFID_ComboBox.FormattingEnabled = true;
+            this.Employee_RFID_ComboBox.Location = new System.Drawing.Point(71, 186);
+            this.Employee_RFID_ComboBox.Name = "Employee_RFID_ComboBox";
+            this.Employee_RFID_ComboBox.Size = new System.Drawing.Size(225, 21);
+            this.Employee_RFID_ComboBox.TabIndex = 59;
+            // 
+            // Employee_Mode_ComboBox
+            // 
+            this.Employee_Mode_ComboBox.FormattingEnabled = true;
+            this.Employee_Mode_ComboBox.Items.AddRange(new object[] {
+            "1. Invalid",
+            "2. Card only",
+            "3. Card or PIN",
+            "4. Card and PIN"});
+            this.Employee_Mode_ComboBox.Location = new System.Drawing.Point(257, 478);
+            this.Employee_Mode_ComboBox.Name = "Employee_Mode_ComboBox";
+            this.Employee_Mode_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.Employee_Mode_ComboBox.TabIndex = 60;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(208, 481);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 13);
+            this.label15.TabIndex = 61;
+            this.label15.Text = "Access";
+            // 
+            // Employee_Pin
+            // 
+            this.Employee_Pin.Location = new System.Drawing.Point(71, 306);
+            this.Employee_Pin.Name = "Employee_Pin";
+            this.Employee_Pin.PasswordChar = '*';
+            this.Employee_Pin.Size = new System.Drawing.Size(225, 20);
+            this.Employee_Pin.TabIndex = 62;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(28, 309);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(25, 13);
+            this.label16.TabIndex = 63;
+            this.label16.Text = "PIN";
+            // 
+            // Employee_Depart_List
+            // 
+            this.Employee_Depart_List.FormattingEnabled = true;
+            this.Employee_Depart_List.Location = new System.Drawing.Point(71, 133);
+            this.Employee_Depart_List.Name = "Employee_Depart_List";
+            this.Employee_Depart_List.Size = new System.Drawing.Size(93, 21);
+            this.Employee_Depart_List.TabIndex = 64;
+            // 
             // Form_Edit_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 433);
+            this.ClientSize = new System.Drawing.Size(791, 613);
+            this.Controls.Add(this.Employee_Depart_List);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.Employee_Pin);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.Employee_Mode_ComboBox);
+            this.Controls.Add(this.Employee_RFID_ComboBox);
             this.Controls.Add(this.Delete_Usage);
             this.Controls.Add(this.List_Usage);
             this.Controls.Add(this.Add_Usage);
@@ -399,7 +458,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.Employee_RFID);
             this.Controls.Add(this.Employee_Unit);
             this.Controls.Add(this.Employee_Name);
             this.Controls.Add(this.Employee_ID);
@@ -426,7 +484,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox Employee_RFID;
         private System.Windows.Forms.TextBox Employee_Unit;
         private System.Windows.Forms.TextBox Employee_Name;
         private System.Windows.Forms.TextBox Employee_ID;
@@ -452,5 +509,11 @@
         private System.Windows.Forms.PictureBox Add_Usage;
         private System.Windows.Forms.ListBox List_Usage;
         private System.Windows.Forms.PictureBox Delete_Usage;
+        private System.Windows.Forms.ComboBox Employee_RFID_ComboBox;
+        private System.Windows.Forms.ComboBox Employee_Mode_ComboBox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox Employee_Pin;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox Employee_Depart_List;
     }
 }
