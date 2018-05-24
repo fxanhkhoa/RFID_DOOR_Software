@@ -543,6 +543,16 @@ namespace RFID_DOOR_APP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Update_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Update_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap VIEW_BUTTON_CLICKED {
             get {
                 object obj = ResourceManager.GetObject("VIEW_BUTTON_CLICKED", resourceCulture);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,15 +56,44 @@ namespace RFID_DOOR_APP
 
             try
             {
-                string ID_RFID = Employee_RFID_ComboBox.GetItemText(Employee_RFID_ComboBox.SelectedItem);       
+                string IDNV = Employee_ID.Text;
+                string Name = Employee_Name.Text;
+                string Department = Employee_Depart_List.Text;
+                string Duty = Employee_Duty.Text;
+                string Birthday = Employee_Birthday.Value.ToShortDateString();
+                string VISA_ID = Employee_VisaID.Text;
+                string Gender = Gender_List.Text;
+                string Email = Employee_Email.Text;
+                string Tel = Employee_Tel.Text;
+                string Address = Employee_Address.Text;
+                string Pin = Employee_Pin.Text;
+                
+                string ID_RFID = Employee_RFID_ComboBox.Text;       
                 ID_RFID = ID_RFID.Substring(0, ID_RFID.IndexOf(" "));
 
-                string sql = "insert into NHANVIEN values('" + Employee_ID.Text + "','" + Employee_Name.Text + "','" + Employee_Unit.Text + "','" + ID_RFID + "','" + Employee_Pin.Text + "')";
-                //MessageBox.Show(ID_RFID);
-                //MessageBox.Show(sql);
+                // Get ID of DEPARTMENT
+                string sql = "select ID from DEPARTMENT where NAME ='" + Department + "'";
                 _DB.Excute(sql);
 
-                string data = Employee_ID.Text + Employee_Name.Text + Employee_Unit.Text + ID_RFID;
+                Department = _DB.kq.Rows[0][0].ToString();
+
+                sql = "insert into NHANVIEN values('" 
+                    + IDNV + "','" 
+                    + Name + "','" 
+                    + Department + "','"
+                    + ID_RFID + "','" 
+                    + Pin + "','"
+                    + Duty + "','"
+                    + Birthday + "','"
+                    + VISA_ID + "','"
+                    + Gender + "','"
+                    + Email + "','"
+                    + Tel + "','"
+                    + Address
+                    + "')";
+                _DB.Excute(sql);
+
+                string data = Employee_ID.Text + Employee_Name.Text + Employee_Duty.Text + ID_RFID;
 
                 DateTime LocalDate = DateTime.Now;
                 sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added Employee " + data + "')";
@@ -72,6 +102,7 @@ namespace RFID_DOOR_APP
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
                 _DB.Excute(sql);
                 reload();
+                Clear_Field();
             }
             catch (Exception ex)
             {
@@ -103,7 +134,7 @@ namespace RFID_DOOR_APP
                 string data = IDNV + " " + IDDOOR + " " + IDTIME + " " + IDDATE + " " + MODE;
 
                 DateTime LocalDate = DateTime.Now;
-                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added Usage " + data + "')";
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Usage " + data + "')";
                 _DB.Excute(sql);
 
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
@@ -158,6 +189,7 @@ namespace RFID_DOOR_APP
                 List_Usage_Time.DisplayMember = "Id";
                 List_Usage_Time.ValueMember = "Id";
                 List_Usage_Time.DataSource = _DB.kq;
+                List_Usage_Time.SelectedIndex = 0;
 
                 sql = "select * from Date_Template";
                 _DB.Excute(sql);
@@ -165,6 +197,15 @@ namespace RFID_DOOR_APP
                 List_Usage_Day.DisplayMember = "ID";
                 List_Usage_Day.ValueMember = "ID";
                 List_Usage_Day.DataSource = _DB.kq;
+                List_Usage_Day.SelectedIndex = 0;
+
+                sql = "select * from DEPARTMENT";
+                _DB.Excute(sql);
+
+                Employee_Depart_List.DisplayMember = "NAME";
+                Employee_Depart_List.ValueMember = "NAME";
+                Employee_Depart_List.DataSource = _DB.kq;
+                Employee_Depart_List.SelectedIndex = 0;
 
                 Employee_Mode_ComboBox.SelectedIndex = 0;
             }
@@ -229,7 +270,7 @@ namespace RFID_DOOR_APP
                     data += _DB.kq.Rows[i][1].ToString();
 
                     Employee_RFID_ComboBox.Items.Add(data);
-                }
+                }     
             }
             catch (Exception ex)
             {
@@ -238,6 +279,22 @@ namespace RFID_DOOR_APP
 
             if (_DB.conn.State != ConnectionState.Closed)
                 _DB.Close();
+        }
+
+        private void Clear_Field()
+        {
+            Employee_ID.Text = "";
+            Employee_Name.Text = "";
+            Employee_Depart_List.Text = "";
+            Employee_Duty.Text = "";
+            Employee_Birthday.Value = DateTime.Now;
+            Employee_VisaID.Text = "";
+            Gender_List.Text = "";
+            Employee_Email.Text = "";
+            Employee_Tel.Text = "";
+            Employee_Address.Text = "";
+            Employee_RFID_ComboBox.Text = "";
+            Employee_Pin.Text = "";
         }
 
         private void Read_RFID_Click(object sender, EventArgs e)
@@ -256,8 +313,11 @@ namespace RFID_DOOR_APP
                 while (ID[ID.Length - 1] == ' ')
                     ID = ID.Remove(ID.Length - 1);
                 ID = ID.Remove(ID.Length - 2);
+
                 string IDDATE = ID.Substring(ID.LastIndexOf(" ") + 1, ID.Length - ID.LastIndexOf(" ") - 1);
                 ID = ID.Remove(ID.LastIndexOf(" "));
+                while (ID[ID.Length - 1] == ' ')
+                    ID = ID.Remove(ID.Length - 1);
 
                 string IDTIME = ID.Substring(ID.LastIndexOf(" ") + 1, ID.Length - ID.LastIndexOf(" ") - 1);
                 ID = ID.Remove(ID.LastIndexOf(" "));
@@ -266,8 +326,10 @@ namespace RFID_DOOR_APP
 
                 string IDDOOR = ID.Substring(ID.LastIndexOf(" ") + 1, ID.Length - ID.LastIndexOf(" ") - 1);
                 ID = ID.Remove(ID.LastIndexOf(" "));
+                while (ID[ID.Length - 1] == ' ')
+                    ID = ID.Remove(ID.Length - 1);
 
-                string IDNV = ID.Remove(ID.Length - 1);
+                string IDNV = ID;
                 //MessageBox.Show(DATE + TIME + DOOR + IDNV);
 
                 string sql = "delete from USAGE where IDNV = '" + IDNV + "' and IDDATE ='" + IDDATE + "' and IDTIME = '" 
@@ -275,7 +337,146 @@ namespace RFID_DOOR_APP
                 //MessageBox.Show(sql);
                 _DB.Excute(sql);
 
+                string data = IDNV + " " + IDDOOR + " " + IDTIME + " " + IDDATE;
+
+                DateTime LocalDate = DateTime.Now;
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Delete Usage " + data + "')";
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+
                 reload();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
+        }
+
+        private void Employee_RFID_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Employee_Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Employee_Duty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Fix_Employee_Click(object sender, EventArgs e)
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                string IDNV = Employee_ID.Text;
+                string Name = Employee_Name.Text;
+                string Department = Employee_Depart_List.Text;
+                string Duty = Employee_Duty.Text;
+                string Birthday = Employee_Birthday.Value.ToShortDateString();
+                string VISA_ID = Employee_VisaID.Text;
+                string Gender = Gender_List.Text;
+                string Email = Employee_Email.Text;
+                string Tel = Employee_Tel.Text;
+                string Address = Employee_Address.Text;
+                string Pin = Employee_Pin.Text;
+
+                string ID_RFID = Employee_RFID_ComboBox.Text;
+                ID_RFID = ID_RFID.Substring(0, ID_RFID.IndexOf(" "));
+
+                string sql = "select ID from DEPARTMENT where NAME ='" + Department +"'";
+                _DB.Excute(sql);
+                Department = _DB.kq.Rows[0][0].ToString();
+
+                sql = "UPDATE NHANVIEN SET "
+                    + "TEN = '" + Name + "', "
+                    + "DEPART ='" + Department + "', "
+                    + "CARD_ID ='" + ID_RFID + "', "
+                    + "PIN = '" + Pin + "', "
+                    + "DUTY = '" + Duty + "', "
+                    + "BIRTHDAY = '" + Birthday + "', "
+                    + "VISA_ID = '" + VISA_ID + "', "
+                    + "GENDER ='" + Gender + "', "
+                    + "EMAIL ='" + Email + "', "
+                    + "TEL = '" + Tel + "', "
+                    + "ADDRESS = '" + Address + "' "
+                    + "WHERE IDNV = '" + IDNV + "'";
+
+                _DB.Excute(sql);
+
+                DateTime LocalDate = DateTime.Now;
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Update Info Employee " + IDNV + "')";
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+
+                reload();
+                Clear_Field();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
+        }
+
+        private void List_Template_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                string ID = List_Template.SelectedItem.ToString();
+                ID = ID.Substring(0, ID.IndexOf("."));
+
+                string sql = "select IDNV,TEN,B.NAME,CARD_ID,PIN,DUTY,BIRTHDAY,VISA_ID,GENDER,EMAIL,TEL,ADDRESS "
+                    + "from NHANVIEN A, DEPARTMENT B where IDNV = '" + ID + "' and A.DEPART = B.ID";
+                _DB.Excute(sql);
+
+                Employee_ID.Text = _DB.kq.Rows[0][0].ToString();
+                Employee_Name.Text = _DB.kq.Rows[0][1].ToString();
+                Employee_Depart_List.Text = _DB.kq.Rows[0][2].ToString();
+
+                // Get RFID Index
+                for (int i = 0; i < Employee_RFID_ComboBox.Items.Count; i++)
+                {
+                    string id_text = Employee_RFID_ComboBox.GetItemText(Employee_RFID_ComboBox.Items[i]);
+                    id_text = id_text.Substring(0, id_text.IndexOf(" "));
+
+                    if (id_text == _DB.kq.Rows[0][3].ToString())
+                    {
+                        Employee_RFID_ComboBox.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                Employee_Pin.Text = _DB.kq.Rows[0][4].ToString();
+                Employee_Duty.Text = _DB.kq.Rows[0][5].ToString();
+                
+                //Get Date Off Birth
+                DateTime date;
+                DateTime.TryParse(_DB.kq.Rows[0][6].ToString(),out date);
+                Employee_Birthday.Value = date;
+
+                Employee_VisaID.Text = _DB.kq.Rows[0][7].ToString();
+                Gender_List.Text = _DB.kq.Rows[0][8].ToString();
+                Employee_Email.Text = _DB.kq.Rows[0][9].ToString();
+                Employee_Tel.Text = _DB.kq.Rows[0][10].ToString();
+                Employee_Address.Text = _DB.kq.Rows[0][11].ToString();
             }
             catch (Exception ex)
             {
