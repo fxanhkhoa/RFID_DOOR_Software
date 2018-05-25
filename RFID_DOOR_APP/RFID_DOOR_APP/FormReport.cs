@@ -31,7 +31,7 @@ namespace RFID_DOOR_APP
             string sql;
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
-            sql = "select TimeDo as Time,Task  from REPORT";
+            sql = "select TimeDo as Time,Task  from REPORT ORDER BY ID DESC";
             _DB.Excute(sql);
             report_data.DataSource = _DB.ds.Tables[0];
             this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -42,7 +42,7 @@ namespace RFID_DOOR_APP
         private void timer1_Tick(object sender, EventArgs e)
         {
             string sql;
-            sql = "select TimeDo as Time,Task  from REPORT";
+            sql = "select TimeDo as Time,Task  from REPORT ORDER BY ID DESC";
             _DB.Excute(sql);
             report_data.DataSource = _DB.ds.Tables[0];
             this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

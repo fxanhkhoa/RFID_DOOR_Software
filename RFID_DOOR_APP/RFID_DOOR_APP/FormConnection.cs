@@ -121,5 +121,15 @@ namespace RFID_DOOR_APP
         {
 
         }
+
+        private void btn_CLose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormConnection_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }

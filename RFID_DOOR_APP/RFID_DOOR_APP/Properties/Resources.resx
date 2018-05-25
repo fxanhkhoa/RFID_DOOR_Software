@@ -118,73 +118,160 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="connection_button_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\connection_button_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="connection_button_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\connection_button_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="connection_button_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\connection_button_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="door" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\pics\door.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="employee_button_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\employee_button_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="employee_button_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\employee_button_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="employee_button_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\employee_button_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="report_button_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\report_button_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="report_button_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\report_button_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="report_button_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\report_button_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Time_button_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\Time_button_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Time_button_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\Time_button_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Time_button_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\Time_button_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="header_REPORT_A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\pics\header_REPORT_A.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ADD_BTN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\ADD_BTN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ADD_BTN_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\ADD_BTN_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DELETE_BTN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\DELETE_BTN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DELETE_BTN_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\DELETE_BTN_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FIX_BTN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\FIX_BTN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FIX_BTN_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\FIX_BTN_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="header_EMPLOYEE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\pics\header_EMPLOYEE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VIEW_BTN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\VIEW_BTN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="simple_green_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\simple-green-background.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VIEW_BTN_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\pics\VIEW_BTN_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ADD_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\ADD_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ADD_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\ADD_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ADD_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\ADD_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONNECT_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\CONNECT_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONNECT_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\CONNECT_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONNECT_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\CONNECT_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONTROL_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\CONTROL_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONTROL_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\CONTROL_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONTROL_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\CONTROL_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DATE_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DATE_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DATE_BUTTON_CLICKED1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DATE_BUTTON_CLICKED1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DATE_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DATE_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DATE_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DATE_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DELETE_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DELETE_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DELETE_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DELETE_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="door1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\door.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DOOR_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DOOR_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DOOR_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DOOR_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DOOR_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DOOR_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="door_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\door_open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EDIT_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\EDIT_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EDIT_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\EDIT_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EDIT_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\EDIT_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EMPLOYEE_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\EMPLOYEE_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EMPLOYEE_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\EMPLOYEE_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EMPLOYEE_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\EMPLOYEE_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="header_EMPLOYEE1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\header_EMPLOYEE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="header_REPORT_A1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\header_REPORT_A.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="REPORT_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\REPORT_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="REPORT_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\REPORT_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="REPORT_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\REPORT_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Report_Header" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\Report_Header.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STATUS_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\STATUS_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STATUS_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\STATUS_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STATUS_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\STATUS_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TIME_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\TIME_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TIME_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\TIME_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TIME_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\TIME_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VIEW_BUTTON_CLICKED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\VIEW_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VIEW_BUTTON_HOVER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\VIEW_BUTTON_HOVER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VIEW_BUTTON_NORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\VIEW_BUTTON_NORMAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\698913-icon-81-document-add-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DATE_BUTTON_CLICKED2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\DATE_BUTTON_CLICKED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="garbage_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\pics\garbage_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Update_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\update_btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
