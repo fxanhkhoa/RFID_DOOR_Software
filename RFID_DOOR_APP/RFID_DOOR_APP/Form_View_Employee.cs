@@ -27,25 +27,7 @@ namespace RFID_DOOR_APP
         {
             _DB.Connect();
 
-            if (_DB.conn.State != ConnectionState.Open)
-                _DB.Open();
-
-
-            try
-            {
-                sql = "select TEN,RFID,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
-
-                _DB.Excute(sql);
-                employee_data.DataSource = _DB.ds.Tables[0];
-                employee_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                employee_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                employee_data.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                employee_data.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-            catch (Exception ex)
-            {
-
-            }
+            reload();
         }
 
          public void reload_style()
@@ -69,11 +51,33 @@ namespace RFID_DOOR_APP
         }
         private void reload()
         {
-            string sql;
-            sql = "select TEN,VITRI,TIME_USE,DATE_USE from DOOR,NHANVIEN,SUDUNG where DOOR.IDDOOR = SUDUNG.IDDOOR and NHANVIEN.IDNV = SUDUNG.IDNV";
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
 
-            _DB.Excute(sql);
-            employee_data.DataSource = _DB.ds.Tables[0];
+            try
+            {
+
+                string sql;
+                sql = "select B.TEN, C.NAME, B.CARD_ID, A.MODE, B.PIN, D.VITRI, F.Start_Time, F.End_Time, E.DAY"
+                    + " from USAGE A, NHANVIEN B, DEPARTMENT C, DOOR D, Date_Template E, Time_Template F "
+                    + " where A.IDNV = B.IDNV AND C.ID = B.DEPART AND A.IDDOOR = D.IDDOOR AND A.IDDATE = E.ID"
+                    + " AND A.IDTIME = F.Id";
+
+                _DB.Excute(sql);
+                employee_data.DataSource = _DB.ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
+        }
+
+        private void employee_data_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

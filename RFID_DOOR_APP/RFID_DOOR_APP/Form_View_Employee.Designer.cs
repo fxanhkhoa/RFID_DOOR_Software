@@ -42,6 +42,7 @@
             this.employee_data.Name = "employee_data";
             this.employee_data.Size = new System.Drawing.Size(392, 345);
             this.employee_data.TabIndex = 0;
+            this.employee_data.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employee_data_CellContentClick);
             // 
             // Form_View_Employee
             // 
