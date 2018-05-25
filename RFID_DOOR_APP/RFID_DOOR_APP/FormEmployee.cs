@@ -150,11 +150,18 @@ namespace RFID_DOOR_APP
             view_btn_status = true;
             view_btn.Image = Properties.Resources.VIEW_BUTTON_CLICKED;
 
-            MyFormEmployeeAdd.Hide();
-            MyFormDelete.Hide();
+            MyFormViewEmployee = new Form_View_Employee();
 
-            //MyFormViewEmployee = new FormViewEmployee();
+            MyFormViewEmployee.TopLevel = false;
+            MyFormViewEmployee.AutoScroll = true;
+            MyFormViewEmployee.MaximizeBox = true;
+
+            panel2.Controls.Add(MyFormViewEmployee);
             MyFormViewEmployee.Show();
+            MyFormTimeTemplate.Hide();
+            MyFormDateTemplate.Hide();
+            MyFormDoorTemplate.Hide();
+            MyFormEditUser.Hide();
 
             MyFormViewEmployee.reload_style();
         }
