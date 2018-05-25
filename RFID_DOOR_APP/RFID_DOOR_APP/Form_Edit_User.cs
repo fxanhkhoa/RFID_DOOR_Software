@@ -96,7 +96,8 @@ namespace RFID_DOOR_APP
                 string data = Employee_ID.Text + Employee_Name.Text + Employee_Duty.Text + ID_RFID;
 
                 DateTime LocalDate = DateTime.Now;
-                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' added Employee " + data + "')";
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() 
+                    + "',' added Employee " + data + "')";
                 _DB.Excute(sql);
 
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
@@ -120,11 +121,11 @@ namespace RFID_DOOR_APP
 
             try
             {
-                string IDNV = List_Usage_ID.GetItemText(List_Usage_ID.SelectedItem);
-                string IDDOOR = List_Usage_Door.GetItemText(List_Usage_Door.SelectedItem);
-                string IDTIME = List_Usage_Time.GetItemText(List_Usage_Time.SelectedItem);
-                string IDDATE = List_Usage_Day.GetItemText(List_Usage_Day.SelectedItem);
-                string MODE = Employee_Mode_ComboBox.GetItemText(Employee_Mode_ComboBox.SelectedItem);
+                string IDNV = List_Usage_ID.Text;
+                string IDDOOR = List_Usage_Door.Text;
+                string IDTIME = List_Usage_Time.Text;
+                string IDDATE = List_Usage_Day.Text;
+                string MODE = Employee_Mode_ComboBox.Text;
                 MODE = MODE.Substring(0, MODE.IndexOf("."));
                 
                 string sql = "insert into USAGE values('" + IDNV + "','" + IDDOOR + "','" + IDTIME + "','" + IDDATE + "','" + MODE + "')";
@@ -153,11 +154,13 @@ namespace RFID_DOOR_APP
 
         private void Form_Edit_User_Load(object sender, EventArgs e)
         {
+            List_Usage_ID.SelectedIndexChanged -= new EventHandler(this.List_Usage_ID_SelectedIndexChanged);
             _DB.Connect();
             reload();
             ShowList();
             Read_RFID.Visible = false;
             //Read_RFID.Enabled = false;
+            List_Usage_ID.SelectedIndexChanged += new EventHandler(this.List_Usage_ID_SelectedIndexChanged);
         }
 
         private void ShowList()
@@ -173,7 +176,7 @@ namespace RFID_DOOR_APP
                 List_Usage_ID.DisplayMember = "IDNV";
                 List_Usage_ID.ValueMember = "IDNV";
                 List_Usage_ID.DataSource = _DB.kq;
-                List_Usage_ID.SelectedIndex = 0;
+                //List_Usage_ID.SelectedIndex = 0;
 
                 sql = "select * from DOOR";
                 _DB.Excute(sql);
@@ -181,7 +184,7 @@ namespace RFID_DOOR_APP
                 List_Usage_Door.DisplayMember = "IDDOOR";
                 List_Usage_Door.ValueMember = "IDDOOR";
                 List_Usage_Door.DataSource = _DB.kq;
-                List_Usage_Door.SelectedIndex = 0;
+                //List_Usage_Door.SelectedIndex = 0;
 
                 sql = "select * from Time_Template";
                 _DB.Excute(sql);
@@ -189,7 +192,7 @@ namespace RFID_DOOR_APP
                 List_Usage_Time.DisplayMember = "Id";
                 List_Usage_Time.ValueMember = "Id";
                 List_Usage_Time.DataSource = _DB.kq;
-                List_Usage_Time.SelectedIndex = 0;
+                //List_Usage_Time.SelectedIndex = 0;
 
                 sql = "select * from Date_Template";
                 _DB.Excute(sql);
@@ -197,7 +200,7 @@ namespace RFID_DOOR_APP
                 List_Usage_Day.DisplayMember = "ID";
                 List_Usage_Day.ValueMember = "ID";
                 List_Usage_Day.DataSource = _DB.kq;
-                List_Usage_Day.SelectedIndex = 0;
+                //List_Usage_Day.SelectedIndex = 0;
 
                 sql = "select * from DEPARTMENT";
                 _DB.Excute(sql);
@@ -207,7 +210,7 @@ namespace RFID_DOOR_APP
                 Employee_Depart_List.DataSource = _DB.kq;
                 Employee_Depart_List.SelectedIndex = 0;
 
-                Employee_Mode_ComboBox.SelectedIndex = 0;
+                //Employee_Mode_ComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -485,6 +488,37 @@ namespace RFID_DOOR_APP
 
             if (_DB.conn.State != ConnectionState.Closed)
                 _DB.Close();
+        }
+
+        private void List_Usage_ID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                string IDNV = List_Usage_ID.Text;
+                string sql = "select A.TEN, B.NAME, C.ID"
+                    + " FROM NHANVIEN A, DEPARTMENT B, ID_CARD C" 
+                    + " WHERE A.DEPART = B.ID AND A.CARD_ID = C.ID AND IDNV = '" + IDNV +"'";
+                _DB.Excute(sql);
+
+                Usage_Name.Text = _DB.kq.Rows[0][0].ToString();
+                Usage_Depart.Text = _DB.kq.Rows[0][1].ToString();
+                Usage_Card_ID.Text = _DB.kq.Rows[0][2].ToString();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
+        }
+
+        private void Clear_Btn_Click(object sender, EventArgs e)
+        {
+            Clear_Field();
         }
     }
 }

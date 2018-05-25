@@ -44,8 +44,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.Usage_RFID = new System.Windows.Forms.Label();
-            this.Usage_Unit = new System.Windows.Forms.Label();
+            this.Usage_Card_ID = new System.Windows.Forms.Label();
+            this.Usage_Depart = new System.Windows.Forms.Label();
             this.Usage_Name = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -80,6 +80,7 @@
             this.Add_Usage = new System.Windows.Forms.PictureBox();
             this.Add_Employee = new System.Windows.Forms.PictureBox();
             this.Delete_Employee = new System.Windows.Forms.PictureBox();
+            this.Clear_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Fix_Employee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete_Usage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Add_Usage)).BeginInit();
@@ -196,6 +197,7 @@
             this.List_Usage_ID.Name = "List_Usage_ID";
             this.List_Usage_ID.Size = new System.Drawing.Size(121, 21);
             this.List_Usage_ID.TabIndex = 44;
+            this.List_Usage_ID.SelectedIndexChanged += new System.EventHandler(this.List_Usage_ID_SelectedIndexChanged);
             // 
             // Time
             // 
@@ -233,23 +235,23 @@
             this.label11.TabIndex = 30;
             this.label11.Text = "Time";
             // 
-            // Usage_RFID
+            // Usage_Card_ID
             // 
-            this.Usage_RFID.AutoSize = true;
-            this.Usage_RFID.Location = new System.Drawing.Point(113, 477);
-            this.Usage_RFID.Name = "Usage_RFID";
-            this.Usage_RFID.Size = new System.Drawing.Size(32, 13);
-            this.Usage_RFID.TabIndex = 29;
-            this.Usage_RFID.Text = "RFID";
+            this.Usage_Card_ID.AutoSize = true;
+            this.Usage_Card_ID.Location = new System.Drawing.Point(113, 477);
+            this.Usage_Card_ID.Name = "Usage_Card_ID";
+            this.Usage_Card_ID.Size = new System.Drawing.Size(32, 13);
+            this.Usage_Card_ID.TabIndex = 29;
+            this.Usage_Card_ID.Text = "RFID";
             // 
-            // Usage_Unit
+            // Usage_Depart
             // 
-            this.Usage_Unit.AutoSize = true;
-            this.Usage_Unit.Location = new System.Drawing.Point(113, 455);
-            this.Usage_Unit.Name = "Usage_Unit";
-            this.Usage_Unit.Size = new System.Drawing.Size(26, 13);
-            this.Usage_Unit.TabIndex = 28;
-            this.Usage_Unit.Text = "Unit";
+            this.Usage_Depart.AutoSize = true;
+            this.Usage_Depart.Location = new System.Drawing.Point(113, 455);
+            this.Usage_Depart.Name = "Usage_Depart";
+            this.Usage_Depart.Size = new System.Drawing.Size(26, 13);
+            this.Usage_Depart.TabIndex = 28;
+            this.Usage_Depart.Text = "Unit";
             // 
             // Usage_Name
             // 
@@ -274,18 +276,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(50, 476);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 48;
-            this.label8.Text = "RFID";
+            this.label8.Text = "Card ID";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(50, 454);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(26, 13);
+            this.label12.Size = new System.Drawing.Size(42, 13);
             this.label12.TabIndex = 47;
-            this.label12.Text = "Unit";
+            this.label12.Text = "Depart.";
             // 
             // label13
             // 
@@ -559,12 +561,23 @@
             this.Delete_Employee.TabStop = false;
             this.Delete_Employee.Click += new System.EventHandler(this.Delete_Employee_Click);
             // 
+            // Clear_Btn
+            // 
+            this.Clear_Btn.Location = new System.Drawing.Point(404, 306);
+            this.Clear_Btn.Name = "Clear_Btn";
+            this.Clear_Btn.Size = new System.Drawing.Size(40, 34);
+            this.Clear_Btn.TabIndex = 79;
+            this.Clear_Btn.Text = "Clear";
+            this.Clear_Btn.UseVisualStyleBackColor = true;
+            this.Clear_Btn.Click += new System.EventHandler(this.Clear_Btn_Click);
+            // 
             // Form_Edit_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(791, 613);
+            this.Controls.Add(this.Clear_Btn);
             this.Controls.Add(this.Fix_Employee);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.Employee_Address);
@@ -603,8 +616,8 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.Usage_RFID);
-            this.Controls.Add(this.Usage_Unit);
+            this.Controls.Add(this.Usage_Card_ID);
+            this.Controls.Add(this.Usage_Depart);
             this.Controls.Add(this.Usage_Name);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label5);
@@ -649,8 +662,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label Usage_RFID;
-        private System.Windows.Forms.Label Usage_Unit;
+        private System.Windows.Forms.Label Usage_Card_ID;
+        private System.Windows.Forms.Label Usage_Depart;
         private System.Windows.Forms.Label Usage_Name;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label8;
@@ -685,5 +698,6 @@
         private System.Windows.Forms.TextBox Employee_Address;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.PictureBox Fix_Employee;
+        private System.Windows.Forms.Button Clear_Btn;
     }
 }
