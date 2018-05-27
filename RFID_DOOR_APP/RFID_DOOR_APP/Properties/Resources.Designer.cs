@@ -283,9 +283,29 @@ namespace RFID_DOOR_APP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Door_Close {
+            get {
+                object obj = ResourceManager.GetObject("Door_Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap door_open {
             get {
                 object obj = ResourceManager.GetObject("door_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Door_Open1 {
+            get {
+                object obj = ResourceManager.GetObject("Door_Open1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -24,6 +24,7 @@ namespace RFID_DOOR_APP
         FormConnection MyFormConnection = new FormConnection();
         FormEmployeeAddEM MyFormAddEM = new FormEmployeeAddEM();
         Form_Environment MyFormEnvironment = new Form_Environment();
+        Form_Controller MyFormController = new Form_Controller();
 
         Global _global = new Global();
         string s;
@@ -307,8 +308,18 @@ namespace RFID_DOOR_APP
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             Pic_Normal_All(3);
-                pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_CLICKED;
+            pictureBox4.Image = Properties.Resources.CONTROL_BUTTON_CLICKED;
             control_btn_status = 1;
+            form_close_all(3);
+
+            MyFormController = new Form_Controller();
+
+            MyFormController.TopLevel = false;
+            MyFormController.AutoScroll = true;
+
+            User_Control.Controls.Add(MyFormController);
+
+            MyFormController.Show();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -524,24 +535,32 @@ namespace RFID_DOOR_APP
             {
                 case 1:
                     MyFormEmployee.Visible = false;
+                    MyFormController.Visible = false;
                     MyFormConnection.Visible = false;
                     MyFormEnvironment.Visible = false;
                     break;
                 case 2:
                     MyformReport.Visible = false;
+                    MyFormController.Visible = false;
                     MyFormConnection.Visible = false;
                     MyFormEnvironment.Visible = false;
                     break;
                 case 3:
+                    MyformReport.Visible = false;
+                    MyFormEmployee.Visible = false;
+                    MyFormConnection.Visible = false;
+                    MyFormEnvironment.Visible = false;
                     break;
                 case 4:
                     MyformReport.Visible = false;
                     MyFormEmployee.Visible = false;
+                    MyFormController.Visible = false;
                     MyFormConnection.Visible = false;
                     break;
                 case 5:
                     MyformReport.Visible = false;
                     MyFormEmployee.Visible = false;
+                    MyFormController.Visible = false;
                     MyFormEnvironment.Visible = false;
                     break;
             };

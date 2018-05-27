@@ -44,6 +44,8 @@ namespace RFID_DOOR_APP
                 for (int i = 0; i < _DB.kq.Rows.Count; i++)
                 {
                     Door[i] = new Door_Environment(_DB.kq.Rows[i][0].ToString());
+                    Door[i].Temperature_Data = Convert.ToInt16(_DB.kq.Rows[i][1]);
+                    Door[i].Humidity_Data = Convert.ToInt16(_DB.kq.Rows[i][2]);
                     Environment_Panel.Controls.Add(Door[i]);
                 }
             }

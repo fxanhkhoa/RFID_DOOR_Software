@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Data_Board.cs" />
     <Compile Include="DOOR_CHECK.cs" />
+    <Compile Include="Door_Controller.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Door_Controller.Designer.cs">
+      <DependentUpon>Door_Controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Door_Environment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +120,12 @@
     <Compile Include="FormView_Employee.Designer.cs">
       <DependentUpon>FormView_Employee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Controller.Designer.cs">
+      <DependentUpon>Form_Controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Date_Template.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +166,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL.cs" />
+    <EmbeddedResource Include="Door_Controller.resx">
+      <DependentUpon>Door_Controller.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Door_Environment.resx">
       <DependentUpon>Door_Environment.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormView_Employee.resx">
       <DependentUpon>FormView_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Controller.resx">
+      <DependentUpon>Form_Controller.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Date_Template.resx">
       <DependentUpon>Form_Date_Template.cs</DependentUpon>
@@ -485,6 +503,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Temperature_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Door_Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Door_Open.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
