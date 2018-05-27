@@ -49,7 +49,6 @@
             this.OWN_IP = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.btn_CLose = new System.Windows.Forms.Button();
             this.Connect_Btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -245,17 +244,6 @@
             // 
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             // 
-            // btn_CLose
-            // 
-            this.btn_CLose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btn_CLose.Location = new System.Drawing.Point(198, 302);
-            this.btn_CLose.Name = "btn_CLose";
-            this.btn_CLose.Size = new System.Drawing.Size(275, 23);
-            this.btn_CLose.TabIndex = 9;
-            this.btn_CLose.Text = "Close";
-            this.btn_CLose.UseVisualStyleBackColor = false;
-            this.btn_CLose.Click += new System.EventHandler(this.btn_CLose_Click);
-            // 
             // Connect_Btn
             // 
             this.Connect_Btn.BackColor = System.Drawing.Color.White;
@@ -273,7 +261,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(698, 433);
-            this.Controls.Add(this.btn_CLose);
             this.Controls.Add(this.OWN_IP);
             this.Controls.Add(this.Connect_Btn);
             this.Controls.Add(this.Ethernet);
@@ -325,7 +312,6 @@
         private System.Windows.Forms.ComboBox OWN_IP;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.Button btn_CLose;
         private System.Windows.Forms.Button Connect_Btn;
     }
 }

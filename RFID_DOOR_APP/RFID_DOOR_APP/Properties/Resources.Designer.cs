@@ -423,6 +423,16 @@ namespace RFID_DOOR_APP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Humidity_icon {
+            get {
+                object obj = ResourceManager.GetObject("Humidity_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Red {
             get {
                 object obj = ResourceManager.GetObject("Red", resourceCulture);
@@ -506,6 +516,16 @@ namespace RFID_DOOR_APP.Properties {
         internal static System.Drawing.Bitmap STATUS_BUTTON_NORMAL {
             get {
                 object obj = ResourceManager.GetObject("STATUS_BUTTON_NORMAL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Temperature_icon {
+            get {
+                object obj = ResourceManager.GetObject("Temperature_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

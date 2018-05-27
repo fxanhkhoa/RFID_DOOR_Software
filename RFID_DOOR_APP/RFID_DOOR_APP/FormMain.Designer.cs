@@ -31,29 +31,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.Control_BTN = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.connectStatus_text = new System.Windows.Forms.Label();
             this.Connection_status = new System.Windows.Forms.ProgressBar();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Title = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.picture_header = new System.Windows.Forms.PictureBox();
             this.User_Control = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.Control_BTN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Panel_Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_header)).BeginInit();
             this.SuspendLayout();
@@ -62,14 +62,14 @@
             // 
             this.Control_BTN.BackColor = System.Drawing.Color.White;
             this.Control_BTN.Controls.Add(this.label2);
-            this.Control_BTN.Controls.Add(this.pictureBox5);
-            this.Control_BTN.Controls.Add(this.pictureBox6);
             this.Control_BTN.Controls.Add(this.connectStatus_text);
             this.Control_BTN.Controls.Add(this.Connection_status);
-            this.Control_BTN.Controls.Add(this.pictureBox4);
-            this.Control_BTN.Controls.Add(this.pictureBox3);
-            this.Control_BTN.Controls.Add(this.pictureBox2);
             this.Control_BTN.Controls.Add(this.Title);
+            this.Control_BTN.Controls.Add(this.pictureBox2);
+            this.Control_BTN.Controls.Add(this.pictureBox3);
+            this.Control_BTN.Controls.Add(this.pictureBox4);
+            this.Control_BTN.Controls.Add(this.pictureBox6);
+            this.Control_BTN.Controls.Add(this.pictureBox5);
             resources.ApplyResources(this.Control_BTN, "Control_BTN");
             this.Control_BTN.Name = "Control_BTN";
             this.Control_BTN.Resize += new System.EventHandler(this.Control_BTN_Resize);
@@ -78,26 +78,6 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::RFID_DOOR_APP.Properties.Resources.CONNECT_BUTTON_NORMAL;
-            resources.ApplyResources(this.pictureBox5, "pictureBox5");
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-            this.pictureBox5.MouseLeave += new System.EventHandler(this.pictureBox5_MouseLeave);
-            this.pictureBox5.MouseHover += new System.EventHandler(this.pictureBox5_MouseHover);
-            // 
-            // pictureBox6
-            // 
-            resources.ApplyResources(this.pictureBox6, "pictureBox6");
-            this.pictureBox6.Image = global::RFID_DOOR_APP.Properties.Resources.STATUS_BUTTON_NORMAL;
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            this.pictureBox6.MouseLeave += new System.EventHandler(this.pictureBox6_MouseLeave);
-            this.pictureBox6.MouseHover += new System.EventHandler(this.pictureBox6_MouseHover);
             // 
             // connectStatus_text
             // 
@@ -109,36 +89,6 @@
             // 
             resources.ApplyResources(this.Connection_status, "Connection_status");
             this.Connection_status.Name = "Connection_status";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::RFID_DOOR_APP.Properties.Resources.CONTROL_BUTTON_NORMAL;
-            resources.ApplyResources(this.pictureBox4, "pictureBox4");
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            this.pictureBox4.MouseLeave += new System.EventHandler(this.pictureBox4_MouseLeave);
-            this.pictureBox4.MouseHover += new System.EventHandler(this.pictureBox4_MouseHover);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::RFID_DOOR_APP.Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
-            resources.ApplyResources(this.pictureBox3, "pictureBox3");
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            this.pictureBox3.MouseLeave += new System.EventHandler(this.pictureBox3_MouseLeave);
-            this.pictureBox3.MouseHover += new System.EventHandler(this.pictureBox3_MouseHover);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::RFID_DOOR_APP.Properties.Resources.REPORT_BUTTON_NORMAL;
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
-            this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
             // 
             // Title
             // 
@@ -159,6 +109,56 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Name = "label1";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::RFID_DOOR_APP.Properties.Resources.REPORT_BUTTON_NORMAL;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
+            this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::RFID_DOOR_APP.Properties.Resources.EMPLOYEE_BUTTON_NORMAL;
+            resources.ApplyResources(this.pictureBox3, "pictureBox3");
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.pictureBox3.MouseLeave += new System.EventHandler(this.pictureBox3_MouseLeave);
+            this.pictureBox3.MouseHover += new System.EventHandler(this.pictureBox3_MouseHover);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::RFID_DOOR_APP.Properties.Resources.CONTROL_BUTTON_NORMAL;
+            resources.ApplyResources(this.pictureBox4, "pictureBox4");
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.pictureBox4.MouseLeave += new System.EventHandler(this.pictureBox4_MouseLeave);
+            this.pictureBox4.MouseHover += new System.EventHandler(this.pictureBox4_MouseHover);
+            // 
+            // pictureBox6
+            // 
+            resources.ApplyResources(this.pictureBox6, "pictureBox6");
+            this.pictureBox6.Image = global::RFID_DOOR_APP.Properties.Resources.STATUS_BUTTON_NORMAL;
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.pictureBox6.MouseLeave += new System.EventHandler(this.pictureBox6_MouseLeave);
+            this.pictureBox6.MouseHover += new System.EventHandler(this.pictureBox6_MouseHover);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::RFID_DOOR_APP.Properties.Resources.CONNECT_BUTTON_NORMAL;
+            resources.ApplyResources(this.pictureBox5, "pictureBox5");
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBox5.MouseLeave += new System.EventHandler(this.pictureBox5_MouseLeave);
+            this.pictureBox5.MouseHover += new System.EventHandler(this.pictureBox5_MouseHover);
             // 
             // Panel_Header
             // 
@@ -201,14 +201,14 @@
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.Control_BTN.ResumeLayout(false);
             this.Control_BTN.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Title.ResumeLayout(false);
             this.Title.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.Panel_Header.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picture_header)).EndInit();
             this.ResumeLayout(false);
