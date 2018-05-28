@@ -99,12 +99,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.Close_Btn);
             this.Controls.Add(this.Open_Btn);
             this.Controls.Add(this.Door_Status);
             this.Controls.Add(this.Text_Status);
             this.Controls.Add(this.Door_Name);
             this.Name = "Door_Controller";
+            this.Size = new System.Drawing.Size(146, 146);
             ((System.ComponentModel.ISupportInitialize)(this.Door_Status)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

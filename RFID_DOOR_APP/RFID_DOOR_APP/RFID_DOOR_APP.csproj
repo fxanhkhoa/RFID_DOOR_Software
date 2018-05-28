@@ -150,6 +150,12 @@
     <Compile Include="Form_Environment.Designer.cs">
       <DependentUpon>Form_Environment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SignUp.Designer.cs">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Time_Template.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Environment.resx">
       <DependentUpon>Form_Environment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SignUp.resx">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Time_Template.resx">
       <DependentUpon>Form_Time_Template.cs</DependentUpon>

@@ -27,16 +27,11 @@ namespace RFID_DOOR_APP
         {
             //FormReport.DockPaddingEdges 
             _DB.Connect();
-
-            string sql;
-            if (_DB.conn.State != ConnectionState.Open)
-                _DB.Open();
-            sql = "select TimeDo as Time,Task  from REPORT ORDER BY ID DESC";
-            _DB.Excute(sql);
+            reload();
             report_data.DataSource = _DB.ds.Tables[0];
             this.report_data.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.report_data.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timer1.Start();
+            //timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -52,7 +47,20 @@ namespace RFID_DOOR_APP
 
         private void reload()
         {
+            string sql;
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+            try
+            {
+                sql = "select TimeDo as Time,Task  from REPORT ORDER BY ID DESC";
+                _DB.Excute(sql);
+            }
+            catch (Exception ex)
+            {
 
+            }
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
         }
 
         public void reload_style()
@@ -73,6 +81,37 @@ namespace RFID_DOOR_APP
 
                 }
             }
+        }
+
+        private void Clear_Btn_Click(object sender, EventArgs e)
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                // renew ID
+                string sql = "";
+
+                sql = "delete from REPORT where TimeDo < '" + DateTimePick.Value.ToString() +"'";
+                _DB.Excute(sql);
+
+                DateTime localDate = DateTime.Now;
+                sql = @"insert into REPORT values('" + localDate.ToString() + "','Delete Report from " + DateTimePick.Value.ToString() + "')";
+                _DB.Excute(sql);
+
+                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                _DB.Excute(sql);
+
+                reload();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
         }
     }
 }

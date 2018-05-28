@@ -26,6 +26,7 @@ namespace RFID_DOOR_APP
         *
         **********************************************/
         SQL _DB = new SQL();
+        Form_SignUp MyFormSignUp = new Form_SignUp();
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
@@ -112,6 +113,11 @@ namespace RFID_DOOR_APP
             {
                 Login_BTN.PerformClick();
             }
+        }
+
+        private void SignUp_Btn_Click(object sender, EventArgs e)
+        {
+            MyFormSignUp.Show();
         }
     }
 }

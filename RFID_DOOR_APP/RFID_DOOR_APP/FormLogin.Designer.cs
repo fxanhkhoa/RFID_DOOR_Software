@@ -34,6 +34,7 @@
             this.Mail_Picture = new System.Windows.Forms.PictureBox();
             this.Key_Picture = new System.Windows.Forms.PictureBox();
             this.Login_BTN = new System.Windows.Forms.Button();
+            this.SignUp_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).BeginInit();
             this.SuspendLayout();
@@ -104,6 +105,20 @@
             this.Login_BTN.UseVisualStyleBackColor = false;
             this.Login_BTN.Click += new System.EventHandler(this.Login_BTN_Click);
             // 
+            // SignUp_Btn
+            // 
+            this.SignUp_Btn.FlatAppearance.BorderSize = 0;
+            this.SignUp_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SignUp_Btn.ForeColor = System.Drawing.Color.White;
+            this.SignUp_Btn.Image = ((System.Drawing.Image)(resources.GetObject("SignUp_Btn.Image")));
+            this.SignUp_Btn.Location = new System.Drawing.Point(148, 460);
+            this.SignUp_Btn.Name = "SignUp_Btn";
+            this.SignUp_Btn.Size = new System.Drawing.Size(185, 23);
+            this.SignUp_Btn.TabIndex = 4;
+            this.SignUp_Btn.Text = "Sign up!";
+            this.SignUp_Btn.UseVisualStyleBackColor = true;
+            this.SignUp_Btn.Click += new System.EventHandler(this.SignUp_Btn_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,6 +126,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(581, 568);
+            this.Controls.Add(this.SignUp_Btn);
             this.Controls.Add(this.Key_Picture);
             this.Controls.Add(this.Mail_Picture);
             this.Controls.Add(this.Password_Field);
@@ -136,5 +152,6 @@
         private System.Windows.Forms.PictureBox Mail_Picture;
         private System.Windows.Forms.PictureBox Key_Picture;
         private System.Windows.Forms.Button Login_BTN;
+        private System.Windows.Forms.Button SignUp_Btn;
     }
 }
