@@ -81,6 +81,7 @@
             this.Add_Employee = new System.Windows.Forms.PictureBox();
             this.Delete_Employee = new System.Windows.Forms.PictureBox();
             this.Clear_Btn = new System.Windows.Forms.Button();
+            this.New_Card_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Fix_Employee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete_Usage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Add_Usage)).BeginInit();
@@ -571,12 +572,22 @@
             this.Clear_Btn.UseVisualStyleBackColor = true;
             this.Clear_Btn.Click += new System.EventHandler(this.Clear_Btn_Click);
             // 
+            // New_Card_Btn
+            // 
+            this.New_Card_Btn.Location = new System.Drawing.Point(450, 306);
+            this.New_Card_Btn.Name = "New_Card_Btn";
+            this.New_Card_Btn.Size = new System.Drawing.Size(40, 34);
+            this.New_Card_Btn.TabIndex = 80;
+            this.New_Card_Btn.Text = "New Card";
+            this.New_Card_Btn.UseVisualStyleBackColor = true;
+            // 
             // Form_Edit_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(791, 613);
+            this.Controls.Add(this.New_Card_Btn);
             this.Controls.Add(this.Clear_Btn);
             this.Controls.Add(this.Fix_Employee);
             this.Controls.Add(this.label22);
@@ -699,5 +710,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.PictureBox Fix_Employee;
         private System.Windows.Forms.Button Clear_Btn;
+        private System.Windows.Forms.Button New_Card_Btn;
     }
 }
