@@ -468,8 +468,6 @@ namespace RFID_DOOR_APP
         {
             User_Control.Size = new Size(Convert.ToInt16(this.Size.Width), Convert.ToInt16(this.Size.Height));
             MyformReport.reload_style();
-            
-            //Control_BTN.
         }
 
         private void Pic_Normal_All(int a)

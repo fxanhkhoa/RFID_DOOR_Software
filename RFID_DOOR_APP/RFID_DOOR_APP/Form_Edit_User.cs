@@ -521,5 +521,18 @@ namespace RFID_DOOR_APP
         {
             Clear_Field();
         }
+
+        private void New_Card_Btn_Click(object sender, EventArgs e)
+        {
+            Form_NewCard myForm = new Form_NewCard();
+            myForm.Show();
+            myForm.FormClosed += Form_NewCard_Closed;
+        }
+
+        private void Form_NewCard_Closed(object sender, EventArgs e)
+        {
+            reload();
+            ShowList();
+        }
     }
 }

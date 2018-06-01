@@ -150,6 +150,12 @@
     <Compile Include="Form_Environment.Designer.cs">
       <DependentUpon>Form_Environment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_NewCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_NewCard.Designer.cs">
+      <DependentUpon>Form_NewCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Environment.resx">
       <DependentUpon>Form_Environment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_NewCard.resx">
+      <DependentUpon>Form_NewCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_SignUp.resx">
       <DependentUpon>Form_SignUp.cs</DependentUpon>

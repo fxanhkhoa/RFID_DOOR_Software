@@ -580,6 +580,7 @@
             this.New_Card_Btn.TabIndex = 80;
             this.New_Card_Btn.Text = "New Card";
             this.New_Card_Btn.UseVisualStyleBackColor = true;
+            this.New_Card_Btn.Click += new System.EventHandler(this.New_Card_Btn_Click);
             // 
             // Form_Edit_User
             // 
