@@ -16,7 +16,7 @@ namespace RFID_DOOR_APP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new FormLogin());
         }
     }
 }

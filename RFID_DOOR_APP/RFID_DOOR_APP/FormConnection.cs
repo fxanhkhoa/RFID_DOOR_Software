@@ -84,25 +84,33 @@ namespace RFID_DOOR_APP
         /* connect to server */
         private void Ethernet_Click(object sender, EventArgs e)
         {
-            Global.client = new TcpClient();
-            Global.IP_End = new IPEndPoint(IPAddress.Parse(Server.Text), int.Parse(Eth_PORT.Text));
-            Global.server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //Global.client = new TcpClient();
+            //Global.IP_End = new IPEndPoint(IPAddress.Parse(Server.Text), int.Parse(Eth_PORT.Text));
+            //Global.server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                Global.server.Connect(Global.IP_End);
-                Global.client.Connect(Global.IP_End);
-                if (Global.server.Connected)
-                {
-                    MessageBox.Show("Connected to Server!");
+                /* For Server */
+                Global.connection_use = 0;
+                Global.dataBoard = new Data_Board();
+                Global.Status = 1;
+                this.Close();
 
-                    Global.STW = new StreamWriter(Global.client.GetStream());
-                    Global.STR = new StreamReader(Global.client.GetStream());
-                    Global.STW.AutoFlush = true;
+                /* For Client */
+                //Global.server.Connect(Global.IP_End);
+                //Global.client.Connect(Global.IP_End);
+                //if (Global.server.Connected)
+                //{
+                //    MessageBox.Show("Connected to Server!");
 
-                    Global.connection_use = 0;
-                    Global.Status = 1;
-                    this.Close();
-                }
+                //    Global.STW = new StreamWriter(Global.client.GetStream());
+                //    Global.STR = new StreamReader(Global.client.GetStream());
+                //    Global.STW.AutoFlush = true;
+
+                //    Global.connection_use = 0;
+                //    Global.Status = 1;
+                //    this.Close();
+                //}
+
             }
             catch (TimeoutException)
             {

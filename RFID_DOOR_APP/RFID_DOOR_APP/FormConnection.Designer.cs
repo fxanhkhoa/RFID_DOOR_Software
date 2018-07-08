@@ -179,6 +179,7 @@
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(188, 20);
             this.Server.TabIndex = 4;
+            this.Server.Visible = false;
             // 
             // Eth_PORT
             // 
@@ -186,6 +187,7 @@
             this.Eth_PORT.Name = "Eth_PORT";
             this.Eth_PORT.Size = new System.Drawing.Size(188, 20);
             this.Eth_PORT.TabIndex = 5;
+            this.Eth_PORT.Visible = false;
             // 
             // label6
             // 
@@ -196,6 +198,7 @@
             this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "OWN_IP";
+            this.label6.Visible = false;
             // 
             // label7
             // 
@@ -206,6 +209,7 @@
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "BOARD IP";
+            this.label7.Visible = false;
             // 
             // label8
             // 
@@ -216,15 +220,16 @@
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 6;
             this.label8.Text = "PORT";
+            this.label8.Visible = false;
             // 
             // Ethernet
             // 
             this.Ethernet.BackColor = System.Drawing.Color.White;
             this.Ethernet.Location = new System.Drawing.Point(460, 239);
             this.Ethernet.Name = "Ethernet";
-            this.Ethernet.Size = new System.Drawing.Size(75, 23);
+            this.Ethernet.Size = new System.Drawing.Size(202, 23);
             this.Ethernet.TabIndex = 7;
-            this.Ethernet.Text = "Connect";
+            this.Ethernet.Text = "Start Server";
             this.Ethernet.UseVisualStyleBackColor = false;
             this.Ethernet.Click += new System.EventHandler(this.Ethernet_Click);
             // 
@@ -235,6 +240,7 @@
             this.OWN_IP.Name = "OWN_IP";
             this.OWN_IP.Size = new System.Drawing.Size(188, 21);
             this.OWN_IP.TabIndex = 8;
+            this.OWN_IP.Visible = false;
             // 
             // backgroundWorker1
             // 
@@ -259,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(698, 433);
             this.Controls.Add(this.OWN_IP);
             this.Controls.Add(this.Connect_Btn);

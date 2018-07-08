@@ -11,6 +11,15 @@ using System.IO;
 
 namespace RFID_DOOR_APP
 {
+    public class SocketT2h
+    {
+        public Socket _Socket { get; set; }
+        public string _Name { get; set; }
+        public SocketT2h(Socket socket)
+        {
+            this._Socket = socket;
+        }
+    }
     class Global
     {
         private static string _COM;
@@ -31,6 +40,27 @@ namespace RFID_DOOR_APP
         private static Socket _server;
         private static IPEndPoint _IP_End;
         private static string _Username;
+        private static List<SocketT2h> _ClientSockets;
+        private static Socket __serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        private static Data_Board _Data_Board;
+
+        public static Data_Board dataBoard
+        {
+            get { return _Data_Board; }
+            set { _Data_Board = value; }
+        }
+
+        public static Socket _serverSocket
+        {
+            get { return __serverSocket; }
+            set { __serverSocket = value; }
+        }
+
+        public static List<SocketT2h> __ClientSockets
+        {
+            get { return _ClientSockets; }
+            set { _ClientSockets = value; }
+        }
 
         public static string Username
         {

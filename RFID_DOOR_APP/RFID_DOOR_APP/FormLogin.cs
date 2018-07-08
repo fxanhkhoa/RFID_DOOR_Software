@@ -12,6 +12,7 @@ namespace RFID_DOOR_APP
 {
     public partial class FormLogin : Form
     {
+        FormMain myMain;
         public FormLogin()
         {
             InitializeComponent();
@@ -70,6 +71,10 @@ namespace RFID_DOOR_APP
             {
                 //FormMain.ActiveForm.Refresh();
                 MessageBox.Show(Username_Field.Text+" Login successful");
+
+                // Open Main Form
+                RunMainForm();
+
                 DateTime localDate = DateTime.Now;
 
                 if (_DB.conn.State != ConnectionState.Open)
@@ -89,12 +94,20 @@ namespace RFID_DOOR_APP
 
                 if (_DB.conn.State != ConnectionState.Closed)
                     _DB.Close();
-                this.Close();
+                this.Hide();
             }
             else
             {
                 MessageBox.Show("Wrong Username or Password!");
+                Username_Field.Text = "";
+                Password_Field.Text = "";
             }
+        }
+
+        private void RunMainForm()
+        {
+            myMain = new FormMain();
+            myMain.Show();
         }
 
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
