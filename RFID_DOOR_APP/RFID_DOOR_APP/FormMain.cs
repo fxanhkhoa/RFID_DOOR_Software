@@ -222,6 +222,7 @@ namespace RFID_DOOR_APP
             //Back-end
             form_close_all(1); // Hide others form
 
+            MyformReport.Close();
             MyformReport = new FormReport();
             MyformReport.TopLevel = false;
             MyformReport.AutoScroll = true;
@@ -242,6 +243,8 @@ namespace RFID_DOOR_APP
 
             //Back-end
             form_close_all(2);
+
+            MyFormEmployee.Close();
             MyFormEmployee = new FormEmployee();
 
             MyFormEmployee.TopLevel = false;
@@ -267,6 +270,7 @@ namespace RFID_DOOR_APP
             //Back-end
             form_close_all(3);
 
+            MyFormController.Close();
             MyFormController = new Form_Controller();
 
             MyFormController.TopLevel = false;
@@ -287,7 +291,7 @@ namespace RFID_DOOR_APP
             //Back-end
             form_close_all(4);
 
-
+            MyFormEnvironment.Close();
             MyFormEnvironment = new Form_Environment();
 
             MyFormEnvironment.TopLevel = false;
@@ -308,6 +312,7 @@ namespace RFID_DOOR_APP
             //Back-end
             form_close_all(5);
 
+            MyFormConnection.Close();
             MyFormConnection = new FormConnection();
 
             MyFormConnection.TopLevel = false;

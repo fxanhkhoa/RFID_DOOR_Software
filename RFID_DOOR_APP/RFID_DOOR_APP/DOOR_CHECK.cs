@@ -92,8 +92,8 @@ namespace RFID_DOOR_APP
             try
             {
 
-                string ID = s.Substring(10, 8);
-                string DOOR = s.Substring(18, 1);
+                string ID = s.Substring(10, 4);
+                string DOOR = s.Substring(14, 1);
                 DateTime LocalDateTime = DateTime.Now;
                 string sql;
 
@@ -116,7 +116,8 @@ namespace RFID_DOOR_APP
                 }
                 else
                 {
-                    sql = "";
+                    sql = "INSERT into NEWCARD values(' "+ ID + "')";
+                    _DB.Excute(sql);
                 }
             }
             catch (Exception ex)

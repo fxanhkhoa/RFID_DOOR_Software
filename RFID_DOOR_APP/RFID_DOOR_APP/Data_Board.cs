@@ -27,7 +27,7 @@ namespace RFID_DOOR_APP
 
         FormMain fMain;
 
-
+        DOOR_CHECK DC = new DOOR_CHECK();
         /* public variables */
         //string outputText;
 
@@ -199,6 +199,9 @@ namespace RFID_DOOR_APP
                     //lb_stt.Text = "Text received: " + text;
                     read_data = text;
                     fMain.Invoke(new Action(() => fMain.data = read_data));
+
+                    /* Process command here */
+                    DC.Mode_Process(DC.AT_Check(read_data), read_data);
                                         
 
                     string reponse = string.Empty;
