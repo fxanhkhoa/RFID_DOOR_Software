@@ -145,8 +145,8 @@ namespace RFID_DOOR_APP
             Global.data_read = s;
             if (s.IndexOf("*") >= 0)
             {
-                int mode = _door_check.AT_Check(s);
-                _door_check.Mode_Process(mode, s);
+                //int mode = _door_check.AT_Check(s);
+                //_door_check.Mode_Process(mode, s);
                 //if (mode == DOOR_OPENED)
                 //{
                 //    char door_num = s[12];
@@ -324,6 +324,7 @@ namespace RFID_DOOR_APP
 
             MyFormConnection.FormClosed += MyFormConnection_Closed;
             MyFormConnection.FormClosing += MyFormConnection_Closing;
+
         }
 
         private void MyFormConnection_Closing(object sender, EventArgs e)

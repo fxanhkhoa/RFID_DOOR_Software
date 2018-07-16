@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace RFID_DOOR_APP
     public partial class Form_Edit_User : Form
     {
         SQL _DB = new SQL();
+        const char STX = '\u0002';
+        DataProtocol dP = new DataProtocol();
         public Form_Edit_User()
         {
             InitializeComponent();
@@ -520,6 +523,8 @@ namespace RFID_DOOR_APP
         private void Clear_Btn_Click(object sender, EventArgs e)
         {
             Clear_Field();
+            dP.command = DataProtocol.IDCHECK;
+            Global.dataBoard.Send(dP.GetBlockData());
         }
 
         private void New_Card_Btn_Click(object sender, EventArgs e)
@@ -533,6 +538,57 @@ namespace RFID_DOOR_APP
         {
             reload();
             ShowList();
+        }
+
+        private void sendToBoardButton_Click(object sender, EventArgs e)
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                string sql = "SELECT A.DAY, B.INDEXNUM, C.RFID1, C.RFID2, C.RFID3, C.RFID4 , E.Start_Time, E.End_Time, F.MODE " +
+                    "FROM Date_Template A, DOOR B, ID_CARD C, NHANVIEN D, Time_Template E, USAGE F " +
+                    "WHERE F.IDNV = D.IDNV and D.CARD_ID = C.ID and F.IDDOOR = B.IDDOOR and F.IDTIME = E.Id and F.IDDATE = A.ID";
+
+                _DB.Excute(sql);
+
+                dP.command = DataProtocol.CLEARALL;
+                Global.dataBoard.Send(dP.GetBlockData());
+                Thread.Sleep(100);
+
+                for (int i = 0; i < 1; i++)
+                {
+                    DateTime From = DateTime.ParseExact(_DB.kq.Rows[i][6].ToString(), "HH:mm:ss",
+                                        CultureInfo.InvariantCulture);
+
+                    DateTime To = DateTime.ParseExact(_DB.kq.Rows[i][7].ToString(), "HH:mm:ss",
+                                        CultureInfo.InvariantCulture);
+
+                    dP.ID = 1;
+                    dP.command = DataProtocol.IDADD;
+                    dP.hourFrom = (Byte)From.Hour;
+                    dP.minuteFrom = (Byte)From.Minute;
+                    dP.hourTo = (Byte)To.Hour;
+                    dP.minuteTo = (Byte)To.Minute;
+                    dP.day = Convert.ToByte(_DB.kq.Rows[i][0].ToString());
+                    dP.door = Convert.ToByte(_DB.kq.Rows[i][1].ToString());
+                    dP.RFID1 = (Byte[])_DB.kq.Rows[i][2];
+                    dP.RFID2 = (Byte[])_DB.kq.Rows[i][3];
+                    dP.RFID3 = (Byte[])_DB.kq.Rows[i][4];
+                    dP.RFID4 = (Byte[])_DB.kq.Rows[i][5];
+                    
+                    Global.dataBoard.Send(dP.GetBlockData());
+                    Thread.Sleep(300);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
         }
     }
 }

@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProtocol.cs" />
     <Compile Include="Data_Board.cs" />
     <Compile Include="DOOR_CHECK.cs" />
     <Compile Include="Door_Controller.cs">

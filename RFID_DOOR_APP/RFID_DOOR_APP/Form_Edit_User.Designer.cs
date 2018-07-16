@@ -82,6 +82,7 @@
             this.Delete_Employee = new System.Windows.Forms.PictureBox();
             this.Clear_Btn = new System.Windows.Forms.Button();
             this.New_Card_Btn = new System.Windows.Forms.Button();
+            this.sendToBoardButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Fix_Employee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete_Usage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Add_Usage)).BeginInit();
@@ -582,6 +583,17 @@
             this.New_Card_Btn.UseVisualStyleBackColor = true;
             this.New_Card_Btn.Click += new System.EventHandler(this.New_Card_Btn_Click);
             // 
+            // sendToBoardButton
+            // 
+            this.sendToBoardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.sendToBoardButton.Location = new System.Drawing.Point(41, 516);
+            this.sendToBoardButton.Name = "sendToBoardButton";
+            this.sendToBoardButton.Size = new System.Drawing.Size(164, 53);
+            this.sendToBoardButton.TabIndex = 81;
+            this.sendToBoardButton.Text = "Send To Board";
+            this.sendToBoardButton.UseVisualStyleBackColor = false;
+            this.sendToBoardButton.Click += new System.EventHandler(this.sendToBoardButton_Click);
+            // 
             // Form_Edit_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -591,6 +603,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(791, 613);
+            this.Controls.Add(this.sendToBoardButton);
             this.Controls.Add(this.New_Card_Btn);
             this.Controls.Add(this.Clear_Btn);
             this.Controls.Add(this.Fix_Employee);
@@ -715,5 +728,6 @@
         private System.Windows.Forms.PictureBox Fix_Employee;
         private System.Windows.Forms.Button Clear_Btn;
         private System.Windows.Forms.Button New_Card_Btn;
+        private System.Windows.Forms.Button sendToBoardButton;
     }
 }

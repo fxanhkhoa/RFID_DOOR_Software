@@ -29,16 +29,13 @@ namespace RFID_DOOR_APP
         * Input: string command
         * Output: Mode
         ************************************/
-        public int AT_Check(string s)
+        public int AT_Check(Byte[] buffer)
         {
-            if (s.IndexOf("OK+DOOROPEN") >= 0)
-                return DOOR_OPENED;
-            else if (s.IndexOf("AT+IDCHECK") >= 0)
-                return ID_CHECK;
-            else if (s.IndexOf("OK+IDREAD") >= 0)
-                return ID_READ;
-            else if (s.IndexOf("OK+OPEN") >= 0)
-                return OK_OPENED;
+            switch (buffer[1])
+            {
+                default:
+                    return NONE;
+            };
             return 0;
         }
 
@@ -47,7 +44,7 @@ namespace RFID_DOOR_APP
         * Input: mode (int), string (if use)
         * Output: None
         ************************************/
-        public void Mode_Process(int mode, string s)
+        public void Mode_Process(int mode, Byte[] buffer)
         {
             if (_DB.conn.State != System.Data.ConnectionState.Open)
                 _DB.Open();
@@ -56,22 +53,16 @@ namespace RFID_DOOR_APP
             {
                 switch (mode)
                 {
-                    case DOOR_OPENED:
+                    case DataProtocol.OPEN:
 
-                        char door_num = s[12];
+                        Byte door_num = buffer[6];
                         DateTime LocalDate = DateTime.Now;
-                        string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num + "OPENED')";
+
+                        //Get Name of Room
+
+                        string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num.ToString() + "OPENED')";
                         _DB.Excute(sql);
 
-                        break;
-                    case ID_CHECK:
-                        ID_CHECK_OPEN(s);
-                        break;
-                    case ID_READ:
-                        Global.OK = 1;
-                        break;
-                    case OK_OPENED:
-                        REPORT_OPEN(s);
                         break;
                 }
             }

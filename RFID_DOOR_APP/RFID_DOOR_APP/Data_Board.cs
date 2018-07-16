@@ -15,12 +15,12 @@ namespace RFID_DOOR_APP
     {
         SerialPort _Sp = new SerialPort();
         BackgroundWorker BK_data;
-        string read_data;
+        byte[] read_data = new byte[12];
         int new_data = 0;
 
         private const int BUFFER_SIZE = 1024;
         private const int PORT_NUMBER = 35;
-        private byte[] _buffer = new byte[1024];
+        private byte[] _buffer = new byte[12];
         
         List<string> _names = new List<string>();
         Socket socket;
@@ -70,7 +70,7 @@ namespace RFID_DOOR_APP
 
         private void SP_Received(Object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            read_data = _Sp.ReadLine();
+             _Sp.Read(read_data,0,12);
         }
 
         /**********
@@ -89,9 +89,9 @@ namespace RFID_DOOR_APP
                     int i;
                     while ((i = stream.Read(_buffer, 0, _buffer.Length)) != 0)
                     {
-                        read_data = System.Text.Encoding.ASCII.GetString(_buffer, 0, i);
-                        Global.data_read = read_data;
-                        new_data = 1;
+                        //read_data = System.Text.Encoding.ASCII.GetString(_buffer, 0, i);
+                        //Global.data_read = read_data;
+                        //new_data = 1;
                     }
                 }
                 catch (Exception ex)
@@ -112,7 +112,7 @@ namespace RFID_DOOR_APP
         **********/
         public string get()
         {
-            return read_data;
+            return read_data.ToString();
         }
 
         /**********
@@ -121,7 +121,7 @@ namespace RFID_DOOR_APP
         **********/
         public void set(string s)
         {
-            read_data = s;
+            
         }
 
         /**********
@@ -139,10 +139,11 @@ namespace RFID_DOOR_APP
             new_data = 0;
         }
 
-        public void Send(string content)
+        public void Send(Byte[] content)
         {
-            byte[] data = Encoding.ASCII.GetBytes(content);
-            socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
+            //byte[] utf8Bytes = Encoding.UTF8.GetBytes(content);
+            //byte[] data = Encoding.ASCII.GetBytes(content);
+            socket.BeginSend(content, 0, content.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
             Global._serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
         }
 
@@ -197,11 +198,11 @@ namespace RFID_DOOR_APP
                     Array.Copy(_buffer, dataBuf, received);
                     string text = Encoding.UTF8.GetString(dataBuf);
                     //lb_stt.Text = "Text received: " + text;
-                    read_data = text;
-                    fMain.Invoke(new Action(() => fMain.data = read_data));
+                    read_data = dataBuf;
+                    fMain.Invoke(new Action(() => fMain.data = text));
 
                     /* Process command here */
-                    DC.Mode_Process(DC.AT_Check(read_data), read_data);
+                    DC.Mode_Process(read_data[1], read_data);
                                         
 
                     string reponse = string.Empty;
