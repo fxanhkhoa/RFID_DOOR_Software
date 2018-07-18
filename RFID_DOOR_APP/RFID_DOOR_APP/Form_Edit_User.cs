@@ -131,8 +131,12 @@ namespace RFID_DOOR_APP
                 string IDDATE = List_Usage_Day.Text;
                 string MODE = Employee_Mode_ComboBox.Text;
                 MODE = MODE.Substring(0, MODE.IndexOf("."));
+
+                //Get IDBOARD
+                string sql = "select IDBOARD from DOORTEMPLATE where IDDOOR = '" + IDDOOR +"'" ;
+                _DB.Excute(sql);
                 
-                string sql = "insert into USAGE values('" + IDNV + "','" + IDDOOR + "','" + IDTIME + "','" + IDDATE + "','" + MODE + "')";
+                sql = "insert into USAGE values('" + IDNV + "','" + IDDOOR + "','" + IDTIME + "','" + IDDATE + "','" + MODE + "')";
                 //MessageBox.Show(sql);
                 _DB.Excute(sql);
 
@@ -547,6 +551,10 @@ namespace RFID_DOOR_APP
 
             try
             {
+                //OpenForm
+                Global.dataBoard.fReplyFromBoard = new FormReplyFromBoard();
+                Global.dataBoard.fReplyFromBoard.Show();
+
                 string sql = "SELECT A.DAY, B.INDEXNUM, C.RFID1, C.RFID2, C.RFID3, C.RFID4 , E.Start_Time, E.End_Time, F.MODE " +
                     "FROM Date_Template A, DOOR B, ID_CARD C, NHANVIEN D, Time_Template E, USAGE F " +
                     "WHERE F.IDNV = D.IDNV and D.CARD_ID = C.ID and F.IDDOOR = B.IDDOOR and F.IDTIME = E.Id and F.IDDATE = A.ID";

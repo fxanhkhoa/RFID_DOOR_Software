@@ -60,7 +60,7 @@ namespace RFID_DOOR_APP
 
                         //Get Name of Room
 
-                        string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR" + door_num.ToString() + "OPENED')";
+                        string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR " + door_num.ToString() + " OPENED')";
                         _DB.Excute(sql);
 
                         break;

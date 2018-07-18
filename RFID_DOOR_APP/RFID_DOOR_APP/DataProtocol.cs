@@ -29,7 +29,8 @@ namespace RFID_DOOR_APP
             SETDS1307 = 4,
             DS1307 = 5,
             OPEN = 6,
-            CLEARALL = 7;
+            CLEARALL = 7,
+            STOREOK = 8;
 
         public DataProtocol()
         {

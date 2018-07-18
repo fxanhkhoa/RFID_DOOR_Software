@@ -25,7 +25,8 @@ namespace RFID_DOOR_APP
         List<string> _names = new List<string>();
         Socket socket;
 
-        FormMain fMain;
+        public FormMain fMain;
+        public FormReplyFromBoard fReplyFromBoard;
 
         DOOR_CHECK DC = new DOOR_CHECK();
         /* public variables */
@@ -200,6 +201,19 @@ namespace RFID_DOOR_APP
                     //lb_stt.Text = "Text received: " + text;
                     read_data = dataBuf;
                     fMain.Invoke(new Action(() => fMain.data = text));
+
+                    try
+                    {
+                        string temp = "";
+                        if (dataBuf[1] == DataProtocol.STOREOK)
+                            temp += "ADD OK" + dataBuf[2].ToString() + dataBuf[3].ToString() + dataBuf[4].ToString() 
+                                + dataBuf[5].ToString() + "\n";
+                        fReplyFromBoard.Invoke(new Action(() => fReplyFromBoard.data = temp));
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
 
                     /* Process command here */
                     DC.Mode_Process(read_data[1], read_data);
