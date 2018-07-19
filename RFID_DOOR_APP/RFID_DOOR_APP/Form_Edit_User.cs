@@ -126,28 +126,49 @@ namespace RFID_DOOR_APP
             try
             {
                 string IDNV = List_Usage_ID.Text;
-                string IDDOOR = List_Usage_Door.Text;
+                string DOORNAME = List_Usage_Door.Text;
                 string IDTIME = List_Usage_Time.Text;
                 string IDDATE = List_Usage_Day.Text;
                 string MODE = Employee_Mode_ComboBox.Text;
                 MODE = MODE.Substring(0, MODE.IndexOf("."));
 
                 //Get IDBOARD
-                string sql = "select IDBOARD from DOORTEMPLATE where IDDOOR = '" + IDDOOR +"'" ;
-                _DB.Excute(sql);
-                
-                sql = "insert into USAGE values('" + IDNV + "','" + IDDOOR + "','" + IDTIME + "','" + IDDATE + "','" + MODE + "')";
-                //MessageBox.Show(sql);
+                string sql = "select IDBOARD,INDEXNUM from DOORTEMPLATE where IDDOOR = '" + DOORNAME +"'" ;
                 _DB.Excute(sql);
 
-                string data = IDNV + " " + IDDOOR + " " + IDTIME + " " + IDDATE + " " + MODE;
+                int IDBOARDGot = Convert.ToInt16(_DB.kq.Rows[0][0]);
+                int indexNumGot = Convert.ToInt16(_DB.kq.Rows[0][1]);
 
-                DateTime LocalDate = DateTime.Now;
-                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Usage " + data + "')";
+                //Check If have board ID or Not
+                sql = "select IDBOARD,IDDOOR from USAGE WHERE IDBOARD = " + IDBOARDGot + "AND IDNV = '" + IDNV + "'";
                 _DB.Excute(sql);
 
-                sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
-                _DB.Excute(sql);
+                int TotalDoor = 0;
+
+                if (_DB.kq.Rows.Count > 0) // If have this Usage ==> Update
+                {
+                    TotalDoor = Convert.ToInt16(_DB.kq.Rows[0][1]);
+                    TotalDoor = TotalDoor | Convert.ToByte(1 << Convert.ToInt16(indexNumGot));
+
+                    sql = "UPDATE USAGE SET IDDOOR ='" + TotalDoor.ToString() + "' WHERE IDBOARD = " + IDBOARDGot + "";
+                    _DB.Excute(sql);
+                }
+                else
+                {
+                    TotalDoor = TotalDoor | Convert.ToByte(1 << Convert.ToInt16(indexNumGot));
+                    sql = "insert into USAGE values('" + IDNV + "','" + TotalDoor.ToString() + "','" + IDTIME + "','" + IDDATE + "'," + IDBOARDGot + ",'" + MODE +"')";
+                    //MessageBox.Show(sql);
+                    _DB.Excute(sql);
+
+                    string data = IDNV + " " + TotalDoor.ToString() + " " + IDTIME + " " + IDDATE + " " + IDBOARDGot.ToString() + " " + MODE;
+
+                    DateTime LocalDate = DateTime.Now;
+                    sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Usage " + data + "')";
+                    _DB.Excute(sql);
+
+                    sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                    _DB.Excute(sql);
+                }
 
                 reload();
             }
@@ -186,7 +207,7 @@ namespace RFID_DOOR_APP
                 List_Usage_ID.DataSource = _DB.kq;
                 //List_Usage_ID.SelectedIndex = 0;
 
-                sql = "select * from DOOR";
+                sql = "select * from DOORTEMPLATE";
                 _DB.Excute(sql);
 
                 List_Usage_Door.DisplayMember = "IDDOOR";
@@ -264,7 +285,8 @@ namespace RFID_DOOR_APP
                     data += _DB.kq.Rows[i][1].ToString() + " ";
                     data += _DB.kq.Rows[i][2].ToString() + " ";
                     data += _DB.kq.Rows[i][3].ToString() + " ";
-                    data += _DB.kq.Rows[i][4].ToString();
+                    data += _DB.kq.Rows[i][4].ToString() + " ";
+                    data += _DB.kq.Rows[i][5].ToString();
 
                     List_Usage.Items.Add(data);
                 }
@@ -323,7 +345,13 @@ namespace RFID_DOOR_APP
                 string ID = List_Usage.GetItemText(List_Usage.SelectedItem);
                 while (ID[ID.Length - 1] == ' ')
                     ID = ID.Remove(ID.Length - 1);
+                string MODE = ID.Substring(ID.Length - 1, 1);
                 ID = ID.Remove(ID.Length - 2);
+
+                string IDBOARD = ID.Substring(ID.LastIndexOf(" ") + 1, ID.Length - ID.LastIndexOf(" ") - 1);
+                ID = ID.Remove(ID.LastIndexOf(" "));
+                while (ID[ID.Length - 1] == ' ')
+                    ID = ID.Remove(ID.Length - 1);
 
                 string IDDATE = ID.Substring(ID.LastIndexOf(" ") + 1, ID.Length - ID.LastIndexOf(" ") - 1);
                 ID = ID.Remove(ID.LastIndexOf(" "));
@@ -344,7 +372,7 @@ namespace RFID_DOOR_APP
                 //MessageBox.Show(DATE + TIME + DOOR + IDNV);
 
                 string sql = "delete from USAGE where IDNV = '" + IDNV + "' and IDDATE ='" + IDDATE + "' and IDTIME = '" 
-                    + IDTIME + "' and IDDOOR = '" + IDDOOR + "'";
+                    + IDTIME + "' and IDBOARD = '" + IDBOARD + "'";
                 //MessageBox.Show(sql);
                 _DB.Excute(sql);
 
