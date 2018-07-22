@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.location = new System.Windows.Forms.TextBox();
+            this.IDBOARDTextBox = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.TextBox();
             this.Add_Btn = new System.Windows.Forms.PictureBox();
             this.Delete_Btn = new System.Windows.Forms.PictureBox();
@@ -46,6 +46,9 @@
             this.Name_Department = new System.Windows.Forms.TextBox();
             this.ID_Department = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.indexComboBox = new System.Windows.Forms.ComboBox();
+            this.notiLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Add_Btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete_Btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Depart_Delete_Btn)).BeginInit();
@@ -66,31 +69,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 113);
+            this.label2.Location = new System.Drawing.Point(15, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "LOCATION";
+            this.label2.Text = "IDBOARD";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(68, 66);
+            this.label3.Location = new System.Drawing.Point(24, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "ID DOOR";
             // 
-            // location
+            // IDBOARDTextBox
             // 
-            this.location.Location = new System.Drawing.Point(126, 110);
-            this.location.Name = "location";
-            this.location.Size = new System.Drawing.Size(100, 20);
-            this.location.TabIndex = 2;
+            this.IDBOARDTextBox.Location = new System.Drawing.Point(82, 106);
+            this.IDBOARDTextBox.Name = "IDBOARDTextBox";
+            this.IDBOARDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IDBOARDTextBox.TabIndex = 2;
+            this.IDBOARDTextBox.Text = "Fill this 1st";
+            this.IDBOARDTextBox.TextChanged += new System.EventHandler(this.IDBOARDTextBox_TextChanged);
+            this.IDBOARDTextBox.Enter += new System.EventHandler(this.IDBOARDTextBox_Enter);
+            this.IDBOARDTextBox.Leave += new System.EventHandler(this.IDBOARDTextBox_Leave);
             // 
             // ID
             // 
-            this.ID.Location = new System.Drawing.Point(126, 63);
+            this.ID.Location = new System.Drawing.Point(82, 59);
             this.ID.Name = "ID";
             this.ID.Size = new System.Drawing.Size(100, 20);
             this.ID.TabIndex = 3;
@@ -216,12 +223,41 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "DEPARTMENT TEMPLATE";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(194, 110);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "INDEX";
+            // 
+            // indexComboBox
+            // 
+            this.indexComboBox.FormattingEnabled = true;
+            this.indexComboBox.Location = new System.Drawing.Point(240, 106);
+            this.indexComboBox.Name = "indexComboBox";
+            this.indexComboBox.Size = new System.Drawing.Size(69, 21);
+            this.indexComboBox.TabIndex = 21;
+            // 
+            // notiLabel
+            // 
+            this.notiLabel.AutoSize = true;
+            this.notiLabel.Location = new System.Drawing.Point(237, 141);
+            this.notiLabel.Name = "notiLabel";
+            this.notiLabel.Size = new System.Drawing.Size(41, 13);
+            this.notiLabel.TabIndex = 22;
+            this.notiLabel.Text = "label10";
+            // 
             // Form_Door_Template
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(791, 433);
+            this.Controls.Add(this.notiLabel);
+            this.Controls.Add(this.indexComboBox);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Depart_Delete_Btn);
             this.Controls.Add(this.List_Department);
@@ -237,7 +273,7 @@
             this.Controls.Add(this.Add_Btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.location);
+            this.Controls.Add(this.IDBOARDTextBox);
             this.Controls.Add(this.ID);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -258,7 +294,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox location;
+        private System.Windows.Forms.TextBox IDBOARDTextBox;
         private System.Windows.Forms.TextBox ID;
         private System.Windows.Forms.PictureBox Add_Btn;
         private System.Windows.Forms.PictureBox Delete_Btn;
@@ -273,5 +309,8 @@
         private System.Windows.Forms.TextBox Name_Department;
         private System.Windows.Forms.TextBox ID_Department;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox indexComboBox;
+        private System.Windows.Forms.Label notiLabel;
     }
 }

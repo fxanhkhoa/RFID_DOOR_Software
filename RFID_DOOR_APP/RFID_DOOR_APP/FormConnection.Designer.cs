@@ -175,7 +175,7 @@
             // 
             // Server
             // 
-            this.Server.Location = new System.Drawing.Point(460, 77);
+            this.Server.Location = new System.Drawing.Point(103, 327);
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(188, 20);
             this.Server.TabIndex = 4;
@@ -183,7 +183,7 @@
             // 
             // Eth_PORT
             // 
-            this.Eth_PORT.Location = new System.Drawing.Point(460, 113);
+            this.Eth_PORT.Location = new System.Drawing.Point(103, 363);
             this.Eth_PORT.Name = "Eth_PORT";
             this.Eth_PORT.Size = new System.Drawing.Size(188, 20);
             this.Eth_PORT.TabIndex = 5;
@@ -193,7 +193,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label6.Location = new System.Drawing.Point(373, 44);
+            this.label6.Location = new System.Drawing.Point(16, 294);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 6;
@@ -204,7 +204,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label7.Location = new System.Drawing.Point(373, 80);
+            this.label7.Location = new System.Drawing.Point(16, 330);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 6;
@@ -215,7 +215,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label8.Location = new System.Drawing.Point(373, 116);
+            this.label8.Location = new System.Drawing.Point(16, 366);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 6;
@@ -225,7 +225,7 @@
             // Ethernet
             // 
             this.Ethernet.BackColor = System.Drawing.Color.White;
-            this.Ethernet.Location = new System.Drawing.Point(460, 239);
+            this.Ethernet.Location = new System.Drawing.Point(423, 40);
             this.Ethernet.Name = "Ethernet";
             this.Ethernet.Size = new System.Drawing.Size(202, 23);
             this.Ethernet.TabIndex = 7;
@@ -236,7 +236,7 @@
             // OWN_IP
             // 
             this.OWN_IP.FormattingEnabled = true;
-            this.OWN_IP.Location = new System.Drawing.Point(460, 40);
+            this.OWN_IP.Location = new System.Drawing.Point(103, 290);
             this.OWN_IP.Name = "OWN_IP";
             this.OWN_IP.Size = new System.Drawing.Size(188, 21);
             this.OWN_IP.TabIndex = 8;

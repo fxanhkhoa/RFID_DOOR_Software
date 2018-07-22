@@ -206,9 +206,15 @@ namespace RFID_DOOR_APP
                     {
                         string temp = "";
                         if (dataBuf[1] == DataProtocol.STOREOK)
-                            temp += "ADD OK" + dataBuf[2].ToString() + dataBuf[3].ToString() + dataBuf[4].ToString() 
+                        {
+                            temp += "ADD OK" + dataBuf[2].ToString() + dataBuf[3].ToString() + dataBuf[4].ToString()
                                 + dataBuf[5].ToString() + "\n";
-                        fReplyFromBoard.Invoke(new Action(() => fReplyFromBoard.data = temp));
+                            fReplyFromBoard.Invoke(new Action(() => fReplyFromBoard.data = temp));
+                        }
+                        else if (dataBuf[1] == DataProtocol.GETINFO)
+                        {
+
+                        }
                     }
                     catch (Exception ex)
                     {

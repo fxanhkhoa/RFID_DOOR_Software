@@ -22,6 +22,7 @@ namespace RFID_DOOR_APP
         {
             _DB.Connect();
             reload();
+            notiLabel.Text = "";
         }
 
         private void reload()
@@ -70,11 +71,11 @@ namespace RFID_DOOR_APP
                 _DB.Open();
             try {
                 string sql;
-                sql = "insert into DOOR values(N'" + ID.Text + "',N'" + location.Text + "','DONG')";
+                sql = "insert into DOOR values(N'" + ID.Text + "',N'" + IDBOARDTextBox.Text + "','DONG')";
                 _DB.Excute(sql);
 
                 DateTime LocalDate = DateTime.Now;
-                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Door" + ID.Text + ", " + location.Text + "')";
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Door" + ID.Text + ", " + IDBOARDTextBox.Text + "')";
                 _DB.Excute(sql);
 
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
@@ -163,6 +164,68 @@ namespace RFID_DOOR_APP
 
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
                 _DB.Excute(sql);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
+        }
+
+        private void IDBOARDTextBox_Enter(object sender, EventArgs e)
+        {
+            if (IDBOARDTextBox.Text == "Fill this 1st")
+            {
+                IDBOARDTextBox.Text = "";
+                IDBOARDTextBox.ForeColor = Color.Black;
+                indexComboBox.Enabled = true;
+            }
+        }
+
+        private void IDBOARDTextBox_Leave(object sender, EventArgs e)
+        {
+            if (IDBOARDTextBox.Text == "")
+            {
+                IDBOARDTextBox.Text = "Fill this 1st";
+                IDBOARDTextBox.ForeColor = Color.Gray;
+                indexComboBox.Enabled = false;
+            }
+        }
+
+        private void IDBOARDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                indexComboBox.Items.Clear();
+                List<int> indexNumber = new List<int>() { 1, 2, 3, 4 };
+
+                string sql = "select INDEXNUM from DOORTEMPLATE where IDBOARD = " + Convert.ToInt16(IDBOARDTextBox.Text);
+                _DB.Excute(sql);
+
+                for (int i = 0; i < _DB.kq.Rows.Count; i++)
+                {
+                    indexNumber.Remove(Convert.ToInt16(_DB.kq.Rows[i][0]));
+                }
+                if (indexNumber.Count == 0)
+                {
+                    notiLabel.ForeColor = Color.Red;
+                    notiLabel.Text = "Full";
+                }
+                else
+                {
+                    notiLabel.Text = "";
+                }
+                foreach (int single in indexNumber)
+                {
+                    indexComboBox.Items.Add(single.ToString());
+                }
+
+                indexComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {

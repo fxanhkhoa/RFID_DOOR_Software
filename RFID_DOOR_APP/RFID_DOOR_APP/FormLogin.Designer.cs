@@ -35,8 +35,10 @@
             this.Key_Picture = new System.Windows.Forms.PictureBox();
             this.Login_BTN = new System.Windows.Forms.Button();
             this.SignUp_Btn = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             this.SuspendLayout();
             // 
             // Username_Field
@@ -119,6 +121,18 @@
             this.SignUp_Btn.UseVisualStyleBackColor = true;
             this.SignUp_Btn.Click += new System.EventHandler(this.SignUp_Btn_Click);
             // 
+            // closeButton
+            // 
+            this.closeButton.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(468, 123);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(25, 26);
+            this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.closeButton.TabIndex = 5;
+            this.closeButton.TabStop = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,6 +140,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(581, 568);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.SignUp_Btn);
             this.Controls.Add(this.Key_Picture);
             this.Controls.Add(this.Mail_Picture);
@@ -141,6 +156,7 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormLogin_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +169,6 @@
         private System.Windows.Forms.PictureBox Key_Picture;
         private System.Windows.Forms.Button Login_BTN;
         private System.Windows.Forms.Button SignUp_Btn;
+        private System.Windows.Forms.PictureBox closeButton;
     }
 }

@@ -117,13 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="configButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="configButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Mouser Outline, 12pt</value>
+  </data>
+  <data name="configButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAzCAYAAADVY1sUAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALUSURBVGhD3dhBhFVRAMbxYRgiolVExKxiGCJiGIaI
+        GGKIIVq1ilYREa0iYohoO8RsW0WriIiI2UZERERERLy+73qH4/ife855816cPn6b783cc97cc+89d5Ym
+        k8l/AcseYdkjLHuEZY+w7BGWPcKyR1j2CMseYXkUyoqclwuy5qI1dNwSLGeh+As8kO+eS+ST7Ep16Pgl
+        WLZSTshbz2HEM6kKjVGCZSvllcevcFeKoTFKsGyheNnEkx3zW86K81i+yg95IasyhMYpwbKF8t5jN9gT
+        557Evb/QZcFxSrCspZzxuI0+i7Mj6We/ZJXGKsGylnJ1OoFWJ2Uj6YJ9GqsEy1rKzWgCLfx8yX0Rn5UV
+        Gm8MlrWUG9PBW/nC3ky62BqNNwbLWsqlaPBaf+SYbEddaoPGG4NlLeW4eGLxJEr84HRuCX1u//aMmPI8
+        mkANL0cn93vDGaOxxmDZQjktPyWeTM4HWRYvrXRPFhzQOCVYtlLuRBPJ8d3IdyrnodDP+Gys0xglWM5C
+        8ZLxZOOJBX4Ielsf4tt2+rM+q8MumY5fguWslHU5EO+hXHwU76lOSRovydviXfE18Q56CB27BMsaip/q
+        vgN557uVfJaLX7heyjvJvqPEx6qFZYmS7pO8trejzylb4t1v/Hvpl7ko92UzHq8GlmMU75PojuNJPhH/
+        1eN4uT0Sun684/USc7y9jz/bofFzsByjeM3HAx7VvoS8kdC/pvFzsMxRfNHm7kyz8rIML1XpS9o5mgfB
+        MkdJX4bmxWfZSR+UezQPgmWO4ttpGGSefLv2E995KqH/Jss0lxSWRLkyPfiihDtY+p6yS/NJYUmU+EJc
+        hENxfGbi6/CQ5pPCkig+zeHgi+DJh+UVXydDT3OKYUkUPwS9ZwoDzNMX8V7NF7v/Wxl6XzvXaT4pLHuE
+        ZY+w7BGWPcKyR1j2CMseYdkjLHuEZY+w7BGWPcKyP5Olv8KA63OEj7cCAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="configButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="configButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="configButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 336</value>
+  </data>
+  <data name="configButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 55</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="configButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="configButton.Text" xml:space="preserve">
+    <value>CONFIG</value>
+  </data>
+  <data name="configButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;configButton.Name" xml:space="preserve">
+    <value>configButton</value>
+  </data>
+  <data name="&gt;&gt;configButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;configButton.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;configButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="connectStatus_text.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="connectStatus_text.Font" type="System.Drawing.Font, System.Drawing">
     <value>Oswald, 9pt, style=Bold</value>
+  </data>
+  <data name="connectStatus_text.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="connectStatus_text.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 482</value>
@@ -147,7 +208,10 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;connectStatus_text.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="Connection_status.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Connection_status.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 501</value>
@@ -168,13 +232,16 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;Connection_status.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 351</value>
+    <value>9, 435</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
@@ -195,9 +262,8 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="connectButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -225,6 +291,9 @@
   <data name="connectButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
+  <data name="connectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="connectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 276</value>
   </data>
@@ -250,7 +319,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;connectButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="statusButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -279,6 +348,9 @@
   <data name="statusButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
+  <data name="statusButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="statusButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 215</value>
   </data>
@@ -304,7 +376,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;statusButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="controlButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -333,6 +405,9 @@
   <data name="controlButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
+  <data name="controlButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="controlButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 154</value>
   </data>
@@ -358,7 +433,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;controlButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="userButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -387,6 +462,9 @@
   <data name="userButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
+  <data name="userButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="userButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 93</value>
   </data>
@@ -412,7 +490,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;userButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="selectingBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 29</value>
@@ -433,7 +511,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;selectingBar.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="reportButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -457,6 +535,9 @@
   </data>
   <data name="reportButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
+  </data>
+  <data name="reportButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="reportButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 32</value>
@@ -483,7 +564,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;reportButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -560,6 +641,9 @@
         Wv6boQdKoZAQuMehIpa8i/a+z0QZEZZmcwgRy0d2qHymjAjL9Y+uYUtBmLVF3VeGUvjSnT+cC8x0E3ra
         7qsSKLNBmQ3KbFBmgzKXYj9dQ07cI+uDsAAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="closeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>960, 0</value>
@@ -644,6 +728,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1150, 620</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

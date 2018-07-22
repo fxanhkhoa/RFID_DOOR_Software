@@ -33,17 +33,18 @@
             this.connectStatus_text = new System.Windows.Forms.Label();
             this.Connection_status = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.selectingBar = new System.Windows.Forms.Panel();
+            this.moveBar = new System.Windows.Forms.Panel();
+            this.titleBox = new System.Windows.Forms.TextBox();
+            this.userControl = new System.Windows.Forms.Panel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.configButton = new System.Windows.Forms.Button();
             this.connectButton = new System.Windows.Forms.Button();
             this.statusButton = new System.Windows.Forms.Button();
             this.controlButton = new System.Windows.Forms.Button();
             this.userButton = new System.Windows.Forms.Button();
-            this.selectingBar = new System.Windows.Forms.Panel();
             this.reportButton = new System.Windows.Forms.Button();
-            this.moveBar = new System.Windows.Forms.Panel();
-            this.titleBox = new System.Windows.Forms.TextBox();
-            this.closeButton = new System.Windows.Forms.Button();
-            this.userControl = new System.Windows.Forms.Panel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.moveBar.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.configButton);
             this.panel1.Controls.Add(this.connectStatus_text);
             this.panel1.Controls.Add(this.Connection_status);
             this.panel1.Controls.Add(this.label2);
@@ -78,6 +80,53 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            // 
+            // selectingBar
+            // 
+            this.selectingBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(18)))), ((int)(((byte)(57)))));
+            this.selectingBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.selectingBar, "selectingBar");
+            this.selectingBar.Name = "selectingBar";
+            // 
+            // moveBar
+            // 
+            this.moveBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(19)))), ((int)(((byte)(60)))));
+            this.moveBar.Controls.Add(this.titleBox);
+            this.moveBar.Controls.Add(this.closeButton);
+            resources.ApplyResources(this.moveBar, "moveBar");
+            this.moveBar.Name = "moveBar";
+            this.moveBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseDown);
+            this.moveBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseMove);
+            this.moveBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseUp);
+            // 
+            // titleBox
+            // 
+            this.titleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(19)))), ((int)(((byte)(60)))));
+            this.titleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.titleBox, "titleBox");
+            this.titleBox.ForeColor = System.Drawing.Color.White;
+            this.titleBox.Name = "titleBox";
+            // 
+            // userControl
+            // 
+            resources.ApplyResources(this.userControl, "userControl");
+            this.userControl.Name = "userControl";
+            // 
+            // closeButton
+            // 
+            resources.ApplyResources(this.closeButton, "closeButton");
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.Name = "closeButton";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // configButton
+            // 
+            this.configButton.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.configButton, "configButton");
+            this.configButton.Name = "configButton";
+            this.configButton.UseVisualStyleBackColor = true;
+            this.configButton.Click += new System.EventHandler(this.configButton_Click);
             // 
             // connectButton
             // 
@@ -111,13 +160,6 @@
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.userButton_Click);
             // 
-            // selectingBar
-            // 
-            this.selectingBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(18)))), ((int)(((byte)(57)))));
-            this.selectingBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.selectingBar, "selectingBar");
-            this.selectingBar.Name = "selectingBar";
-            // 
             // reportButton
             // 
             this.reportButton.FlatAppearance.BorderSize = 0;
@@ -125,38 +167,6 @@
             this.reportButton.Name = "reportButton";
             this.reportButton.UseVisualStyleBackColor = true;
             this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
-            // 
-            // moveBar
-            // 
-            this.moveBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(19)))), ((int)(((byte)(60)))));
-            this.moveBar.Controls.Add(this.titleBox);
-            this.moveBar.Controls.Add(this.closeButton);
-            resources.ApplyResources(this.moveBar, "moveBar");
-            this.moveBar.Name = "moveBar";
-            this.moveBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseDown);
-            this.moveBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseMove);
-            this.moveBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseUp);
-            // 
-            // titleBox
-            // 
-            this.titleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(19)))), ((int)(((byte)(60)))));
-            this.titleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.titleBox, "titleBox");
-            this.titleBox.ForeColor = System.Drawing.Color.White;
-            this.titleBox.Name = "titleBox";
-            // 
-            // closeButton
-            // 
-            resources.ApplyResources(this.closeButton, "closeButton");
-            this.closeButton.FlatAppearance.BorderSize = 0;
-            this.closeButton.Name = "closeButton";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // userControl
-            // 
-            resources.ApplyResources(this.userControl, "userControl");
-            this.userControl.Name = "userControl";
             // 
             // FormMain
             // 
@@ -198,5 +208,6 @@
         private System.Windows.Forms.ProgressBar Connection_status;
         private System.Windows.Forms.Label connectStatus_text;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button configButton;
     }
 }

@@ -556,6 +556,8 @@ namespace RFID_DOOR_APP
         {
             Clear_Field();
             dP.command = DataProtocol.IDCHECK;
+            dP.door = 1;
+            dP.day = 1;
             Global.dataBoard.Send(dP.GetBlockData());
         }
 
@@ -583,9 +585,9 @@ namespace RFID_DOOR_APP
                 Global.dataBoard.fReplyFromBoard = new FormReplyFromBoard();
                 Global.dataBoard.fReplyFromBoard.Show();
 
-                string sql = "SELECT A.DAY, B.INDEXNUM, C.RFID1, C.RFID2, C.RFID3, C.RFID4 , E.Start_Time, E.End_Time, F.MODE " +
+                string sql = "SELECT A.DAY, F.IDDOOR, C.RFID1, C.RFID2, C.RFID3, C.RFID4 , E.Start_Time, E.End_Time, F.MODE " +
                     "FROM Date_Template A, DOOR B, ID_CARD C, NHANVIEN D, Time_Template E, USAGE F " +
-                    "WHERE F.IDNV = D.IDNV and D.CARD_ID = C.ID and F.IDDOOR = B.IDDOOR and F.IDTIME = E.Id and F.IDDATE = A.ID";
+                    "WHERE F.IDNV = D.IDNV and D.CARD_ID = C.ID and F.IDTIME = E.Id and F.IDDATE = A.ID";
 
                 _DB.Excute(sql);
 
