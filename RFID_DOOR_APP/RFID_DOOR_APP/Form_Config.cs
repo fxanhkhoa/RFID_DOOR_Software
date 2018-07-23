@@ -14,9 +14,11 @@ namespace RFID_DOOR_APP
 {
     public partial class Form_Config : Form
     {
+        SQL _DB = new SQL();
         DataProtocol dP = new DataProtocol();
-        private byte[] _IP;
-        private string _Port;
+        private Byte[] _IP;
+        private Byte _Port;
+        private Byte _idBoard;
 
         public byte[] IP
         {
@@ -31,10 +33,16 @@ namespace RFID_DOOR_APP
             }
         }
 
-        public string Port
+        public Byte Port
         {
             get { return _Port; }
-            set { _Port = value; portTextBox.Text = value; }
+            set { _Port = value; portTextBox.Text = value.ToString(); }
+        }
+
+        public Byte idBoard
+        {
+            get { return _idBoard; }
+            set { _idBoard = value; IDBOARDTextBox.Text = value.ToString(); }
         }
 
         public Form_Config()
@@ -44,8 +52,34 @@ namespace RFID_DOOR_APP
 
         private void Form_Config_Load(object sender, EventArgs e)
         {
+            _DB.Connect();
+            reload();
             GetLocalIPAddress();
             myIPAddressTextBox.Enabled = false;
+        }
+
+        private void reload()
+        {
+            if (_DB.conn.State != ConnectionState.Open)
+                _DB.Open();
+
+            try
+            {
+                string sql = "SELECT DISTINCT IDBOARD FROM USAGE";
+                _DB.Excute(sql);
+
+                IDBOARDComboBox.Items.Clear();
+                IDBOARDComboBox.DisplayMember = "IDBOARD";
+                IDBOARDComboBox.ValueMember = "IDBOARD";
+                IDBOARDComboBox.DataSource = _DB.kq;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (_DB.conn.State != ConnectionState.Closed)
+                _DB.Close();
         }
         private void GetLocalIPAddress()
         {
@@ -80,6 +114,12 @@ namespace RFID_DOOR_APP
                 dP.RFID2[0] = (Byte)Convert.ToInt16(boardIPTextBox2.Text);
                 dP.RFID3[0] = (Byte)Convert.ToInt16(boardIPTextBox3.Text);
                 dP.RFID4[0] = (Byte)Convert.ToInt16(boardIPTextBox4.Text);
+                dP.door = (Byte)Convert.ToInt16(portTextBox.Text);
+                if (IDBOARDChangeCheckBox.Checked == true)
+                    dP.day = (Byte)Convert.ToInt16(IDBOARDTextBox.Text);
+                else
+                    dP.day = dP.ID;
+                Global.dataBoard.Send(dP.GetBlockData());
             }
             catch (Exception ex)
             {

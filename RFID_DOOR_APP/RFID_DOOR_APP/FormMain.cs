@@ -24,7 +24,7 @@ namespace RFID_DOOR_APP
         FormEmployeeAddEM MyFormAddEM = new FormEmployeeAddEM();
         Form_Environment MyFormEnvironment = new Form_Environment();
         Form_Controller MyFormController = new Form_Controller();
-        Form_Config MyFormConfig = new Form_Config();
+        public Form_Config MyFormConfig = new Form_Config();
 
         Global _global = new Global();
         string s;
@@ -332,8 +332,8 @@ namespace RFID_DOOR_APP
         {
             // UI
             titleBox.Text = "CONFIG";
-            selectingBar.Height = connectButton.Height;
-            selectingBar.Top = connectButton.Top;
+            selectingBar.Height = configButton.Height;
+            selectingBar.Top = configButton.Top;
 
             //Back-end
             form_close_all(6);

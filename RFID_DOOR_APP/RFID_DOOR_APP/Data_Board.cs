@@ -213,7 +213,18 @@ namespace RFID_DOOR_APP
                         }
                         else if (dataBuf[1] == DataProtocol.GETINFO)
                         {
-
+                            fMain.Invoke(new Action(() => fMain.MyFormConfig.Port = dataBuf[6]));
+                            fMain.Invoke(new Action(() => fMain.MyFormConfig.idBoard = dataBuf[0]));
+                            Byte[] IP = new Byte[4];
+                            IP[0] = dataBuf[2];
+                            IP[1] = dataBuf[3];
+                            IP[2] = dataBuf[4];
+                            IP[3] = dataBuf[5];
+                            fMain.Invoke(new Action(() => fMain.MyFormConfig.IP = IP));
+                        }
+                        else if (dataBuf[1] == DataProtocol.SETINFO)
+                        {
+                            MessageBox.Show("Set IP and Port Successful!");
                         }
                     }
                     catch (Exception ex)
