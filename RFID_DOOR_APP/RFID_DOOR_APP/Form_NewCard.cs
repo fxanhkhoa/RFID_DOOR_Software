@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,9 +36,21 @@ namespace RFID_DOOR_APP
                 string sql = "select * from NEWCARD";
                 _DB.Excute(sql);
 
-                RFID_ComboBox.DisplayMember = "RFID";
-                RFID_ComboBox.ValueMember = "RFID";
-                RFID_ComboBox.DataSource = _DB.kq;
+                RFID_ComboBox.Items.Clear();
+
+                for (int i = 0; i < _DB.kq.Rows.Count; i++)
+                {
+                    string data = "";
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][0]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][1]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][2]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][3]);
+                    RFID_ComboBox.Items.Add(data);
+                }
+
+                //RFID_ComboBox.DisplayMember = "RFID";
+                //RFID_ComboBox.ValueMember = "RFID";
+                //RFID_ComboBox.DataSource = _DB.kq;
 
             }
             catch (Exception ex)
@@ -64,7 +77,10 @@ namespace RFID_DOOR_APP
                 {
                     string data = "";
                     data += _DB.kq.Rows[i][0].ToString() + " ";
-                    data += _DB.kq.Rows[i][1].ToString();
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][1]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][2]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][3]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][4]);
                     List_RFID.Items.Add(data);
                 }
             }
@@ -147,6 +163,32 @@ namespace RFID_DOOR_APP
             {
                 
             }
+        }
+
+        private void getNewBtn_Click(object sender, EventArgs e)
+        {
+            DataProtocol dP = new DataProtocol();
+
+            //Get All IDBOARD
+            if (_DB.conn.State != System.Data.ConnectionState.Open)
+                _DB.Open();
+
+            string sql = "select DISTINCT IDBOARD from DOORTEMPLATE";
+            _DB.Excute(sql);
+
+            if (_DB.conn.State != System.Data.ConnectionState.Closed)
+                _DB.Close();
+
+            for (int i = 0; i < _DB.kq.Rows.Count; i++)
+            {
+                dP.command = DataProtocol.GETALLRFID;
+                dP.ID = Convert.ToByte(_DB.kq.Rows[i][0].ToString());
+                Global.dataBoard.Send(dP.GetBlockData());
+            }
+
+            Thread.Sleep(1000);
+
+            show_list();
         }
     }
 }

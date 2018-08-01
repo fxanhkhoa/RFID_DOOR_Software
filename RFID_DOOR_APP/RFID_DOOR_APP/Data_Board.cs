@@ -13,6 +13,8 @@ namespace RFID_DOOR_APP
 {
     public class Data_Board 
     {
+        SQL _DB = new SQL();
+
         SerialPort _Sp = new SerialPort();
         BackgroundWorker BK_data;
         byte[] read_data = new byte[12];
@@ -61,6 +63,7 @@ namespace RFID_DOOR_APP
                     Global._serverSocket.Bind(new IPEndPoint(IPAddress.Any, 35));
                     Global._serverSocket.Listen(1);
                     Global._serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
+                    _DB.Connect();
                 }
                 catch (Exception ex)
                 {
@@ -165,7 +168,7 @@ namespace RFID_DOOR_APP
 
             //txtContent.Invoke(new Action(() => txtContent.Text += socket.RemoteEndPoint.ToString() + " " + __ClientSockets.Count.ToString()));
             socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
-            Global._serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
+            Global._serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);           
         }
 
         private void ReceiveCallback(IAsyncResult ar)
@@ -211,6 +214,11 @@ namespace RFID_DOOR_APP
                                 + dataBuf[5].ToString() + "\n";
                             fReplyFromBoard.Invoke(new Action(() => fReplyFromBoard.data = temp));
                         }
+                        else if (dataBuf[1] == DataProtocol.CLEARALL)
+                        {
+                            temp += "CLEAR OK";
+                            fReplyFromBoard.Invoke(new Action(() => fReplyFromBoard.data = temp));
+                        }
                         else if (dataBuf[1] == DataProtocol.GETINFO)
                         {
                             fMain.Invoke(new Action(() => fMain.MyFormConfig.Port = dataBuf[6]));
@@ -225,6 +233,31 @@ namespace RFID_DOOR_APP
                         else if (dataBuf[1] == DataProtocol.SETINFO)
                         {
                             MessageBox.Show("Set IP and Port Successful!");
+                        }
+                        else if (dataBuf[1] == DataProtocol.GETALLRFID)
+                        {
+                            if (_DB.conn.State != System.Data.ConnectionState.Open)
+                                _DB.Open();
+
+                                // Check and insert if new Card
+                                string sql = "Select * FROM ID_CARD WHERE RFID1 = "
+                                    + dataBuf[2]
+                                    + " AND RFID2 = " + dataBuf[3]
+                                    + " AND RFID3 = " + dataBuf[4]
+                                    + " AND RFID4 = " + dataBuf[5];
+
+                                _DB.Excute(sql);
+
+                                // Not Exist
+                                if (_DB.kq.Rows.Count == 0)
+                                {
+                                    sql = "insert into NEWCARD values(" + dataBuf[2]
+                                        + "," + dataBuf[3] + "," + dataBuf[4] + "," + dataBuf[5] + ")";
+                                    _DB.Excute(sql);
+                                }
+
+                            if (_DB.conn.State != System.Data.ConnectionState.Closed)
+                                _DB.Close();
                         }
                     }
                     catch (Exception ex)

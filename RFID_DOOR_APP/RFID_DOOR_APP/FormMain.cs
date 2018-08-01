@@ -124,6 +124,8 @@ namespace RFID_DOOR_APP
                 Global.Sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(SP_DataReceived);
                 label2.MaximumSize = new Size(100, 0);
                 label2.AutoSize = true;
+
+                
             }
             catch (Exception ex)
             {

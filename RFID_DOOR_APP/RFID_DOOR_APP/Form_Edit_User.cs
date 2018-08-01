@@ -555,10 +555,10 @@ namespace RFID_DOOR_APP
         private void Clear_Btn_Click(object sender, EventArgs e)
         {
             Clear_Field();
-            dP.command = DataProtocol.IDCHECK;
-            dP.door = 1;
-            dP.day = 1;
-            Global.dataBoard.Send(dP.GetBlockData());
+            //dP.command = DataProtocol.IDCHECK;
+            //dP.door = 1;
+            //dP.day = 1;
+            //Global.dataBoard.Send(dP.GetBlockData());
         }
 
         private void New_Card_Btn_Click(object sender, EventArgs e)
@@ -585,7 +585,7 @@ namespace RFID_DOOR_APP
                 Global.dataBoard.fReplyFromBoard = new FormReplyFromBoard();
                 Global.dataBoard.fReplyFromBoard.Show();
 
-                string sql = "SELECT A.DAY, F.IDDOOR, C.RFID1, C.RFID2, C.RFID3, C.RFID4 , E.Start_Time, E.End_Time, F.MODE " +
+                string sql = "SELECT A.DAY, F.IDDOOR, C.RFID1, C.RFID2, C.RFID3, C.RFID4 , E.Start_Time, E.End_Time, F.MODE, F.IDBOARD " +
                     "FROM Date_Template A, DOOR B, ID_CARD C, NHANVIEN D, Time_Template E, USAGE F " +
                     "WHERE F.IDNV = D.IDNV and D.CARD_ID = C.ID and F.IDTIME = E.Id and F.IDDATE = A.ID";
 
@@ -603,7 +603,7 @@ namespace RFID_DOOR_APP
                     DateTime To = DateTime.ParseExact(_DB.kq.Rows[i][7].ToString(), "HH:mm:ss",
                                         CultureInfo.InvariantCulture);
 
-                    dP.ID = 1;
+                    dP.ID = Convert.ToByte(_DB.kq.Rows[i][9].ToString());
                     dP.command = DataProtocol.IDADD;
                     dP.hourFrom = (Byte)From.Hour;
                     dP.minuteFrom = (Byte)From.Minute;

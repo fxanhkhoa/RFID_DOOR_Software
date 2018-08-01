@@ -35,6 +35,7 @@
             this.Add_BTN = new System.Windows.Forms.Button();
             this.List_RFID = new System.Windows.Forms.ListBox();
             this.Delete_Btn = new System.Windows.Forms.Button();
+            this.getNewBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RFID_ComboBox
@@ -98,11 +99,22 @@
             this.Delete_Btn.UseVisualStyleBackColor = true;
             this.Delete_Btn.Click += new System.EventHandler(this.Delete_Btn_Click);
             // 
+            // getNewBtn
+            // 
+            this.getNewBtn.Location = new System.Drawing.Point(180, 93);
+            this.getNewBtn.Name = "getNewBtn";
+            this.getNewBtn.Size = new System.Drawing.Size(75, 23);
+            this.getNewBtn.TabIndex = 7;
+            this.getNewBtn.Text = "Get New";
+            this.getNewBtn.UseVisualStyleBackColor = true;
+            this.getNewBtn.Click += new System.EventHandler(this.getNewBtn_Click);
+            // 
             // Form_NewCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 286);
+            this.Controls.Add(this.getNewBtn);
             this.Controls.Add(this.Delete_Btn);
             this.Controls.Add(this.List_RFID);
             this.Controls.Add(this.Add_BTN);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.Button Add_BTN;
         private System.Windows.Forms.ListBox List_RFID;
         private System.Windows.Forms.Button Delete_Btn;
+        private System.Windows.Forms.Button getNewBtn;
     }
 }

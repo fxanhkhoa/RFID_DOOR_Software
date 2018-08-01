@@ -32,7 +32,8 @@ namespace RFID_DOOR_APP
             CLEARALL = 7,
             STOREOK = 8,
             GETINFO = 9,
-            SETINFO = 10;
+            SETINFO = 10,
+            GETALLRFID = 11;
 
         public DataProtocol()
         {
