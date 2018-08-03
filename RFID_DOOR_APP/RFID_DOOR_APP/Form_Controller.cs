@@ -32,12 +32,12 @@ namespace RFID_DOOR_APP
 
             try
             {
-                string sql = "select IDDOOR from DOOR";
+                string sql = "select IDBOARD, IDDOOR from DOORTEMPLATE";
                 _DB.Excute(sql);
 
                 for (int i = 0; i < _DB.kq.Rows.Count; i++)
                 {
-                    _Door_Controller[i] = new Door_Controller(_DB.kq.Rows[i][0].ToString());
+                    _Door_Controller[i] = new Door_Controller((int)_DB.kq.Rows[i][0], _DB.kq.Rows[i][1].ToString());
                     Controller_Panel.Controls.Add(_Door_Controller[i]);
                 }
             }

@@ -36,6 +36,7 @@
             this.Login_BTN = new System.Windows.Forms.Button();
             this.SignUp_Btn = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.PictureBox();
+            this.moveBar = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.Mail_Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Key_Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -102,7 +103,7 @@
             this.Login_BTN.Location = new System.Drawing.Point(345, 386);
             this.Login_BTN.Name = "Login_BTN";
             this.Login_BTN.Size = new System.Drawing.Size(98, 32);
-            this.Login_BTN.TabIndex = 0;
+            this.Login_BTN.TabIndex = 3;
             this.Login_BTN.Text = "LOGIN >";
             this.Login_BTN.UseVisualStyleBackColor = false;
             this.Login_BTN.Click += new System.EventHandler(this.Login_BTN_Click);
@@ -133,6 +134,17 @@
             this.closeButton.TabStop = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // moveBar
+            // 
+            this.moveBar.BackColor = System.Drawing.Color.Transparent;
+            this.moveBar.Location = new System.Drawing.Point(1, 1);
+            this.moveBar.Name = "moveBar";
+            this.moveBar.Size = new System.Drawing.Size(470, 148);
+            this.moveBar.TabIndex = 6;
+            this.moveBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseDown);
+            this.moveBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseMove);
+            this.moveBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveBar_MouseUp);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +152,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(581, 568);
+            this.Controls.Add(this.moveBar);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.SignUp_Btn);
             this.Controls.Add(this.Key_Picture);
@@ -170,5 +183,6 @@
         private System.Windows.Forms.Button Login_BTN;
         private System.Windows.Forms.Button SignUp_Btn;
         private System.Windows.Forms.PictureBox closeButton;
+        private System.Windows.Forms.Panel moveBar;
     }
 }

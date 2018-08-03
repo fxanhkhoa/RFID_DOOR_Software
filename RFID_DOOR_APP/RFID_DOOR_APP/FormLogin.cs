@@ -13,6 +13,10 @@ namespace RFID_DOOR_APP
     public partial class FormLogin : Form
     {
         FormMain myMain;
+        int mouseX = 0, mouseY = 0;
+        bool mouseDown;
+        private const int cGrip = 16; // Grip size
+        private const int cCaption = 32; // Caption bar height
         public FormLogin()
         {
             InitializeComponent();
@@ -31,6 +35,7 @@ namespace RFID_DOOR_APP
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            Username_Field.Select();
             Password_Field.PasswordChar = '*';
             //Login_BTN.Image = Image.FromFile("../pics/door.png");
           
@@ -136,6 +141,47 @@ namespace RFID_DOOR_APP
         private void closeButton_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void moveBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                mouseX = MousePosition.X - 400;
+                mouseY = MousePosition.Y - 20;
+
+                this.SetDesktopLocation(mouseX, mouseY);
+            }
+        }
+
+        private void moveBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void moveBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x84)
+            {  // Trap WM_NCHITTEST
+                Point pos = new Point(m.LParam.ToInt32());
+                pos = this.PointToClient(pos);
+                if (pos.Y < cCaption)
+                {
+                    m.Result = (IntPtr)2;  // HTCAPTION
+                    return;
+                }
+                if (pos.X >= this.ClientSize.Width - cGrip && pos.Y >= this.ClientSize.Height - cGrip)
+                {
+                    m.Result = (IntPtr)17; // HTBOTTOMRIGHT
+                    return;
+                }
+            }
+            base.WndProc(ref m);
         }
     }
 }

@@ -30,16 +30,18 @@ namespace RFID_DOOR_APP
             if (_DB.conn.State != ConnectionState.Open)
                 _DB.Open();
 
-            string sql = "select IDDOOR, VITRI from DOOR";
+            string sql = "select IDBOARD, IDDOOR, INDEXNUM from DOORTEMPLATE";
             try
             {
                 list_template.Items.Clear();
 
                 _DB.Excute(sql);
+                list_template.Items.Add("IDBOARD --- IDDOOR --- INDEX NUMBER");
                 for (int i = 0; i < _DB.kq.Rows.Count; i ++)
                 {
                     string output_text = _DB.kq.Rows[i][0].ToString() + ". ";
                     output_text += _DB.kq.Rows[i][1].ToString();
+                    output_text += "-" + _DB.kq.Rows[i][2].ToString();
                     list_template.Items.Add(output_text);
                 }
 
@@ -71,11 +73,13 @@ namespace RFID_DOOR_APP
                 _DB.Open();
             try {
                 string sql;
-                sql = "insert into DOOR values(N'" + ID.Text + "',N'" + IDBOARDTextBox.Text + "','DONG')";
+                sql = "insert into DOORTEMPLATE values(" + IDBOARDTextBox.Text + ",N'" + ID.Text + "', " + indexComboBox.Text 
+                    + ",'0','0'" + ")";
                 _DB.Excute(sql);
 
                 DateTime LocalDate = DateTime.Now;
-                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Door" + ID.Text + ", " + IDBOARDTextBox.Text + "')";
+                sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "',' Added Door" + IDBOARDTextBox.Text
+                    + ", " + ID.Text + ", " + indexComboBox.Text + "')";
                 _DB.Excute(sql);
 
                 sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";

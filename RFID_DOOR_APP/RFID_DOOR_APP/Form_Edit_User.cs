@@ -140,7 +140,7 @@ namespace RFID_DOOR_APP
                 int indexNumGot = Convert.ToInt16(_DB.kq.Rows[0][1]);
 
                 //Check If have board ID or Not
-                sql = "select IDBOARD,IDDOOR from USAGE WHERE IDBOARD = " + IDBOARDGot + "AND IDNV = '" + IDNV + "'";
+                sql = "select IDBOARD,IDDOOR from USAGE WHERE IDBOARD = " + IDBOARDGot + " AND IDNV = '" + IDNV + "'";
                 _DB.Excute(sql);
 
                 int TotalDoor = 0;
@@ -300,8 +300,10 @@ namespace RFID_DOOR_APP
                 for (int i = 0; i < _DB.kq.Rows.Count; i++)
                 {
                     string data = _DB.kq.Rows[i][0].ToString() + " ";
-                    data += _DB.kq.Rows[i][1].ToString();
-
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][1]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][2]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][3]);
+                    data += BitConverter.ToString((Byte[])_DB.kq.Rows[i][4]);
                     Employee_RFID_ComboBox.Items.Add(data);
                 }     
             }

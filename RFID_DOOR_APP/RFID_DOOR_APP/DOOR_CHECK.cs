@@ -63,6 +63,9 @@ namespace RFID_DOOR_APP
                         string sql = @"insert into REPORT(TimeDo,Task) values('" + LocalDate.ToString() + "','DOOR " + door_num.ToString() + " OPENED')";
                         _DB.Excute(sql);
 
+                        sql = "DELETE n1 FROM REPORT n1, REPORT n2 WHERE n1.TimeDo = n2.TimeDo AND n1.ID > n2.ID";
+                        _DB.Excute(sql);
+
                         break;
                 }
             }

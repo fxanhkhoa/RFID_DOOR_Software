@@ -58,8 +58,8 @@ namespace RFID_DOOR_APP
             {
 
                 string sql;
-                sql = "select B.TEN, C.NAME, B.CARD_ID, A.MODE, B.PIN, D.VITRI, F.Start_Time, F.End_Time, E.DAY"
-                    + " from USAGE A, NHANVIEN B, DEPARTMENT C, DOOR D, Date_Template E, Time_Template F "
+                sql = "select B.TEN, C.NAME, B.CARD_ID, A.MODE, B.PIN, D.IDDOOR, F.Start_Time, F.End_Time, E.DAY"
+                    + " from USAGE A, NHANVIEN B, DEPARTMENT C, DOORTEMPLATE D, Date_Template E, Time_Template F "
                     + " where A.IDNV = B.IDNV AND C.ID = B.DEPART AND A.IDDOOR = D.IDDOOR AND A.IDDATE = E.ID"
                     + " AND A.IDTIME = F.Id";
 
